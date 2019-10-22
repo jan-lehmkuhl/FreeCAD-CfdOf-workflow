@@ -40,4 +40,7 @@ constant/triSurface
 mesh_outside.stl
 
 
+log.*
+
+
 # End of https://www.gitignore.io/api/openfoam
