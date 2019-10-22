@@ -1,0 +1,93 @@
+# Created by https://www.gitignore.io/api/openfoam
+# Edit at https://www.gitignore.io/?templates=openfoam
+
+
+# OpenFOAM Preprocessing
+# =============================================================================
+
+#exclude important folders and files:
+!0/
+!constant/thermophysicalProperties
+!constant/turbulenceProperties
+!system/
+!.gitignore
+
+
+
+# OpenFOAM Solving
+# =============================================================================
+
+## Timestep directories
+0/*
+0.*
+!0.org
+[1-9]*
+
+## Fields that must get ignored
+*/phi*
+*/meshPhi*
+
+## Decomposed domain
+processor*
+
+## logfiles
+log.*
+*log
+
+
+
+# OpenFOAM Postprocessing
+# =============================================================================
+
+# paraview/ParaFoam
+*.foam
+*.OpenFOAM
+*.pvsm
+
+# function object and post-processing data
+forces
+postProcessing
+
+
+
+# OpenFOAM Meshing
+# =============================================================================
+
+# mesh data that is no dictionary
+constant/polyMesh
+constant/polyMesh/points*
+constant/polyMesh/faces*
+constant/polyMesh/owner*
+constant/polyMesh/neighbour*
+constant/polyMesh/boundary*
+constant/polyMesh/sets
+constant/polyMesh/*
+constant/extendedFeatureEdgeMesh/*
+
+# Zones and levels
+*Level*
+*Zone*
+
+# snappyHexMesh files that are not snappyHexMeshDict
+constant/polyMesh/refinementHistory*
+constant/polyMesh/surfaceIndex*
+constant/triSurface
+
+# freecad meshing
+mesh_outside.stl
+
+
+# OpenFOAM additional stuff
+# =============================================================================
+
+# Needed when C++ code is built using the OpenFOAM library, since it does not
+# use a "normal" build tool (make, cmake, ..).
+lnInclude
+*.dep
+*.data
+linux*
+Darwin*
+dynamicCode
+
+
+# End of https://www.gitignore.io/api/openfoam
