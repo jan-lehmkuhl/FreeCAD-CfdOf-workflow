@@ -3,7 +3,7 @@ mesh:
 	./Allmesh
 
 view: 
-	paraview pv.foam
+	paraFoam
 
 clean: 
 	rm -f  log*
