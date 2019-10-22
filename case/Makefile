@@ -4,7 +4,7 @@ run:
 	./Allrun
 
 mesh: 
-	make -C meshCase mesh
+	make -C ../meshCase mesh
 
 view: 
 	paraFoam -builtin
