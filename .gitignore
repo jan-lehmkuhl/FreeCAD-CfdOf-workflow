@@ -54,24 +54,24 @@ postProcessing
 # =============================================================================
 
 # mesh data that is no dictionary
-constant/polyMesh
-constant/polyMesh/points*
-constant/polyMesh/faces*
-constant/polyMesh/owner*
-constant/polyMesh/neighbour*
-constant/polyMesh/boundary*
-constant/polyMesh/sets
-constant/polyMesh/*
-constant/extendedFeatureEdgeMesh/*
+meshCase/constant/polyMesh
+meshCase/constant/polyMesh/points*
+meshCase/constant/polyMesh/faces*
+meshCase/constant/polyMesh/owner*
+meshCase/constant/polyMesh/neighbour*
+meshCase/constant/polyMesh/boundary*
+meshCase/constant/polyMesh/sets
+meshCase/constant/polyMesh/*
+meshCase/constant/extendedFeatureEdgeMesh/*
 
 # Zones and levels
 *Level*
 *Zone*
 
 # snappyHexMesh files that are not snappyHexMeshDict
-constant/polyMesh/refinementHistory*
-constant/polyMesh/surfaceIndex*
-constant/triSurface
+meshCase/constant/polyMesh/refinementHistory*
+meshCase/constant/polyMesh/surfaceIndex*
+meshCase/constant/triSurface
 
 # freecad meshing
 mesh_outside.stl

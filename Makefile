@@ -25,16 +25,14 @@ openfreecad:
 # git checkout restores the Makefiles and .gitignore-files from the repository
 # and moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
 restore:
-	git checkout meshCase/Makefile
-	git checkout meshCase/.gitignore
 	git checkout case/Makefile
 	git checkout case/.gitignore
 	mv -f case/0    case/0.org
 
 
-# the mesh target changes to the folder meshCase and executes there "make mesh" 
+# starts Allmesh script within meshCase to create the mesh
 mesh: 
-	make -C meshCase mesh
+	cd meshCase ;  ./Allmesh
 
 
 # the run target changes to the folder case and executes there "make run" 
@@ -42,9 +40,9 @@ run:
 	make -C case run
 
 
-# the viewMesh target changes to the folder meshCase and executes there "make view" 
+# opens paraview for reviewing the mesh
 viewMesh:
-	make -C meshCase view
+	cd meshCase  ;  paraFoam
 
 
 # the viewRun target changes to the folder case and executes there "make view" 
@@ -52,7 +50,17 @@ viewRun:
 	make -C case view
 
 
-# the clean target executes the clean targets in meshCase and case
-clean: 
-	make -C meshCase clean
+# the clean target executes the clean targets cleanMesh and cleanCase
+clean: cleanMesh 
 	make -C case     clean
+
+# deletes the mesh and the related log files
+cleanMesh: 
+	rm -f  meshCase/log*
+	rm -f  meshCase/mesh_outside.stl
+	rm -rf meshCase/constant/extendedFeatureEdgeMesh
+	rm -rf meshCase/constant/polyMesh
+	rm -rf meshCase/constant/triSurface/*.eMesh
+	rm -rf meshCase/gmsh
+
+
