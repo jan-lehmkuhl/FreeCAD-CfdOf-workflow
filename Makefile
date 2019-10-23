@@ -17,7 +17,10 @@ mesh:
 run: 
 	make -C case run
 
-view: 
+viewMesh:
+	make -C meshCase view
+
+viewRun:
 	make -C case view
 
 clean: 
