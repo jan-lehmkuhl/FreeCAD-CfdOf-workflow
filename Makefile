@@ -22,11 +22,8 @@ openfreecad:
 
 
 # after exporting files from freecad everything inside case and meshCase will be overwriten
-# git checkout restores the Makefiles and .gitignore-files from the repository
-# and moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
+# this target moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
 restore:
-	git checkout case/Makefile
-	git checkout case/.gitignore
 	mv -f case/0    case/0.org
 
 
@@ -35,9 +32,10 @@ mesh:
 	cd meshCase ;  ./Allmesh
 
 
-# the run target changes to the folder case and executes there "make run" 
+# run copies the initial state from 0.org to 0 and starts the Allrun script
 run: 
-	make -C case run
+	cp -rf  case/0.org  case/0 
+	cd case ;  ./Allrun
 
 
 # opens paraview for reviewing the mesh
@@ -45,14 +43,13 @@ viewMesh:
 	cd meshCase  ;  paraFoam
 
 
-# the viewRun target changes to the folder case and executes there "make view" 
+# opens paraview for reviewing the results
 viewRun:
-	make -C case view
+	cd case  ;  paraFoam -builtin
 
 
 # the clean target executes the clean targets cleanMesh and cleanCase
-clean: cleanMesh 
-	make -C case     clean
+clean: cleanMesh cleanCase
 
 # deletes the mesh and the related log files
 cleanMesh: 
@@ -64,3 +61,9 @@ cleanMesh:
 	rm -rf meshCase/gmsh
 
 
+# deletes all files and folders created by the openFOAM-solver
+cleanCase: 
+	rm -rf case/log.*
+	rm -rf case/0
+	rm -rf case/constant/polyMesh
+	rm -rf case/processor[0-9]

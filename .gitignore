@@ -6,10 +6,11 @@
 # =============================================================================
 
 #exclude important folders and files:
-!0/
-!constant/thermophysicalProperties
-!constant/turbulenceProperties
-!system/
+!case/0/
+!case/constant/thermophysicalProperties
+!case/constant/turbulenceProperties
+!case/system/
+!meshCase/system/
 !.gitignore
 
 
@@ -18,10 +19,10 @@
 # =============================================================================
 
 ## Timestep directories
-0/*
-0.*
-!0.org
-[1-9]*
+case/0/*
+case/0.*
+case/!0.org
+case/[1-9]*
 
 ## Fields that must get ignored
 */phi*
@@ -54,15 +55,15 @@ postProcessing
 # =============================================================================
 
 # mesh data that is no dictionary
-meshCase/constant/polyMesh
-meshCase/constant/polyMesh/points*
-meshCase/constant/polyMesh/faces*
-meshCase/constant/polyMesh/owner*
-meshCase/constant/polyMesh/neighbour*
-meshCase/constant/polyMesh/boundary*
-meshCase/constant/polyMesh/sets
-meshCase/constant/polyMesh/*
-meshCase/constant/extendedFeatureEdgeMesh/*
+*ase/constant/polyMesh
+*ase/constant/polyMesh/points*
+*ase/constant/polyMesh/faces*
+*ase/constant/polyMesh/owner*
+*ase/constant/polyMesh/neighbour*
+*ase/constant/polyMesh/boundary*
+*ase/constant/polyMesh/sets
+*ase/constant/polyMesh/*
+*ase/constant/extendedFeatureEdgeMesh/*
 
 # Zones and levels
 *Level*
