@@ -8,22 +8,21 @@
 
 
 
-# targets
+# std workflow targets
 # ======================================================
 
 # run "make all" if you want to create everything new
 all: clean mesh run
 
 
+# freecad
+# -----------------------------------------------
+
 # this target opens the freecad GUI
 # you can also execute the command "freecad freecad-cfd.FCStd" directly in the terminal
 openfreecad:
 	freecad freecad-cfd.FCStd
-
-
-deleteFreecadExports:
-	rm -rf meshCase
-	rm -rf case
+	make store0as0org
 
 
 # after exporting files from freecad everything inside case and meshCase will be overwriten
@@ -35,16 +34,24 @@ store0as0org:
 	fi ; 
 
 
+# meshing
+# -----------------------------------------------
+
 # starts Allmesh script within meshCase to create the mesh
 mesh: 
 	cd meshCase ;  ./Allmesh
 
 
+# OpenFOAM calculation
+# -----------------------------------------------
 # run copies the initial state from 0.org to 0 and starts the Allrun script
 run: store0as0org
 	cp -rf  case/0.org  case/0 
 	cd case ;  ./Allrun
 
+
+# reviewing created mesh and results
+# -----------------------------------------------
 
 # opens paraview for reviewing the mesh
 viewMesh:
@@ -56,7 +63,11 @@ viewResults:
 	cd case  ;  paraFoam -builtin
 
 
-# the clean target executes the clean targets cleanMesh and cleanCase
+
+# cleaning the repository
+# ======================================================
+
+# the clean target executes the clean targets cleanMesh and cleanCase to remove calculated files
 clean: cleanMesh cleanCase
 
 # deletes the mesh and the related log files
@@ -75,3 +86,10 @@ cleanCase:
 	rm -rf case/0
 	rm -rf case/constant/polyMesh
 	rm -rf case/processor[0-9]
+
+
+# deletes the complete FreeCAD export folders inklusive the necessary source files, which are also stored in git
+deleteFreecadExports:
+	rm -rf meshCase
+	rm -rf case
+
