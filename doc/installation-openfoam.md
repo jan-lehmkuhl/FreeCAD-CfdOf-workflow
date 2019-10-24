@@ -1,17 +1,35 @@
 
-A clean linux operating system can be applied on an USB-Stick. With some more work the installation should be also possible on every operating system. 
-
-
 OpenFOAM Installation on Windows
 ===============================================================================
+[openfoam.org/download/windows](https://openfoam.org/download/windows/)
 
-A Windows 10 installation should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10 [Link](https://openfoam.org/download/windows-10/). Beside the WSL activation and the graphical output forwarding the installation should be similar to the Linux installation
+Option 1: Windows Subsystem for Linux" (WSL)
+---------------------------------------------------------------------
+A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. Beside the [WSL-activation] and the graphical-output-forwarding with [Xming] the installation should be similar to the Linux installation.  
+The hard-disks (e.g. C:) are mounted in the WSL at `/mnt/c`
+
+[Windows-10-installation]: https://openfoam.org/download/windows-10/  
+[WSL-activation]: https://docs.microsoft.com/en-gb/windows/wsl/install-win10  
+[Xming]: https://de.wikipedia.org/wiki/Xming  
+
+
+Option 2: Virtual Machine
+---------------------------------------------------------------------
+https://openfoam.org/download/windows-vm/
+
+
+Option 3: blueCFD-core
+---------------------------------------------------------------------
+[bluecfd-github](http://bluecfd.github.io/Core/)
+This is based on [MinGW](http://www.mingw.org/) which is a minimalistic Linux enviroment for Windows. So you have also Unix-Bash, where you execute commands. 
+
 
 
 OpenFOAM Installation on Linux
 ===============================================================================
 
 This instructions refers to a Ubuntu 18.04 LTS installation and is described in [OpenFOAM Ubuntu instructions](https://openfoam.org/download/7-ubuntu/)  
+A clean linux operating system can be applied on an USB-Stick, without major performance issues.  
 
 Further resources:  
 [OpenFOAM Linux Guide](https://cfd.direct/openfoam/linux-guide/)  

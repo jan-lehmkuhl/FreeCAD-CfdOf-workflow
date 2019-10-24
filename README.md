@@ -44,6 +44,8 @@ and then the results can be reviewed with paraview:
 
     make viewResults
 
+In Paraview the results have to be decomposed `Case Type: Decomposed Case` before the flow variables can be seen. 
+
 
 
 Complete Workflow
@@ -103,12 +105,12 @@ Now you can doubleclick on the different settings and change the values if neede
 If not existing, for every Face has a boundary condition to be applied. 
 
 
-### export mesh and case
+### export mesh and case to OpenFOAM text files
 When the preprocessing is finished you export the mesh and cfd settings. 
 * Doublecklick on `geometry/CFDAnalysis/Body001_Mesh` and execute the "Write mesh case"-Button inside the FreeCAD-Tasks
 * Doublecklick on `geometry/CFDAnalysis/CfdSolver` and execute the "Write"-Button inside the FreeCAD-Tasks
 
-These commands will write the folders `meshCase` resp. `case` to the folders specified in the CfdOF-Plugin-Settings. 
+These commands will write text files to the subfolders `meshCase` resp. `case` into the directory specified in the CfdOF-Plugin-Settings. 
 
 
 creating the mesh
