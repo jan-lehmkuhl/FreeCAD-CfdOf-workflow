@@ -52,7 +52,7 @@ viewMesh:
 
 
 # opens paraview for reviewing the results
-viewRun:
+viewResults:
 	cd case  ;  paraFoam -builtin
 
 
