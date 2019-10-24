@@ -47,6 +47,11 @@ previous Restart of FreeCAD is important
 -> Install "CfdOF" Workbench link  
 Restart FreeCAD againg  
 
+### Disable unnecessary workbenches
+https://www.freecadweb.org/wiki/Interface_Customization  
+Menu -> Tools -> Customize
+![Workbench-Selector](./resources/freecad-workbench-selector.png)
+
 
 
 CfdOF Settings
