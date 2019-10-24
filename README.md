@@ -14,7 +14,7 @@ get files
 You can clone this example-repository directly from gitlab with the command line interface (CLI): 
 
     cd SOMEWHERE    # (e.g. simulations)
-    git clone git@gitlab.com:schlupp/example-cfdof-workflow.git
+    git clone https://gitlab.com/schlupp/example-cfdof-workflow.git
     # creates a folder "example-cfdof-workflow" with all files inside
 
 If you have no internet connection and a downloaded zip file you can extract the files in the GUI or in the CLI to a an arbitrary place: 
