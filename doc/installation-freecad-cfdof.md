@@ -32,6 +32,7 @@ The CfdOF-Plugin can be installed in the FreeCAD-GUI with the AddOn-Manager.
 Please follow OS dependent instructions from the [CfdOF Readme](https://github.com/jaheyns/CfdOF)  
 
 ### Plot Workbench
+[source code](https://github.com/FreeCAD/freecad.plot)
 -> File -> Tools -> Addon-Manager  
 -> Install "Plot" Workbench link  
 Restart FreeCAD  
@@ -46,6 +47,8 @@ Restart FreeCAD againg
 
 CfdOF Settings
 ==============================================================================
+[CfdOF github repository](https://github.com/jaheyns/CfdOF)  
+
 File -> Edit -> Preferences -> CFD
 
 ## refer to openfoam
@@ -70,6 +73,27 @@ File -> Edit -> Preferences -> CFD
 Press "Install cfMesh" button  
 Press "Install HiSA" button  
 
+### Plot Workbench
+-> File -> Tools ->  Addon-Manager
+-> Install "Plot" Workbench [link](https://github.com/FreeCAD/freecad.plot)
+Restart FreeCAD
+
+### CfdOF Workbench
+previous Restart of FreeCAD is important
+-> File -> Tools ->  Addon-Manager
+-> Install "CfdOF" Workbench [link](https://github.com/jaheyns/CfdOF)
+[special cf mesh fork for CfdOF](https://sourceforge.net/projects/cfmesh-cfdof/)
+Restart FreeCAD againg
+
+## Settings
+File -> Edit -> Preferences -> CFD
+Set OpenFOAM directory to:  /opt/openfoam7
+Set Output directory to:    .
+
+## HiSA & cfMesh
+File -> Edit -> Preferences -> CFD
+* Press "Install cfMesh" button
+* Press "Install HiSA" button 
 
 
 FreeCAD customization
