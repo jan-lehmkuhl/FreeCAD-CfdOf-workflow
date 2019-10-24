@@ -93,3 +93,7 @@ deleteFreecadExports:
 	rm -rf meshCase
 	rm -rf case
 
+
+# removes all changes in this repository and switches to the last git commit
+reset: deleteFreecadExports
+	git reset --hard
