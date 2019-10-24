@@ -21,6 +21,11 @@ openfreecad:
 	freecad freecad-cfd.FCStd
 
 
+deleteFreecadExports:
+	rm -rf meshCase
+	rm -rf case
+
+
 # after exporting files from freecad everything inside case and meshCase will be overwriten
 # this target moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
 store0as0org:
