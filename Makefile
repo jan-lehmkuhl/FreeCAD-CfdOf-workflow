@@ -23,8 +23,11 @@ openfreecad:
 
 # after exporting files from freecad everything inside case and meshCase will be overwriten
 # this target moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
-restore:
-	mv -f case/0    case/0.org
+store0as0org:
+	if [ ! -d case/0.org ] ;  then      \
+		echo "*** moving 0 to 0.org"  ; \
+		mv -f case/0    case/0.org    ; \
+	fi ; 
 
 
 # starts Allmesh script within meshCase to create the mesh
@@ -33,7 +36,7 @@ mesh:
 
 
 # run copies the initial state from 0.org to 0 and starts the Allrun script
-run: 
+run: store0as0org
 	cp -rf  case/0.org  case/0 
 	cd case ;  ./Allrun
 
