@@ -12,7 +12,7 @@ runCommand()
 }
 
 # Unset and source bashrc
-FOAMDIR="/opt/openfoam6"
+FOAMDIR="/opt/openfoam7"
 source "$FOAMDIR/etc/config.sh/unset" 2> /dev/null
 source "$FOAMDIR/etc/bashrc"
 
