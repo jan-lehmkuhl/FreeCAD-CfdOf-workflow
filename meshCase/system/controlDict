@@ -22,8 +22,6 @@ deltaT              1;
 
 endTime             1;
 
-graphFormat         raw;
-
 purgeWrite          1;
 
 runTimeModifiable   yes;
@@ -33,12 +31,6 @@ startFrom           latestTime;
 startTime           0;
 
 stopAt              endTime;
-
-timeFormat          general;
-
-timePrecision       6;
-
-writeCompression    uncompressed;
 
 writeControl        timeStep;
 

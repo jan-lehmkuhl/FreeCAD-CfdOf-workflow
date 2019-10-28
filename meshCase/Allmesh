@@ -25,5 +25,12 @@ runCommand surfaceFeatureExtract
 runCommand snappyHexMesh -overwrite
 
 runCommand surfaceToPatch "constant/triSurface/Body001_Geometry.stl"
-runCommand surfaceMeshTriangulate mesh_outside.stl
+
+if [ ! -z $FOAM_API ] && [ $FOAM_API -ge 1906 ]
+then
+    runCommand surfaceMeshExtract mesh_outside.stl
+else
+    runCommand surfaceMeshTriangulate mesh_outside.stl
+fi
+
 runCommand surfaceTransformPoints -scale "(1000 1000 1000)" mesh_outside.stl mesh_outside.stl
