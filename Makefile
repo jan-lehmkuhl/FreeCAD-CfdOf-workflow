@@ -73,7 +73,7 @@ viewResults:
 clean: cleanMesh cleanCase
 
 # deletes the mesh and the related log files
-cleanMesh: 
+cleanMesh: cleanPreliminaryMeshes
 	rm -f  meshCase/log*
 	rm -f  meshCase/mesh_outside.stl
 	rm -rf meshCase/constant/extendedFeatureEdgeMesh
@@ -81,6 +81,8 @@ cleanMesh:
 	rm -rf meshCase/constant/triSurface/*.eMesh
 	rm -rf meshCase/gmsh
 
+cleanPreliminaryMeshes:
+	rm -rf [1-9]
 
 # deletes all files and folders created by the openFOAM-solver
 cleanCase: 
