@@ -30,7 +30,7 @@ openfreecad:
 store0as0org:
 	if [ ! -d case/0.org ] ;  then      \
 		echo "*** moving 0 to 0.org"  ; \
-		mv -f case/0    case/0.org    ; \
+		cp -rf case/0    case/0.org   ; \
 	fi ; 
 
 
