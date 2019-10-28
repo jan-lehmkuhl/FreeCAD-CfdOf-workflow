@@ -44,9 +44,11 @@ mesh:
 
 # OpenFOAM calculation
 # -----------------------------------------------
+copy0orgto0:
+	cp -rf  case/0.org  case/0
+
 # run copies the initial state from 0.org to 0 and starts the Allrun script
-run: store0as0org
-	cp -rf  case/0.org  case/0 
+run: store0as0org copy0orgto0
 	cd case ;  ./Allrun
 
 
