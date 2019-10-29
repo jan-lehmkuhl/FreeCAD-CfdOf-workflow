@@ -89,6 +89,7 @@ cleanCase:
 	rm -rf case/log.*
 	rm -rf case/0
 	rm -rf case/constant/polyMesh
+	rm -rf case/postProcessing
 	rm -rf case/processor[0-9]
 
 
