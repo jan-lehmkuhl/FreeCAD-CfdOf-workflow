@@ -17,6 +17,8 @@ You can clone this example-repository directly from gitlab with the command line
     git clone https://gitlab.com/schlupp/example-cfdof-workflow.git
     # creates a folder "example-cfdof-workflow" with all files inside
 
+with a specified folder like `git clone <REPOSITORY> <FOLDER>` after the the previous command the repository files will be placed inside this folder.  
+
 If you have no internet connection and a downloaded zip file you can extract the files in the GUI or in the CLI to a an arbitrary place: 
 
     unzip DOWNLOAD.zip -d ARBITRARYFOLDER
@@ -44,8 +46,12 @@ and then the results can be reviewed with paraview:
 
     make viewResults
 
-In Paraview the results have to be decomposed `Case Type: Decomposed Case` before the flow variables can be seen. 
+Before the flow variables can be seen in Paraview, the results have to be
+* marked as visible in the pipeline browser
+* to be decomposed `Case Type: Decomposed Case`, if the results are calculated on multiple cores. 
+* selected for a special flow variable (e.g. U)  
 
+![](doc/resources/paraview-first-settings.png)
 
 
 Complete Workflow
@@ -62,18 +68,18 @@ all targets can be started with following command in the command line interface:
 
     make TARGETNAME
 
-Within the `Makefile` you find a list of targets and after each target with an indent the commands, which will be executed, when you call a specific target.
+Within the `Makefile` you find a list of targets and after each target with an indent the commands, which will be executed, when you call a specific target.  
 
     TARGET1:
-        target1-command1
-        target1-command2
+        target1-bash-command1
+        target1-bash-command2
 
-    # comment    
+    # non-executed comment for TARGET2  
     TARGET2:
-        target2-command1
-        target2-command2
+        target2-bash-command1
+        target2-bash-command2
 
-To know what you can do you should read the `Makefile`. You should also know how the different targets work to understand the processes. 
+To know what you can do, you should read the `Makefile` in the root folder of this project. You should also know how the different targets work to understand the processes. 
 
 
 FreeCAD
@@ -83,9 +89,9 @@ With `freecad freecad-cfd.FCStd` or `make openfreecadgui` you can open freecad a
     freecad freecad-cfd.FCStd
 
 This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D Models.  
-[FreeCAD-Tutorial]: https://www.freecadweb.org/wiki/Creating_a_simple_part_with_PartDesign
-
 Now you should have opened FreeCAD and a body with a 3D-geometry. 
+
+[FreeCAD-Tutorial]: https://www.freecadweb.org/wiki/Creating_a_simple_part_with_PartDesign
 
 
 CfdOF-Plugin (CFD OpenFOAM)
@@ -124,7 +130,11 @@ or using the `Makefile` with
 
     make mesh
 
-Review the file `meshCase/Allmesh` for a detailed review of the meshing process and read from the [OpenFOAM documentation](https://cfd.direct/openfoam/documentation/) the [OpenFOAM User Guide](https://cfd.direct/openfoam/user-guide/). [Chapter 5](https://cfd.direct/openfoam/user-guide/v7-mesh/#x23-1670005) covers the meshing process
+Review the file `meshCase/Allmesh` for a detailed review of the meshing process and read from the [OpenFOAM-documentation] the [OpenFOAM-User-Guide]. [Chapter-5] covers the meshing process
+
+[OpenFOAM-documentation]: https://cfd.direct/openfoam/documentation/  
+[OpenFOAM-User-Guide]:    https://cfd.direct/openfoam/user-guide/  
+[Chapter-5]:              https://cfd.direct/openfoam/user-guide/v7-mesh/#x23-1670005  
 
 
 starting the cfd calculation
@@ -144,11 +154,25 @@ Review the file `meshCase/Allrun` for a detailed review of the meshing process a
 
 explore folder structure
 =================================================================
-to get a first idea you should look at the filetree inside the example with
+to get a first idea you should look at the filetree inside the example with different options 
 
-    tree . -d -L 2
-    tree . -d 
-    tree . 
+    tree . -d -L 2      # only directories and two levels deep
+    tree . -d           # only directories
+    tree .              # all files and folders
+
+following is the output from `tree . -d -L 2` of this repository before OpenFOAM writes the output data. Redo this command after every creating data to see the differences.
+
+    .
+    ├── case
+    │   ├── 0.org
+    │   ├── constant
+    │   └── system
+    ├── doc
+    │   └── resources
+    └── meshCase
+        ├── constant
+        └── system
+
 
 the file structure is documented in [Chapter 4.1 from the User Guide](https://cfd.direct/openfoam/user-guide/v7-case-file-structure/#x16-1220004.1)
 
@@ -158,5 +182,4 @@ in `./doc` are different additional information stored in Markdown (*.md) files.
 
 ### meshCase & case
 in `./meshCase` and `./case` are the from FreeCAD exported setting files for OpenFOAM. The `Allmesh` resp. `Allrun` inside these folders should directly create the mesh resp. the calculation results inside these folders.  
-The actual 
 

@@ -49,7 +49,7 @@ Restart FreeCAD againg
 
 ### Disable unnecessary workbenches
 https://www.freecadweb.org/wiki/Interface_Customization  
-Menu -> Tools -> Customize
+Menu -> Tools -> Customize  
 ![Workbench-Selector](./resources/freecad-workbench-selector.png)
 
 
