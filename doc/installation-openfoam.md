@@ -1,12 +1,33 @@
 
 OpenFOAM Installation on Windows
 ===============================================================================
-[openfoam.org/download/windows](https://openfoam.org/download/windows/)
+[openfoam.org/download/windows](https://openfoam.org/download/windows/)  
+OpenFOAM is a Linux Programm but there are several ways to run it under Windows.  
+In general it is not necessary for OpenFOAM to have a graphical user interface. OpenFOAM reads text files and writes the output to text files. So if you have access to these files, you can run your GUI-Programs like FreeCAD and Paraview nativly under Windows
+
 
 Option 1: Windows Subsystem for Linux" (WSL)
 ---------------------------------------------------------------------
-A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. Beside the [WSL-activation] and the graphical-output-forwarding with [Xming] the installation should be similar to the Linux installation.  
-The hard-disks (e.g. C:) are mounted in the WSL at `/mnt/c`
+A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. Beside the [WSL-activation] and the graphical-output-forwarding with [Xming] the installation should be very similar to the Linux installation described in this file in the next chapter.  
+
+### hard disc access
+The hard-disks (e.g. C:) are mounted in the WSL at `/mnt/c` and `/mnt/d`. To access these data change your directory (`cd`) to these folders:
+
+    cd /mnt/c/YOURDIRECTORY
+
+### Graphical output forwarding
+[Xming] helps to present the Linux graphical output as Window under Windows. 
+When you get an error message similar like following, your Linux don't find a place where to put the graphical output: 
+
+    (gedit:1243): Gtk-WARNING **: 16:29:10.075: cannot open display: :0
+
+Then you should have started Xming in Windows. A small program to test your graphical forwarding is `xclock` which shoul present an analog clock
+
+    xclock
+
+If this don't work everything in Linux can be done without an grafical output.
+Instead of using the graphical text editor `gedit` to change files, you can use terminal text editors like `nano` . In Nano you can save the file with `Ctrl+s` and end the session with `Ctrl+x`. 
+
 
 [Windows-10-installation]: https://openfoam.org/download/windows-10/  
 [WSL-activation]: https://docs.microsoft.com/en-gb/windows/wsl/install-win10  
@@ -45,16 +66,16 @@ First you have to add a online-repository and tell Ubuntu where he find addition
     sudo add-apt-repository http://dl.openfoam.org/ubuntu
     sudo apt-get update
 
-then you can install
+then you can install with following command. Linux will download the needed files from the previous defined repository. 
 
     sudo apt-get -y install openfoam7
 
 
 change .bashrc
 ---------------------------------------------------------------------
-after installation Ubuntu should know where he finds the OpenFOAM binaries. 
+after installation Ubuntu should know where he finds the OpenFOAM binaries, so that you can call them from the terminal. 
 
-    gedit .bashrc
+    nano .bashrc
 
 paste in the `.bashrc` textfile following line: 
 
@@ -79,7 +100,7 @@ because there are no case-files there will be errors but you see an header like 
     \*---------------------------------------------------------------------------*/
 
 
-also you should be able to open `paraview` or `paraFoam` and the GUI should open
+also you should be able to open `paraview` or `paraFoam` and the GUI should open, when you setup correctly the graphical forwarding
 
     paraview
 
