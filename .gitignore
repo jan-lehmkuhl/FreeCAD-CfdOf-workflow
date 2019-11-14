@@ -43,7 +43,6 @@ log.*
 # paraview/ParaFoam
 *.foam
 *.OpenFOAM
-*.pvsm
 
 # function object and post-processing data
 forces
