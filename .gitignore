@@ -2,6 +2,13 @@
 # Edit at https://www.gitignore.io/?templates=openfoam
 
 
+# Project Files
+# =============================================================================
+
+# place to store old cases
+ARCHIVE
+
+
 # OpenFOAM Preprocessing
 # =============================================================================
 
