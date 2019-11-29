@@ -7,6 +7,7 @@
 
 # place to store old cases
 ARCHIVE
+archive
 
 
 # OpenFOAM Preprocessing
@@ -53,7 +54,9 @@ log.*
 
 # function object and post-processing data
 forces
+case/forces
 postProcessing
+case/postProcessing
 
 
 
@@ -82,6 +85,10 @@ meshCase/constant/triSurface
 
 # freecad meshing
 mesh_outside.stl
+
+# cfmesh
+meshCase/*.fms
+
 
 
 # OpenFOAM additional stuff
