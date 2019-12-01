@@ -9,6 +9,11 @@
 ARCHIVE
 archive
 
+# zipped archive
+archive*.tar.gz
+archive*.tar.bz2
+
+
 
 # OpenFOAM Preprocessing
 # =============================================================================
