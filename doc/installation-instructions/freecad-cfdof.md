@@ -112,7 +112,7 @@ remove unnecessary workbenches
 ------------------------------------------------------------------------------
 https://www.freecadweb.org/wiki/Interface_Customization  
 Menu -> Tools -> Customize  
-![Screenshot from 2019-08-30 21-46-09.png](:/f7a07e203ff04c5299b947629913b7ac)  
+![Workbench-Selector](../resources/freecad-workbench-selector.png)  
 
 
 
