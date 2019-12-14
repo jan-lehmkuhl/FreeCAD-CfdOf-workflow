@@ -68,6 +68,12 @@ viewResults:
 zip:
 	tar -vcjf archive-$(shell date +"%Y%m%d-%I%M%p").tar.bz2   --exclude='ARCHIVE' --exclude='archive' --exclude='meshCase/constant' --exclude='case/0' --exclude='case/constant/polyMesh' --exclude='case/processor*' --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
 
+# split archives to 10mb parts for a better uploading
+# splitArchive:
+	# split -b 10M  ARCHIVE.tar.gz  ARCHIVE.tar.gz.part
+# rebuildArchive:
+	# cat  ARCHIVE.tar.gz.part*  >  ARCHIVE.tar.gz
+
 
 
 # cleaning the repository
