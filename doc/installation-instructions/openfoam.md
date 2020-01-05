@@ -10,10 +10,17 @@ Option 1: Windows Subsystem for Linux" (WSL)
 ---------------------------------------------------------------------
 A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. Beside the [WSL-activation] and the graphical-output-forwarding with [Xming] the installation should be very similar to the Linux installation described in this file in the next chapter.  
 
+### Installation
+1. read: [openfoam.org-help](https://openfoam.org/download/windows-10/)
+2. Activate Windows Subsystem for Linux (WSL) like described in [WSL-activation]
+3. Install OpenFOAM inside WSL described in the Linux-Installation-Chapter below  
+
+
 ### hard disc access
-The hard-disks (e.g. C:) are mounted in the WSL at `/mnt/c` and `/mnt/d`. To access these data change your directory (`cd`) to these folders:
+The hard-disks (e.g. `C:`, `D:`) are mounted in the WSL at `/mnt/c` and `/mnt/d`. To access these data change your directory (`cd`) to these folders:
 
     cd /mnt/c/YOURDIRECTORY
+
 
 ### Graphical output forwarding
 [Xming] helps to present the Linux graphical output as Window under Windows. 
@@ -42,7 +49,8 @@ https://openfoam.org/download/windows-vm/
 Option 3: blueCFD-core
 ---------------------------------------------------------------------
 [bluecfd-github](http://bluecfd.github.io/Core/)
-This is based on [MinGW](http://www.mingw.org/) which is a minimalistic Linux enviroment for Windows. So you have also Unix-Bash, where you execute commands. 
+This is based on [MinGW](http://www.mingw.org/) which is a minimalistic Linux enviroment for Windows. So you have also Unix-Bash, where you execute commands.  
+Unfortunately blueCFD is stuck to openFOAM 5, but it's worth to test if the WSL is not working.  
 
 
 

@@ -1,7 +1,7 @@
 
 FreeCAD-CfdOF Remarks
 ==============================================================================
-FreeCAD is not directly linked to OpenFOAM. The CfdOF plugin will only write the text input files, which will be read by OpenFOAM. So you can run FreeCAD under Windows and OpenFOAM with the Windows Subsystem for Linux (WSL). Its only important, that every software can write in the same directories.  
+FreeCAD is not directly linked to OpenFOAM. The CfdOF plugin will only write the text input files, which will be read by OpenFOAM. So you can run FreeCAD native under Windows and OpenFOAM within the Windows Subsystem for Linux (WSL). Its only important, that every software can write in the same directories.  
 
 
 FreeCAD Installation
@@ -23,10 +23,13 @@ install freecad from packages
 
 
 
-FreeCAD Installation on Windows
+on Windows
 ---------------------------------------------------------------------
 this should also work, but I haven't tested it.  
-[Download](https://freecadweb.org/downloads.php)  
+
+1. Download FreeCAD from [freecadweb.org](https://www.freecadweb.org/downloads.php) 
+2. install the Download
+3. read [CfdOF-github](https://github.com/jaheyns/CfdOF) remarks and proceed the install of CfdOF Workbench with the FreeCAD Addon Manager described in the next chapter
 
 
 
