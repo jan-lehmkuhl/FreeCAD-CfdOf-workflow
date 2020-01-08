@@ -20,7 +20,7 @@
 <br>  
 
 <!-- example picture for quick project identification -->
-<!-- ![](cfd-reports/XXX_001_Rep/Figure001.png)  -->
+![](doc/images/XXX.png) 
 
 
 **_Table of Content_**
@@ -29,10 +29,10 @@
 - [Project-Purpose](#project-purpose)
   - [Background](#background)
   - [Goals](#goals)
-- [Simulation Explanation](#simulation-explanation)
+- [Major Work Packages](#major-work-packages)
   - [Study 1](#study-1)
+- [Available Resources](#available-resources)
   - [Calculation Enviroment](#calculation-enviroment)
-  - [System](#system)
     - [Hardware](#hardware)
     - [Software](#software)
 - [actual Project-Status](#actual-project-status)
@@ -45,39 +45,43 @@
 
 
 Project-Purpose
-===================================================================================================
+===============================================================================
 
 Background
------------------------------------------------------------------------------------------
-<!-- which information is needed to understand the project goals -->
-<!-- this should be understand by your sister or even a manager in your company -->
+---------------------------------------------------------------------
+* which information is needed to understand the project goals
+* this should be understand by every friend or manager
 
 
 Goals
------------------------------------------------------------------------------------------
-<!-- which goals should be reached within this project -->
-<!-- this is not about simulations. simulations are the tools to reach your goals -->
-<!-- e.g. optimize the flow in something, understand the physics from something -->
-<!-- bulletpoints with max 10 words, more explanations belong to the background -->
+---------------------------------------------------------------------
+* which goals should be reached within this project
+* this is not about simulations. simulations are the tools to reach your goals
+* e.g. optimize the flow in something, understand the physics from something
+* bulletpoints with max 10 words, more explanations belong to the background
 
 
-Simulation Explanation
-===================================================================================================
+
+Major Work Packages
+===============================================================================
+* contains normally one to three simulation studies
 
 Study 1
------------------------------------------------------------------------------------------
-<!-- which special information should this study (a specific simulatin) deliver to reach the project goals -->
-<!-- only 4 sentences or bulletpoints. The details belong to the study report -->
+---------------------------------------------------------------------
+* which special information should this study (a specific set simulations) deliver to reach the project goals
+* only 4 sentences or bulletpoints. The details belong to the simulation study report
 
+
+
+Available Resources
+===============================================================================
 
 Calculation Enviroment
------------------------------------------------------------------------------------------
-## System
-<!-- Short description of the hard- and hoftware used to create the analysis.  -->
-<!-- The objective of this section is to ensure reproducebility of the results for the case of later reruns. -->
+---------------------------------------------------------------------
+* Short description of the hard- and software used to create the analysis. 
+* The objective of this section is to ensure reproducebility of the results for the case of later reruns.
 
 ### Hardware
-
 |          |                                                                                        |
 | -------- | -------------------------------------------------------------------------------------- |
 | Machine  | 
@@ -88,7 +92,6 @@ Calculation Enviroment
 
 
 ### Software
-
 | Task              | Programm                                          |
 | ----------------- | ------------------------------------------------- |
 | CAD               | 
@@ -102,25 +105,25 @@ Calculation Enviroment
 
 
 actual Project-Status
-===================================================================================================
+===============================================================================
 
 Results
------------------------------------------------------------------------------------------
+---------------------------------------------------------------------
 ### Study 1
-<!-- main results of study 1 as short bulletpoint summary from the study report -->
+* main results of study 1 as short bulletpoint summary from the study report
 
 
 Open issues
------------------------------------------------------------------------------------------
-<!-- where are not yet solved issues or problems which can threaten the project outcome -->
-<!-- e.g. numerics in study 1 are bad, you don't know yet to apply special model features, ... -->
+---------------------------------------------------------------------
+* where are not yet solved issues or problems which can threaten the project outcome
+* e.g. numerics in study 1 are bad, you don't know yet to apply special model features, ...
 
 
 Project-Forecast
------------------------------------------------------------------------------------------
-<!-- next steps and timeframe -->
+---------------------------------------------------------------------
+* next steps and timeframe
 
 
 Conclusions
-===================================================================================================
-<!-- main outcome of this project in a few bulletpoints -->
+===============================================================================
+* main outcome of this project in a few bulletpoints
