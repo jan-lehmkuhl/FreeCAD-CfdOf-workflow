@@ -29,7 +29,7 @@ openfreecad:
 # this target moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
 store0as0org:
 	if [ ! -d case/0.org ] ;  then      \
-		echo "*** moving 0 to 0.org"  ; \
+		echo "*** copy 0 to 0.org"  ; \
 		cp -rf case/0    case/0.org   ; \
 	fi ; 
 
@@ -45,7 +45,8 @@ mesh:
 # OpenFOAM calculation
 # -----------------------------------------------
 copy0orgto0:
-	cp -rf  case/0.org  case/0
+	mkdir -p case/0
+	cp -rf  case/0.org/*  case/0
 
 # run copies the initial state from 0.org to 0 and starts the Allrun script
 run: store0as0org copy0orgto0
