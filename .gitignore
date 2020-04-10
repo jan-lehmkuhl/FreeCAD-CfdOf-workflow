@@ -12,6 +12,7 @@ archive
 # zipped archive
 archive*.tar.gz
 archive*.tar.bz2
+ARCHIVE*.tar.bz2
 
 
 
