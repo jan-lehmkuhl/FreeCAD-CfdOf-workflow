@@ -12,7 +12,9 @@ A [Windows-10-installation] should be possible with the builtin "Windows Subsyst
 
 ### Installation
 1. read: [openfoam.org-help](https://openfoam.org/download/windows-10/)
-2. Activate Windows Subsystem for Linux (WSL) like described in [WSL-activation]
+2. Activate Windows Subsystem for Linux (WSL) like described in [WSL-activation] and 
+    install your desired Distro from `Microsoft Store` within Windows 10.  
+    At the end you have a terminal with Linux (WSL) running. 
 3. Install OpenFOAM inside WSL described in the Linux-Installation-Chapter below  
 
 
@@ -24,13 +26,16 @@ The hard-disks (e.g. `C:`, `D:`) are mounted in the WSL at `/mnt/c` and `/mnt/d`
 
 ### Graphical output forwarding
 [Xming] helps to present the Linux graphical output as Window under Windows. 
+Download and install Xming from [Sourceforge](https://sourceforge.net/projects/xming/)  
+After installing Xming should run in the windows tray. Then tell your WSL to output to a Display:
+
+    export DISPLAY=:0.0
+
+Afterwards you can start a GUI program.  
+
 When you get an error message similar like following, your Linux don't find a place where to put the graphical output: 
 
     (gedit:1243): Gtk-WARNING **: 16:29:10.075: cannot open display: :0
-
-Then you should have started Xming in Windows. A small program to test your graphical forwarding is `xclock` which shoul present an analog clock
-
-    xclock
 
 If this don't work everything in Linux can be done without an grafical output.
 Instead of using the graphical text editor `gedit` to change files, you can use terminal text editors like `nano` . In Nano you can save the file with `Ctrl+s` and end the session with `Ctrl+x`. 
