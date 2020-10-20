@@ -49,10 +49,12 @@ afterwards some results can be reviewed with paraview:
 
     make viewResults
 
-Before the flow variables can be seen in Paraview, the results have to be
-* marked as visible in the pipeline browser
-* to be decomposed `Case Type: Decomposed Case`, if the results are calculated on multiple cores. 
-* selected for a special flow variable (e.g. U)  
+Before the flow variables can be seen in Paraview:  
+* the results have to be, marked as visible in the pipeline browser (eye in picture below),  
+* if the results are calculated on multiple cores, the results must be decomposed,  
+  select `Case Type: Decomposed Case` and click on `Apply`  
+* the last timestep (even for a mesh) has to be selected from the dropdown menu,  
+* a flow variable from the results (e.g. p, U, ...) must be selected.  
 
 ![](doc/resources/paraview-first-settings.png)
 
