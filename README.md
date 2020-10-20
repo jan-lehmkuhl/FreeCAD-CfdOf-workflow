@@ -1,9 +1,6 @@
 
 This example contains everything to run a complete [OpenFOAM]-simulation, created by the [CFDOF-Plugin] within [FreeCAD]. 
 
-[FreeCAD]: https://www.freecadweb.org/
-[CFDOF-Plugin]: https://github.com/jaheyns/CfdOF
-[OpenFOAM]: https://openfoam.org/
 
 
 First Run
@@ -29,13 +26,15 @@ If you have no internet connection and a downloaded zip file you can extract the
 
 installation and troubleshooting
 -----------------------------------------------------------
-Detailed installation instructions for all operating systems are located in `docs/installation-instructions/*.md`. Especially set the CfdOF-Plugin Output Directory to `.`. 
+Detailed installation instructions for all operating systems are located in `docs/installation-instructions/*.md`. 
+Especially set the CfdOF-Plugin Output Directory to `.`. 
 
     doc/installation-instructions/freecad-cfdof.md
     doc/installation-instructions/openfoam.md
     doc/installation-instructions/additional-tools.md
 
-The most important linux commands are shown in this [linux guide](https://cfd.direct/openfoam/linux-guide/)
+The most important linux commands are shown in this [linux-guide]. 
+These are essential and you should try at least 60% and understand the meaning from all. 
 
 
 start meshing and openfoam-solver
@@ -62,17 +61,18 @@ afterwards you should see something like the pipe on the right side from the abo
 
 
 
-Complete Workflow
+Detailed Workflow
 =================================================================
 
-If everything is setup correctly you can start to look deeper in the scripts and do small changes. 
+If everything is setup correctly you can start to look deeper in the scripts and do small changes to get familiar with your tools.  
 Keep in mind: Do only small changes and verify the results after every change.  
 
 
 Makefile - a dictionary for your possible cli tasks
 -----------------------------------------------------------
 
-Please use an editor to look into `./Makefile`. Here you find a list of tasks (in Makefiles they are called "targets") you can perform within this example. 
+Please use an editor to look into `./Makefile`. 
+Here you find a list of tasks (in Makefiles they are called "targets") you can perform within this example. 
 
     gedit Makefile
 
@@ -81,49 +81,52 @@ all targets can be started with following command in the command line interface:
     make TARGETNAME
 
 Within the `Makefile` you find a list of targets and after each target with an indent the commands, which will be executed, when you call a specific target.  
+~~~Makefile
+TARGET1:
+    target1-bash-command1
+    target1-bash-command2
 
-    TARGET1:
-        target1-bash-command1
-        target1-bash-command2
+# non-executed comment for TARGET2  
+TARGET2:
+    target2-bash-command1
+    target2-bash-command2
+~~~
 
-    # non-executed comment for TARGET2  
-    TARGET2:
-        target2-bash-command1
-        target2-bash-command2
-
-To know what you can do, you should read the `Makefile` in the root folder of this project. You should also know how the different targets work to understand the processes. 
+To know what you can do, you should read the `Makefile` in the root folder of this project. 
+You should also know how the different targets work to understand the processes. 
 
 
-FreeCAD
+.1. CFD Preprocessing: FreeCAD GUI preprocessing with CfdOF-Plugin
 ----------------------------------------------------------
 With `freecad freecad-cfd.FCStd` or `make openfreecadgui` you can open freecad and loading directly the stored data in the linked freecad-file. 
 
     freecad freecad-cfd.FCStd
 
-This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D Models.  
-Now you should have opened FreeCAD and a body with a 3D-geometry. 
 
+### Step 1: creating a geometry
+This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D Models.  
 [FreeCAD-Tutorial]: https://www.freecadweb.org/wiki/Creating_a_simple_part_with_PartDesign
 
+Afterwards you should have opened FreeCAD and a body with a 3D-geometry. 
 
-CfdOF-Plugin (CFD OpenFOAM)
-----------------------------------------------------------
+
+### Step 2: modifying the cfd setup
 To do the CFD preprocessing switch to the CfdOF Workbench inside FreeCAD. 
 
-### creating the CFD-FreeCAD-Container
+#### creating the CFD-FreeCAD-Container
 When you starting from scratch, you need to create the FreeCAD container which are shown afterwards in the tree at the level from `Body`: 
-* mark the `geometry/Body` and then "Create an analysis container with a CFD solver" for this Body
-* mark the `geometry/Body` and then "Create a mesh using cfMesh, snappyHexMesh or gmsh" for this Body
+* mark the `geometry/Body` and then "**Create an analysis** container with a CFD solver" for this Body
+* mark the `geometry/Body` and then "**Create a mesh** using cfMesh, snappyHexMesh or gmsh" for this Body
 
-in this example they are already there
+in this example these are already there
 
 
-### changing cfd setup
+#### changing cfd setup
 Now you can doubleclick on the different settings and change the values if needed.  
 If not existing, for every Face has a boundary condition to be applied. 
 
 
-### export mesh and case to OpenFOAM text files
+### Step 3: export mesh and case settings to OpenFOAM text files
 When the preprocessing is finished you export the mesh and cfd settings. 
 * Doublecklick on `geometry/CFDAnalysis/Body001_Mesh` and execute the "Write mesh case"-Button inside the FreeCAD-Tasks
 * Doublecklick on `geometry/CFDAnalysis/CfdSolver` and execute the "Write"-Button inside the FreeCAD-Tasks
@@ -131,27 +134,33 @@ When the preprocessing is finished you export the mesh and cfd settings.
 These commands will write text files to the subfolders `meshCase` resp. `case` into the directory specified in the CfdOF-Plugin-Settings. 
 
 
-creating the mesh
+.2. CFD meshing: create a mesh
 ----------------------------------------------------------
-now you can create and review the mesh with
+The geometry creation and meshing setup is already prepared in the previous section with Freecad.  
+Therefore you can now create the mesh based on the text and stl-files in the folder `meshCase` with:
 
     cd meshCase
     ./Allmesh
 
-or using the `Makefile` with
+or using the `Makefile` in the project root directory with the command: 
 
     make mesh
 
-Review the file `meshCase/Allmesh` for a detailed review of the meshing process and read from the [OpenFOAM-documentation] the [OpenFOAM-User-Guide]. [Chapter-5] covers the meshing process
+### review the meshing process & the mesh
+Review the file `meshCase/Allmesh` for detailed information of the meshing process and read from the [OpenFOAM-documentation] the [OpenFOAM-User-Guide]. 
+[Chapter-5] covers the meshing process.  
 
-[OpenFOAM-documentation]: https://cfd.direct/openfoam/documentation/  
-[OpenFOAM-User-Guide]:    https://cfd.direct/openfoam/user-guide/  
-[Chapter-5]:              https://cfd.direct/openfoam/user-guide/v7-mesh/#x23-1670005  
+Then you should have a look in the created files, to get a feeling of the process. 
+They are in the folder `meshCase/constant/polyMesh` and especially in the file `points`. 
+
+Afterwards you should review the created mesh with in a 3D viewer: 
+
+    make viewMesh
 
 
-starting the cfd calculation
+.3. CFD solving: starting the calculation
 ----------------------------------------------------------
-with the created mesh you can start the calculation and review the results with
+with the created mesh in `meshCase` and the exported setup-files in the folder `case` you can start the calculation with: 
 
     cd case
     ./Allrun
@@ -160,34 +169,32 @@ or using the `Makefile` with
 
     make run
 
-Review the file `meshCase/Allrun` for a detailed review of the meshing process and read from the [OpenFOAM documentation](https://cfd.direct/openfoam/documentation/) the [OpenFOAM User Guide](https://cfd.direct/openfoam/user-guide/). 
+Review the file `meshCase/Allrun` for a detailed review of the calculation process and read from the [OpenFOAM-documentation] the [OpenFOAM-User-Guide]. 
+
+Then you should explore folder structure in `case`.  
+Before calculation starts three folders exists:  
+~~~bash
+├── case
+│   ├── 0.org
+│   ├── constant
+│   └── system
+~~~
+the file structure is documented in [Chapter-4.1] from the User Guide.
+
+
+.4. CFD postprocessing: Review the output
+----------------------------------------------------------
+Afterall now its time to review the computed fluid flow. 
+This might be the last step of a long journey and you might be exhausted, but this is the most important part. 
+Here you get your information you can use to answer questions. 
+So **take your time and investigate the flow** before you start your next calculation. 
+
+    make viewResults
 
 
 
-explore folder structure
+Further Resources
 =================================================================
-to get a first idea you should look at the filetree inside the example with different options 
-
-    tree . -d -L 2      # only directories and two levels deep
-    tree . -d           # only directories
-    tree .              # all files and folders
-
-following is the output from `tree . -d -L 2` of this repository before OpenFOAM writes the output data. Redo this command after every creating data to see the differences.
-
-    .
-    ├── case
-    │   ├── 0.org
-    │   ├── constant
-    │   └── system
-    ├── doc
-    │   └── resources
-    └── meshCase
-        ├── constant
-        └── system
-
-
-the file structure is documented in [Chapter 4.1 from the User Guide](https://cfd.direct/openfoam/user-guide/v7-case-file-structure/#x16-1220004.1)
-
 
 ### doc
 in `./doc` are different additional information stored in Markdown (*.md) files.
@@ -195,3 +202,14 @@ in `./doc` are different additional information stored in Markdown (*.md) files.
 ### meshCase & case
 in `./meshCase` and `./case` are the from FreeCAD exported setting files for OpenFOAM. The `Allmesh` resp. `Allrun` inside these folders should directly create the mesh resp. the calculation results inside these folders.  
 
+
+[FreeCAD]:                  https://www.freecadweb.org/
+[CFDOF-Plugin]:             https://github.com/jaheyns/CfdOF
+[OpenFOAM]:                 https://openfoam.org/
+
+[linux-guide]:              https://cfd.direct/openfoam/linux-guide/
+
+[OpenFOAM-documentation]:   https://cfd.direct/openfoam/documentation/  
+[OpenFOAM-User-Guide]:      https://cfd.direct/openfoam/user-guide/  
+[Chapter-4.1]:              https://cfd.direct/openfoam/user-guide/v7-case-file-structure/#x16-1220004.1
+[Chapter-5]:                https://cfd.direct/openfoam/user-guide/v7-mesh/#x23-1670005  
