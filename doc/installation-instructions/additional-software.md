@@ -1,10 +1,11 @@
 
-These tools can be helpfull under Linux and Windows.  
-When you use the WSL (Windows Subsystem for Linux) it might be good to install them in both enviroments
+These tools are helpful under Linux and Windows.  
 
 
 git 
 ===========================================================
+When you use the WSL (Windows Subsystem for Linux) it might be good to install it in both environments. 
+
 ## Windows
 For Windows you have to download [git](https://git-scm.com/downloads) from their website and install it.
 
@@ -18,7 +19,8 @@ Under Linux or within the WSL you can execute following command to install git:
 
 VS Code
 ===========================================================
-Install Code on your native GUI OS
+VS Code is a versatile editor with git integration. 
+Install Code on your native GUI OS. 
 
 ## Windows
 [Microsoft VS Code for Windows](https://code.visualstudio.com/docs/setup/windows) is described here. 
@@ -27,11 +29,4 @@ Install Code on your native GUI OS
 [Microsoft VS Code for Linux](https://code.visualstudio.com/docs/setup/linux) can be installed in the command line by:
 
     sudo snap install --classic code
-
-
-Small linux console tools 
-===========================================================
-These tools are not necessary but helpfull in the Linux Terminal. 
-
-    sudo apt-get install tree
 

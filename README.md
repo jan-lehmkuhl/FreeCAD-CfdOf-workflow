@@ -9,11 +9,14 @@ This example contains everything to run a complete [OpenFOAM]-simulation, create
 First Run
 =================================================================
 
+The first run is to do a functional test of your personal setup and do the run without changes by the scripts.  
+
+
 get files
 ------------------------------------------------------------
 You can clone this example-repository directly from gitlab with the command line interface (CLI): 
 
-    cd SOMEWHERE    # (e.g. simulations)
+    cd SOMEWHERE    # (e.g. /home/USER/simulations)
     git clone https://gitlab.com/schlupp/example-cfdof-workflow.git
     # creates a folder "example-cfdof-workflow" with all files inside
 
@@ -26,7 +29,7 @@ If you have no internet connection and a downloaded zip file you can extract the
 
 installation and troubleshooting
 -----------------------------------------------------------
-Detailed installation instructions are located in `docs/installation-instructions/*.md`. Especially set the CfdOF-Plugin Output Directory to `.`. 
+Detailed installation instructions for all operating systems are located in `docs/installation-instructions/*.md`. Especially set the CfdOF-Plugin Output Directory to `.`. 
 
     doc/installation-instructions/freecad-cfdof.md
     doc/installation-instructions/openfoam.md
@@ -42,7 +45,7 @@ If everything is setup properly you should be able to start the complete calcula
     cd example-cfdof-workflow
     make all
 
-and then the results can be reviewed with paraview:
+afterwards some results can be reviewed with paraview:
 
     make viewResults
 
@@ -53,11 +56,18 @@ Before the flow variables can be seen in Paraview, the results have to be
 
 ![](doc/resources/paraview-first-settings.png)
 
+afterwards you should see something like the pipe on the right side from the above picture
+
+
 
 Complete Workflow
 =================================================================
 
-explore all possibilities
+If everything is setup correctly you can start to look deeper in the scripts and do small changes. 
+Keep in mind: Do only small changes and verify the results after every change.  
+
+
+Makefile - a dictionary for your possible cli tasks
 -----------------------------------------------------------
 
 Please use an editor to look into `./Makefile`. Here you find a list of tasks (in Makefiles they are called "targets") you can perform within this example. 

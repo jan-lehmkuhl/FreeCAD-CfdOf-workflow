@@ -86,13 +86,18 @@ then you can install with following command. Linux will download the needed file
 
 change .bashrc
 ---------------------------------------------------------------------
-after installation Ubuntu should know where he finds the OpenFOAM binaries, so that you can call them from the terminal. 
+after installation Ubuntu should know where he finds the OpenFOAM binaries, so that you can call them from the terminal.  
+open a texteditor with: 
 
-    nano .bashrc
+    nano ~/.bashrc
+    or
+    code ~/.bashrc
 
 paste in the `.bashrc` textfile following line: 
 
-    source /opt/openfoam7/etc/bashrc
+~~~bash
+source /opt/openfoam7/etc/bashrc
+~~~
 
 
 testing
