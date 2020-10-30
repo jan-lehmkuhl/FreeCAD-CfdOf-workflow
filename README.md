@@ -6,14 +6,15 @@ This example contains everything to run a complete [OpenFOAM]-simulation, create
 First Run
 =================================================================
 
-The first run is to do a functional test of your personal setup and do the run without changes by the scripts.  
+The first run is to do a functional test of your personal cfd-installation and do an automatic run without changes.  
 
 
 get files
 ------------------------------------------------------------
-You can clone this example-repository directly from gitlab with the command line interface (CLI): 
+To do a cfd-simulation you need a cfd-setup. 
+Therefore you clone (copy) this example-repository directly from GitLab with the command line interface (CLI): 
 
-    cd SOMEWHERE    # (e.g. /home/USER/simulations)
+    cd <SOMEWHERE>    # (e.g. /home/USER/simulations)
     git clone https://gitlab.com/schlupp/example-cfdof-workflow.git
     # creates a folder "example-cfdof-workflow" with all files inside
 
@@ -21,7 +22,7 @@ with a specified folder like `git clone <REPOSITORY> <FOLDER>` after the the pre
 
 If you have no internet connection and a downloaded zip file you can extract the files in the GUI or in the CLI to a an arbitrary place: 
 
-    unzip DOWNLOAD.zip -d ARBITRARYFOLDER
+    unzip <DOWNLOAD>.zip -d <ARBITRARYFOLDER>
 
 
 installation and troubleshooting
@@ -39,7 +40,7 @@ These are essential and you should try at least 60% and understand the meaning f
 
 start meshing and openfoam-solver
 ------------------------------------------------------------
-If everything is setup properly you should be able to start the complete calculation from the root folder directly after downloading with: 
+If the installation is setup properly you should be able to start the complete calculation from the repository root folder directly after downloading with: 
 
     cd example-cfdof-workflow
     make all
@@ -61,18 +62,18 @@ afterwards you should see something like the pipe on the right side from the abo
 
 
 
-Detailed Workflow
+Technical Remarks  
 =================================================================
 
-If everything is setup correctly you can start to look deeper in the scripts and do small changes to get familiar with your tools.  
-Keep in mind: Do only small changes and verify the results after every change.  
+If everything is setup correctly you can start to look deeper in the scripts & files to understand the entire cfd workflow. 
 
 
 Makefile - a dictionary for your possible cli tasks
 -----------------------------------------------------------
 
-Please use an editor to look into `./Makefile`. 
-Here you find a list of tasks (in Makefiles they are called "targets") you can perform within this example. 
+First you should use an editor to look into the `./Makefile` to see the different tasks which you can perform. 
+These tasks (in Makefiles they are called "targets") you can execute within this example. 
+You should also know how the different targets work 
 
     gedit Makefile
 
@@ -92,46 +93,92 @@ TARGET2:
     target2-bash-command2
 ~~~
 
-To know what you can do, you should read the `Makefile` in the root folder of this project. 
-You should also know how the different targets work to understand the processes. 
+
+meshCase & case folder
+-----------------------------------------------------------
+In general FreeCAD don't performs the CFD calculation. 
+The FreeCAD-CFDOF-Plugin writes/exports the setup-data, which can be processed by OpenFOAM. 
+For the mesh this data is written in the folder `meshCase` and for the cfd calculations this data is written in `case`. 
+
+To make this example more robust the cfd-setup is already exported to these two folders. 
+But if you want, you can delete them and recreate them from within FreeCAD. 
+
+
+
+Detailed CFD Workflow
+=================================================================
+
+Knowing everything works fine, we now can look deeper in the cfd workflow. 
+
+
+.0. Define your project
+----------------------------------------------------------
+Before you start, think about your expectations of this cfd project. 
+* Why are you doing this? 
+* What did you want to know? 
+* What assumptions can you tolerate without loosing the accuracy you need? 
+
+If you did not answer these kind of project management questions before you start, you will be lost during the process and not succeed!
 
 
 .1. CFD Preprocessing: FreeCAD GUI preprocessing with CfdOF-Plugin
 ----------------------------------------------------------
-With `freecad freecad-cfd.FCStd` or `make openfreecadgui` you can open freecad and loading directly the stored data in the linked freecad-file. 
+With the project conditions in mind you can start with the preprocessing. 
+These are:  
+* creating a geometry
+* converting the geometry to a mesh
+* setup the physical parameters for the simulation 
+
+
+### Step 1: creating/modifying a geometry
+Normally you start with an empty file or get some basic CAD files from your construction departement. 
+Keep in mind: You do not model the pipe, **you model the volume inside the pipe**. 
+
+This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D Models.  
+
+With `freecad freecad-cfd.FCStd` or `make openfreecadgui` you can open freecad and loading directly the already prepared data in the linked freecad-file. 
 
     freecad freecad-cfd.FCStd
 
+On the left side in the model tree all content in this file is listed.  
+![](doc/resources/freecad-combo-view.png)  
+To toggle the visibility of specific entries you can mark some and hit the space bar. 
+To getting to know each entry make all entries invisible (greyed out) and test what is appearing when you switch it to visible again. 
 
-### Step 1: creating a geometry
-This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D Models.  
-[FreeCAD-Tutorial]: https://www.freecadweb.org/wiki/Creating_a_simple_part_with_PartDesign
-
-Afterwards you should have opened FreeCAD and a body with a 3D-geometry. 
-
-
-### Step 2: modifying the cfd setup
+ 
+### Step 2: creating/modifying the mesh setup
 To do the CFD preprocessing switch to the CfdOF Workbench inside FreeCAD. 
 
-#### creating the CFD-FreeCAD-Container
-When you starting from scratch, you need to create the FreeCAD container which are shown afterwards in the tree at the level from `Body`: 
+#### init: creating the CFD-FreeCAD-Container
+When you starting from scratch, you need to create the FreeCAD `CFDAnalysis` container which is shown in the tree at the level of and below `Body`: 
 * mark the `geometry/Body` and then "**Create an analysis** container with a CFD solver" for this Body
 * mark the `geometry/Body` and then "**Create a mesh** using cfMesh, snappyHexMesh or gmsh" for this Body
 
-in this example these are already there
+in this example this container are already there
+
+#### change
+To change the mesh settings doubleclick on `CFDAnalysis/Body001_Mesh`. 
+In the following popping up `Tasks` menu (the second register beside the model tree) you can change the basic values. 
+Some values can also be changed in the properties menu below the model tree. 
+
+#### export to meshCase
+When you finished your work, execute the `Write mesh case`-Button inside the FreeCAD-Tasks. 
+These command writes text files to the subfolders `meshCase` into the directory specified in the CfdOF-Plugin-Settings. 
+These files can be executed afterwards with OpenFOAM to build the mesh. 
 
 
-#### changing cfd setup
-Now you can doubleclick on the different settings and change the values if needed.  
+### Step 3: creating/modifying the cfd setup
+The initialization was already done by the mesh creation process. 
+
+Therefore you can doubleclick on the different settings and change the values if needed. 
+Also you can change values in the properties windows. 
 If not existing, for every Face has a boundary condition to be applied. 
 
-
-### Step 3: export mesh and case settings to OpenFOAM text files
+#### export to case
 When the preprocessing is finished you export the mesh and cfd settings. 
-* Doublecklick on `geometry/CFDAnalysis/Body001_Mesh` and execute the "Write mesh case"-Button inside the FreeCAD-Tasks
-* Doublecklick on `geometry/CFDAnalysis/CfdSolver` and execute the "Write"-Button inside the FreeCAD-Tasks
+Doublecklick on `CFDAnalysis/CfdSolver` and execute the `Write`-Button inside the FreeCAD-Tasks
 
-These commands will write text files to the subfolders `meshCase` resp. `case` into the directory specified in the CfdOF-Plugin-Settings. 
+These commands will write text files to the subfolder `case` into the directory specified in the CfdOF-Plugin-Settings. 
 
 
 .2. CFD meshing: create a mesh
@@ -186,24 +233,24 @@ the file structure is documented in [Chapter-4.1] from the User Guide.
 ----------------------------------------------------------
 Afterall now its time to review the computed fluid flow. 
 This might be the last step of a long journey and you might be exhausted, but this is the most important part. 
-Here you get your information you can use to answer questions. 
+Here you get your information you can use to answer the questions you posed in chapter 0. 
 So **take your time and investigate the flow** before you start your next calculation. 
 
     make viewResults
+
+Keep in mind: **Do only small changes to the cfd setup** and verify the results after every change.  
+With to big steps you cannot draw solid conclusions. 
 
 
 
 Further Resources
 =================================================================
 
-### doc
 in `./doc` are different additional information stored in Markdown (*.md) files.
-
-### meshCase & case
-in `./meshCase` and `./case` are the from FreeCAD exported setting files for OpenFOAM. The `Allmesh` resp. `Allrun` inside these folders should directly create the mesh resp. the calculation results inside these folders.  
 
 
 [FreeCAD]:                  https://www.freecadweb.org/
+[FreeCAD-Tutorial]:         https://www.freecadweb.org/wiki/Creating_a_simple_part_with_PartDesign 
 [CFDOF-Plugin]:             https://github.com/jaheyns/CfdOF
 [OpenFOAM]:                 https://openfoam.org/
 

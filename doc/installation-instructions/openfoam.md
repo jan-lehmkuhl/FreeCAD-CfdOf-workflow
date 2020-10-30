@@ -106,19 +106,22 @@ Now you can test the installation by starting
 
     simpleFoam
 
-because there are no case-files there will be errors but you see an header like this:  
+because there are no case-files, where you run `simpleFoam`, there will be errors but you see an header like this:  
 
-    user@machine:~/simulations$ simpleFoam 
-    /*---------------------------------------------------------------------------*\
-      =========                 |
-      \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-       \\    /   O peration     | Website:  https://openfoam.org
-        \\  /    A nd           | Version:  6
-         \\/     M anipulation  |
-    \*---------------------------------------------------------------------------*/
+~~~
+user@machine:~/simulations$ simpleFoam 
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+~~~
 
-
-also you should be able to open `paraview` or `paraFoam` and the GUI should open, when you setup correctly the graphical forwarding
+also you should be able to execute `paraview` or `paraFoam` and a GUI should open, when you setup correctly the graphical forwarding
 
     paraview
+    paraFoam
 
+Now you can try to run the main example described in the [README](../../README.md) in the root folder of this repository. 
