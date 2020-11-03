@@ -22,6 +22,15 @@ install freecad from packages
     sudo apt-get upgrade
 
 
+### use daily builds
+use daily builds when something went wrong  
+https://wiki.freecadweb.org/Install_on_Unix#Daily_PPA_through_the_console  
+
+    sudo add-apt-repository ppa:freecad-maintainers/freecad-daily
+    sudo apt-get update
+    sudo apt-get install freecad-daily
+
+
 
 on Windows
 ---------------------------------------------------------------------
@@ -35,7 +44,8 @@ this should also work, but I haven't tested it.
 
 CfdOF-Plugin installation
 ==============================================================================
-The CfdOF-Plugin can be installed in the FreeCAD-GUI with the AddOn-Manager.  
+The CfdOF-Plugin can be installed in the FreeCAD-GUI with the [AddOn-Manager](https://wiki.freecadweb.org/Std_AddonMgr).  
+[Debug-Page](https://github.com/FreeCAD/FreeCAD-addons)  
 Please follow OS dependent instructions from the [CfdOF Readme](https://github.com/jaheyns/CfdOF)  
 
 ### Plot Workbench
@@ -49,7 +59,7 @@ Restart FreeCAD
 previous Restart of FreeCAD is important  
 -> File -> Tools -> Addon-Manager  
 -> Install "CfdOF" Workbench link  
-Restart FreeCAD againg  
+Restart FreeCAD again  
 
 ### Disable unnecessary workbenches
 [Freecad-Wiki](https://www.freecadweb.org/wiki/Interface_Customization)  
@@ -67,15 +77,19 @@ File -> Edit -> Preferences -> CFD
 
 ## refer to openfoam
 Set OpenFOAM directory to: 
+~~~
+/opt/openfoam7
+~~~
 
-    /opt/openfoam6   (or maybe openfoam7)
 
 Click on `Run dependency checker` and look in the output if its telling you something about missing openfoam files.  
 gmsh is not necessary. 
 
 
 ## Set Output directory 
-It is important to know where CfdOF will write your files. If this is a constant folder like `/tmp` you will always copy the files from here to your project. Therefore set the output directory to a relative path from the path where you start freecad like `.`. For this example following should be used:  
+It is important to know where CfdOF will write your files. If this is a constant folder like `/tmp` you will always copy the files from here to your project. 
+Therefore set the output directory to a relative path from the path where you start freecad like `.`. 
+For this example following should be used:  
 
     .
 

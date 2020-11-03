@@ -30,9 +30,9 @@ installation and troubleshooting
 Detailed installation instructions for all operating systems are located in `docs/installation-instructions/*.md`. 
 Especially set the CfdOF-Plugin Output Directory to `.`. 
 
-    doc/installation-instructions/freecad-cfdof.md
-    doc/installation-instructions/openfoam.md
-    doc/installation-instructions/additional-tools.md
+[doc/installation-instructions/freecad-cfdof.md](doc/installation-instructions/freecad-cfdof.md)  
+[doc/installation-instructions/openfoam.md](doc/installation-instructions/openfoam.md)  
+[doc/installation-instructions/additional-tools.md](doc/installation-instructions/additional-tools.md)  
 
 The most important linux commands are shown in this [linux-guide]. 
 These are essential and you should try at least 60% and understand the meaning from all. 
