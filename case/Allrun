@@ -31,8 +31,9 @@ fi
 # Update patch name and type
 runCommand createPatch -overwrite
 
+PNAME=p
 # Initialise flow
-runCommand potentialFoam -initialiseUBCs -writep
+runCommand potentialFoam -initialiseUBCs -pName $PNAME
 
 # Run application in parallel
 runCommand decomposePar -force

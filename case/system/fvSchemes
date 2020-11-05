@@ -39,6 +39,7 @@ gradSchemes
     // (0 = no limiting; 1 = do not exceed surrounding cells)
     default         cellLimited Gauss linear 0.95;
     grad(p)         Gauss linear;
+    grad(p_rgh)     Gauss linear;
     grad(k)         cellLimited Gauss linear 0.9;
     grad(omega)     cellLimited Gauss linear 0.9;
 }

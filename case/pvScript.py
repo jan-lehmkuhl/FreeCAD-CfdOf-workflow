@@ -6,6 +6,7 @@ paraview.simple._DisableFirstRenderCameraReset()
 # create a new OpenFOAMReader
 pfoam = OpenFOAMReader(FileName=r'case/pv.foam')
 pfoam.CaseType = 'Decomposed Case'
+pfoam.Decomposepolyhedra = 0
 
 # get active view
 renderView1 = GetActiveViewOrCreate('RenderView')

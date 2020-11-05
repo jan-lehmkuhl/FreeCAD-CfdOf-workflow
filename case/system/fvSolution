@@ -19,8 +19,8 @@ SIMPLE
     // Non-orthogonal correctors for robustness on tet meshes. Porous baffles require a
     // higher number of corrections.
     nNonOrthogonalCorrectors 5;
-
     consistent no;  // Setting this impairs stability of porous baffles
+
     residualControl
     {
         p 0.0001;
@@ -53,6 +53,7 @@ solvers
         agglomerator     faceAreaPair;
         nCellsInCoarsestLevel 10;
         mergeLevels      1;
+        maxIter          20;
     }
 
     "(pFinal|p_rghFinal|pcorrFinal)"
