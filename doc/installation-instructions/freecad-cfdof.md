@@ -1,7 +1,11 @@
 
 FreeCAD-CfdOF Remarks
 ==============================================================================
-FreeCAD is not directly linked to OpenFOAM. The CfdOF plugin will only write the text input files, which will be read by OpenFOAM. So you can run FreeCAD native under Windows and OpenFOAM within the Windows Subsystem for Linux (WSL). Its only important, that every software can write in the same directories.  
+
+FreeCAD is not directly linked to OpenFOAM. 
+The CfdOF plugin will only write the text input files, which will be read by OpenFOAM. 
+So you can run FreeCAD native under Windows and OpenFOAM within the Windows Subsystem for Linux (WSL). 
+Its only important, that every software can write in the same directories.  
 
 
 FreeCAD Installation
@@ -34,19 +38,23 @@ https://wiki.freecadweb.org/Install_on_Unix#Daily_PPA_through_the_console
 
 on Windows
 ---------------------------------------------------------------------
-this should also work, but I haven't tested it.  
-
 1. Download FreeCAD from [freecadweb.org](https://www.freecadweb.org/downloads.php) 
 2. install the Download
 3. read [CfdOF-github](https://github.com/jaheyns/CfdOF) remarks and proceed the install of CfdOF Workbench with the FreeCAD Addon Manager described in the next chapter
 
+If something is not working well, consider to download a [developer-version](https://github.com/FreeCAD/FreeCAD/releases/)  
 
 
-CfdOF-Plugin installation
+
+CfdOF-Plugin
 ==============================================================================
+
+Installation
+---------------------------------------------------------------------
 The CfdOF-Plugin can be installed in the FreeCAD-GUI with the [AddOn-Manager](https://wiki.freecadweb.org/Std_AddonMgr).  
 [Debug-Page](https://github.com/FreeCAD/FreeCAD-addons)  
 Please follow OS dependent instructions from the [CfdOF Readme](https://github.com/jaheyns/CfdOF)  
+
 
 ### Plot Workbench
 [source code](https://github.com/FreeCAD/freecad.plot)  
@@ -55,11 +63,13 @@ Please follow OS dependent instructions from the [CfdOF Readme](https://github.c
 -> Install "Plot" Workbench link  
 Restart FreeCAD  
 
+
 ### CfdOF Workbench
 previous Restart of FreeCAD is important  
 -> File -> Tools -> Addon-Manager  
 -> Install "CfdOF" Workbench link  
 Restart FreeCAD again  
+
 
 ### Disable unnecessary workbenches
 [Freecad-Wiki](https://www.freecadweb.org/wiki/Interface_Customization)  
@@ -70,61 +80,52 @@ Menu -> Tools -> Customize
 
 
 CfdOF Settings
-==============================================================================
+---------------------------------------------------------------------
 [CfdOF github repository](https://github.com/jaheyns/CfdOF)  
 
-File -> Edit -> Preferences -> CFD
+FreeCAD -> File -> Edit -> Preferences -> CFDOF
 
-## refer to openfoam
-Set OpenFOAM directory to: 
+
+### install directory
+On **Linux** set OpenFOAM directory to: 
 ~~~
 /opt/openfoam7
 ~~~
+
+On **Windows** this remains empty 
+
+
+### Set Output directory 
+It is important to know where CfdOF will write your files. 
+
+If this is a constant folder like `/tmp` you will always copy the files from here to your project. 
+Its better so start FreeCAD from the terminal at a certain place and export relative from there.  
+
+    .
+
+When you don't start FreeCAD at a certain place you must consider to write a script to import the exported data automatically in your project. 
+
+
+
+Install CfdOF Dependencies
+---------------------------------------------------------------------
+FreeCAD -> File -> Edit -> Preferences -> CfdOF
+
+Install with the buttons at least:
+
+* OpenFOAM (only on Windows)
+* ParaView (only on Windows)
+* cfMesh
+
+![](../resources/cfdof-settings-windows.jpg)
 
 
 Click on `Run dependency checker` and look in the output if its telling you something about missing openfoam files.  
 gmsh is not necessary. 
 
 
-## Set Output directory 
-It is important to know where CfdOF will write your files. If this is a constant folder like `/tmp` you will always copy the files from here to your project. 
-Therefore set the output directory to a relative path from the path where you start freecad like `.`. 
-For this example following should be used:  
 
-    .
-
-## HiSA & cfMesh
-These are additional software but in case of an error they can be avoided in the preprocessing.  
-
-File -> Edit -> Preferences -> CFD  
-
-Press "Install cfMesh" button  
-Press "Install HiSA" button  
-
-### Plot Workbench
--> File -> Tools ->  Addon-Manager
--> Install "Plot" Workbench [link](https://github.com/FreeCAD/freecad.plot)
-Restart FreeCAD
-
-### CfdOF Workbench
-previous Restart of FreeCAD is important
--> File -> Tools ->  Addon-Manager
--> Install "CfdOF" Workbench [link](https://github.com/jaheyns/CfdOF)
-[special cf mesh fork for CfdOF](https://sourceforge.net/projects/cfmesh-cfdof/)
-Restart FreeCAD againg
-
-## Settings
-File -> Edit -> Preferences -> CFD
-Set OpenFOAM directory to:  /opt/openfoam7
-Set Output directory to:    .
-
-## HiSA & cfMesh
-File -> Edit -> Preferences -> CFD
-* Press "Install cfMesh" button
-* Press "Install HiSA" button 
-
-
-FreeCAD customization
+Optional FreeCAD customization
 ==============================================================================
 
 remove unnecessary workbenches

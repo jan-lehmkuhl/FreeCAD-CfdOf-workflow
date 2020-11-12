@@ -3,29 +3,40 @@ OpenFOAM Installation on Windows
 ===============================================================================
 [openfoam.org/download/windows](https://openfoam.org/download/windows/)  
 OpenFOAM is a Linux Programm but there are several ways to run it under Windows.  
-In general it is not necessary for OpenFOAM to have a graphical user interface. OpenFOAM reads text files and writes the output to text files. So if you have access to these files, you can run your GUI-Programs like FreeCAD and Paraview nativly under Windows
+In general it is not necessary for OpenFOAM to have a graphical user interface. 
+OpenFOAM reads text files and writes the output to text files. 
+So if you have access to these files, you can run your GUI-Programs like FreeCAD and Paraview nativly under Windows.
 
 
 Option 1: Windows Subsystem for Linux" (WSL)
 ---------------------------------------------------------------------
-A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. Beside the [WSL-activation] and the graphical-output-forwarding with [Xming] the installation should be very similar to the Linux installation described in this file in the next chapter.  
+A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. 
+Beside the [WSL-activation] and the graphical-output-forwarding with [Xming] the installation should be very similar to the Linux installation described in this file in the next chapter.  
+
 
 ### Installation
 1. read: [openfoam.org-help](https://openfoam.org/download/windows-10/)
-2. Activate Windows Subsystem for Linux (WSL) like described in [WSL-activation] and 
-    install your desired Distro from `Microsoft Store` within Windows 10.  
-    At the end you have a terminal with Linux (WSL) running. 
-3. Install OpenFOAM inside WSL described in the Linux-Installation-Chapter below  
+2. Activate Windows Subsystem for Linux (WSL) like described in [WSL-activation]  
+   you need Administrator rights in the Powershell to execute.  
+3. install your desired Distro from `Microsoft Store` within Windows 10.  
+   At the end you have a terminal with Linux (WSL) running. 
+4. Install OpenFOAM inside WSL described in the Linux-Installation-Chapter below  
+
+[Windows-10-installation]: https://openfoam.org/download/windows-10/  
+[WSL-activation]: https://docs.microsoft.com/en-gb/windows/wsl/install-win10  
 
 
 ### hard disc access
-The hard-disks (e.g. `C:`, `D:`) are mounted in the WSL at `/mnt/c` and `/mnt/d`. To access these data change your directory (`cd`) to these folders:
+The hard-disks (e.g. `C:`, `D:`) are mounted in the WSL at `/mnt/c` and `/mnt/d`. 
+To access these data change your directory (`cd`) to these folders:
 
     cd /mnt/c/YOURDIRECTORY
 
 
 ### Graphical output forwarding
 [Xming] helps to present the Linux graphical output as Window under Windows. 
+This is not necessary but might be nice. 
+
 Download and install Xming from [Sourceforge](https://sourceforge.net/projects/xming/)  
 After installing Xming should run in the windows tray. Then tell your WSL to output to a Display:
 
@@ -38,12 +49,16 @@ When you get an error message similar like following, your Linux don't find a pl
     (gedit:1243): Gtk-WARNING **: 16:29:10.075: cannot open display: :0
 
 If this don't work everything in Linux can be done without an grafical output.
-Instead of using the graphical text editor `gedit` to change files, you can use terminal text editors like `nano` . In Nano you can save the file with `Ctrl+s` and end the session with `Ctrl+x`. 
+Instead of using the graphical text editor `gedit` to change files, you can use terminal text editors like `nano` . 
+In Nano you can save the file with `Ctrl+s` and end the session with `Ctrl+x`. 
 
-
-[Windows-10-installation]: https://openfoam.org/download/windows-10/  
-[WSL-activation]: https://docs.microsoft.com/en-gb/windows/wsl/install-win10  
 [Xming]: https://de.wikipedia.org/wiki/Xming  
+
+
+Option 1b: Docker
+---------------------------------------------------------------------
+When installing FreeCAD with CfdOF-Plugin described in [docs](freecad-cfdof.md) in Windows, there will also be OpenFOAM installed in an Docker environment. 
+The file downloaded and installed is specified in the download section within FreeCAD-CFD-Setting and points to [sourceforge](https://sourceforge.net/projects/openfoam/files/v2006/OpenCFD-OpenFOAM4WindowsInstaller-v2006.exe/download) 
 
 
 Option 2: Virtual Machine
