@@ -7,6 +7,11 @@
 # https://en.wikipedia.org/wiki/Make_(software) 
 
 
+# some variables: 
+date = $(shell date +"%Y%m%d-%H%M%S%p")
+archiveFolder = ARCHIVE/run-$(date)
+
+
 
 # std workflow targets
 # ======================================================
@@ -66,9 +71,9 @@ viewResults:
 	cd case  ;  paraFoam -builtin
 
 
-# creates archive of the current project
+# creates a zipped filled of the current project without the ARCHIVE folder
 zip:
-	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%I%M%p").tar.bz2   --exclude='ARCHIVE' --exclude='archive' --exclude='meshCase/constant' --exclude='case/0' --exclude='case/constant/polyMesh' --exclude='case/processor*' --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
+	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='meshCase/constant' --exclude='*.stl' --exclude='*.pvsm' --exclude='case/0' --exclude='case/constant/polyMesh' --exclude='case/processor*' --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
 	ls -la     .
 
 # split archives to 10mb parts for a better uploading
@@ -76,6 +81,36 @@ zip:
 #   split -b 10M  ARCHIVE.tar.gz  ARCHIVE.tar.gz.part
 # rebuildArchive:
 #   cat  ARCHIVE.tar.gz.part*  >  ARCHIVE.tar.gz
+
+
+
+# archiving current data
+# ======================================================
+
+# checks if the main files are stored in git repository
+isGitClean:
+	@echo "** test whether main files are unchanged **"
+	git diff  --quiet           freecad-cfd.FCStd
+	git diff  --quiet           meshCase
+	git diff  --quiet           case
+	git diff  --quiet           post
+	@echo "** test whether nothing is staged **"
+	git diff  --quiet --cached
+	@echo "** passed tests **"
+
+
+archiveResults: isGitClean
+	@echo archiving files to:      $(archiveFolder)
+	mkdir                   $(archiveFolder)
+	cp freecad-cfd.FCStd    $(archiveFolder)
+	mv meshCase             $(archiveFolder)/meshCase
+	mv case                 $(archiveFolder)/case
+	mv post                 $(archiveFolder)/post
+	git log  -n500        > $(archiveFolder)/git-log.txt
+	@echo restoring tracked files
+	git checkout meshCase
+	git checkout case
+	git checkout post
 
 
 

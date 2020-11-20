@@ -6,13 +6,14 @@
 # =============================================================================
 
 # place to store old cases
-ARCHIVE
-archive
+ARCHIVE/run*
 
 # zipped archive
 archive*.tar.gz
 archive*.tar.bz2
 ARCHIVE*.tar.bz2
+post/*.png
+post/*.jpg
 
 
 
@@ -108,6 +109,13 @@ lnInclude
 linux*
 Darwin*
 dynamicCode
+
+
+
+# FreeCAD
+# =============================================================================
+*.FCStd[0-9]
+
 
 
 # End of https://www.gitignore.io/api/openfoam
