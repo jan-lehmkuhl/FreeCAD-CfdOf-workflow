@@ -150,3 +150,10 @@ deleteFreecadExports:
 # removes all changes in this repository and switches to the last git commit
 reset: deleteFreecadExports
 	git reset --hard
+
+
+# removes on windows machines bad line endings which prevents bash scripts to run
+fix-windows: 
+	# https://stackoverflow.com/questions/14219092/bash-script-and-bin-bashm-bad-interpreter-no-such-file-or-directory
+	sed -i -e 's/\r$//'  case/Allmesh
+	sed -i -e 's/\r$//'  case/Allrun
