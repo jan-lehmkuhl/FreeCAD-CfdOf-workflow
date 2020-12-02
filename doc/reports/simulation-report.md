@@ -1,27 +1,7 @@
 
 <!-- one simulation-study report with the cfd related content -->
 
-- [Task List](#task-list)
-- [Reality Description](#reality-description)
-  - [Geometry](#geometry)
-  - [Physics](#physics)
-- [Model &amp; Numerics](#model-amp-numerics)
-  - [Geometry](#geometry-1)
-  - [Mesh](#mesh)
-    - [Final Mesh Metrics](#final-mesh-metrics)
-    - [Final Mesh Specific Features](#final-mesh-specific-features)
-    - [Mesh Study](#mesh-study)
-  - [Physical Modeling](#physical-modeling)
-  - [Numerics](#numerics)
-  - [Convergence](#convergence)
-    - [Global Residuals](#global-residuals)
-    - [Imbalances](#imbalances)
-    - [Yplus](#yplus)
-    - [Monitor Point Stability](#monitor-point-stability)
-  - [Analysis Type](#analysis-type)
-  - [Numerical Confidence](#numerical-confidence)
-- [Flow Analysis](#flow-analysis)
-- [preliminary construction proposals](#preliminary-construction-proposals)
+
 
 Task List
 ===============================================================================
@@ -62,7 +42,7 @@ Physics
 | material 1        |               | xx [kg/m³]| xx [kg/m/s]   |
 
 
-| thermodynamic value   | occuring range    |
+| thermodynamic value   | occurring range   |
 | --------------------- | ----------------- |
 | pressure              | xxx [Pa] 
 | velocities            | xxx [m/s]
@@ -157,5 +137,7 @@ Flow Analysis
 <!-- ![](cfd-reports/XXX_001_Rep/Figure001.png)  -->
 
 
-preliminary construction proposals
+
+actual state conclusions
 ===============================================================================
+<!-- what have you learned so far -->

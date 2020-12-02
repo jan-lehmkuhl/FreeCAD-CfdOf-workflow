@@ -3,10 +3,7 @@
 <!-- this report refers to the study reports, which contain the detailed simulation information -->
 
 
-**CFD-Project_**
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-![](tools/images/logo.png)
-
+**CFD-Project**
 ************************************************  
 |                   |                                  |
 | ----------------- | -------------------------------- |
@@ -21,26 +18,6 @@
 
 <!-- example picture for quick project identification -->
 ![](doc/images/XXX.png) 
-
-
-**_Table of Content_**
-
-**********************  
-- [Project-Purpose](#project-purpose)
-  - [Background](#background)
-  - [Goals](#goals)
-- [Major Work Packages](#major-work-packages)
-  - [Study 1](#study-1)
-- [Available Resources](#available-resources)
-  - [Calculation Enviroment](#calculation-enviroment)
-    - [Hardware](#hardware)
-    - [Software](#software)
-- [actual Project-Status](#actual-project-status)
-  - [Results](#results)
-    - [Study 1](#study-1-1)
-  - [Open issues](#open-issues)
-  - [Project-Forecast](#project-forecast)
-- [Conclusions](#conclusions)
 
 
 
@@ -79,7 +56,9 @@ Available Resources
 Calculation Enviroment
 ---------------------------------------------------------------------
 * Short description of the hard- and software used to create the analysis. 
-* The objective of this section is to ensure reproducebility of the results for the case of later reruns.
+* The objective of this section is: 
+  * to ensure reproducible results for the case of later reruns 
+  * to be aware of the possible simulations delivered in a specified time 
 
 ### Hardware
 |          |                                                                                        |
