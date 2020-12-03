@@ -155,5 +155,7 @@ reset: deleteFreecadExports
 # removes on windows machines bad line endings which prevents bash scripts to run
 fix-windows: 
 	# https://stackoverflow.com/questions/14219092/bash-script-and-bin-bashm-bad-interpreter-no-such-file-or-directory
-	sed -i -e 's/\r$//'  case/Allmesh
-	sed -i -e 's/\r$//'  case/Allrun
+	# removes cariage return "\r" at a line end "$"
+	# to mask a "$" in a makefile an additional $ is needed
+	sed -i -e 's/\r$$//'  meshCase/Allmesh
+	sed -i -e 's/\r$$//'  case/Allrun
