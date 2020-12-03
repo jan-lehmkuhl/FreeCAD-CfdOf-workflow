@@ -32,10 +32,13 @@ Reality Description
 Geometry
 ---------------------------------------------------------------------
 <!-- description of the geometry features and their size -->
+<!-- use real world pictures not simplified CAD data -->
+
 
 Physics
 ---------------------------------------------------------------------
 <!-- which physical effects occur -->
+<!-- make sketches to describe special effects (you need less words) -->
 
 | used materials    | used place    | density   | dyn. viscosity|
 | ----------------- | ------------- | --------- | ------------- |
@@ -55,7 +58,8 @@ Model & Numerics
 
 Geometry
 ---------------------------------------------------------------------
-<!-- simplifications of the 3D modell -->
+<!-- simplifications of the 3D model -->
+<!-- show pictures of the CAD model -->
 
 
 Mesh
@@ -75,6 +79,7 @@ Mesh
 | max skewness              | XXX
 | min y+ (runXXX)           | XXX 
 | max y+ (runXXX)           | XXX 
+<!-- not used mesh elements can be deleted -->
 
 
 ### Final Mesh Specific Features
@@ -109,6 +114,8 @@ Numerics
 
 Convergence
 ---------------------------------------------------------------------
+<!-- show plots for all subtopics for at least the used runs in the postprocessing -->
+
 ### Global Residuals 
 
 ### Imbalances
@@ -120,12 +127,12 @@ Convergence
 
 Analysis Type
 ---------------------------------------------------------------------
-<!-- is this a transient simulation or indicate the residuals a transient behaviour -->
+<!-- is this a transient simulation or indicate the residuals and monitor points a transient behaviour -->
 
 
 Numerical Confidence
 ---------------------------------------------------------------------
-<!-- how exact do you expect the calculation results -->
+<!-- how exact, do you think, are the calculation results -->
 
 
 
@@ -133,6 +140,8 @@ Flow Analysis
 ===============================================================================
 <!-- show expected behaviour to increase the confidence in the simulation -->
 <!-- show special and interesting flow features to get more insights -->
+<!-- describe for every picture what you see and you want to be seen by the reader  -->
+<!-- what is your conclusion of the picture -->
 
 <!-- ![](cfd-reports/XXX_001_Rep/Figure001.png)  -->
 
