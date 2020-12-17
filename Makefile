@@ -71,10 +71,14 @@ viewResults:
 	cd case  ;  paraFoam -builtin
 
 
-# creates a zipped filled of the current project without the ARCHIVE folder
-zip:
+# creates a zipped filled of the current project without big mesh and calculated files
+zip-archive:
 	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='meshCase/constant' --exclude='*.stl' --exclude='*.pvsm' --exclude='case/0' --exclude='case/constant/polyMesh' --exclude='case/processor*' --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
 	ls -la     .
+
+# creates a zipped file of the current project without the ARCHIVE folder
+zip-debug:
+	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='ARCHIVE'   --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
 
 # split archives to 10mb parts for a better uploading
 # splitArchive:
