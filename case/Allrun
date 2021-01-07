@@ -37,5 +37,5 @@ runCommand potentialFoam -initialiseUBCs -pName $PNAME
 
 # Run application in parallel
 runCommand decomposePar -force
-runCommand mpirun -n 4 simpleFoam -parallel
+runCommand mpirun -np 4 simpleFoam -parallel
 

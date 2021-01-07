@@ -27,29 +27,19 @@ geometry
         name Body001_Geometry;
         regions
         {
-            face0
+            patch_1_0
             {
-                name face0;
+                name patch_1_0;
             }
 
-            face1
+            patch_2_0
             {
-                name face1;
+                name patch_2_0;
             }
 
-            face2
+            patch_3_0
             {
-                name face2;
-            }
-
-            face3
-            {
-                name face3;
-            }
-
-            face4
-            {
-                name face4;
+                name patch_3_0;
             }
 
         }

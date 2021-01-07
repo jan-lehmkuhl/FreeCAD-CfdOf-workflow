@@ -26,7 +26,7 @@ patches
             type patch;
         }
         constructFrom patches;
-        patches ( face0 );
+        patches ( "patch_1_.*" );
     }
 
     {
@@ -36,7 +36,7 @@ patches
             type patch;
         }
         constructFrom patches;
-        patches ( face4 );
+        patches ( "patch_2_.*" );
     }
 
     {
@@ -46,7 +46,17 @@ patches
             type wall;
         }
         constructFrom patches;
-        patches ( face1 face2 face3 );
+        patches ( "patch_3_.*" );
+    }
+
+    {
+        name defaultFaces;
+        patchInfo
+        {
+            type patch;
+        }
+        constructFrom patches;
+        patches ( "patch_0_.*" );
     }
 
 
