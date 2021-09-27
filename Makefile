@@ -1,5 +1,5 @@
 
-# Makefiles are containing multiple "targets" (e.g. all, openfreecad, restore, ...)
+# Makefiles are containing multiple "targets" (e.g. all, open-freecad, restore, ...)
 # every target will execute normal bash commands
 # a target is executed from bash with:
 # 		make TARGETNAME
@@ -25,14 +25,14 @@ all: clean mesh run
 
 # this target opens the freecad GUI
 # you can also execute the command "freecad freecad-cfd.FCStd" directly in the terminal
-openfreecad:
+open-freecad:
 	freecad freecad-cfd.FCStd
-	make store0as0org
+	make store-0-as-0org
 
 
 # after exporting files from freecad everything inside case and meshCase will be overwriten
 # this target moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
-store0as0org:
+store-0-as-0org:
 	if [ ! -d case/0.org ] ;  then      \
 		echo "*** copy 0 to 0.org"  ; \
 		cp -rf case/0    case/0.org   ; \
@@ -49,12 +49,12 @@ mesh:
 
 # OpenFOAM calculation
 # -----------------------------------------------
-copy0orgto0:
+copy-0org-to-0:
 	mkdir -p case/0
 	cp -rf  case/0.org/*  case/0
 
 # run copies the initial state from 0.org to 0 and starts the Allrun script
-run: store0as0org copy0orgto0
+run: store-0-as-0org copy-0org-to-0
 	cd case ;  ./Allrun
 
 
@@ -62,12 +62,12 @@ run: store0as0org copy0orgto0
 # -----------------------------------------------
 
 # opens paraview for reviewing the mesh
-viewMesh:
+view-mesh:
 	cd meshCase  ;  paraFoam
 
 
 # opens paraview for reviewing the results
-viewResults:
+view-results:
 	cd case  ;  paraFoam -builtin
 
 
@@ -92,7 +92,7 @@ zip-debug:
 # ======================================================
 
 # checks if the main files are stored in git repository
-isGitClean:
+is-git-clean:
 	@echo "** test whether main files are unchanged **"
 	git diff  --quiet           freecad-cfd.FCStd
 	git diff  --quiet           meshCase
@@ -103,7 +103,7 @@ isGitClean:
 	@echo "** passed tests **"
 
 
-archiveResults: isGitClean
+archive-results: is-git-clean
 	@echo archiving files to:      $(archiveFolder)
 	mkdir                   $(archiveFolder)
 	cp freecad-cfd.FCStd    $(archiveFolder)
@@ -121,11 +121,11 @@ archiveResults: isGitClean
 # cleaning the repository
 # ======================================================
 
-# the clean target executes the clean targets cleanMesh and cleanCase to remove calculated files
-clean: cleanMesh cleanCase
+# the clean target executes the clean targets clean-mesh and clean-case to remove calculated files
+clean: clean-mesh clean-case
 
 # deletes the mesh and the related log files
-cleanMesh: cleanPreliminaryMeshes
+clean-mesh: clean-preliminary-meshes
 	rm -f  meshCase/log*
 	rm -f  meshCase/mesh_outside.stl
 	rm -rf meshCase/constant/extendedFeatureEdgeMesh
@@ -133,11 +133,11 @@ cleanMesh: cleanPreliminaryMeshes
 	rm -rf meshCase/constant/triSurface/*.eMesh
 	rm -rf meshCase/gmsh
 
-cleanPreliminaryMeshes:
+clean-preliminary-meshes:
 	rm -rf [1-9]
 
 # deletes all files and folders created by the openFOAM-solver
-cleanCase: 
+clean-case: 
 	rm -rf case/log.*
 	rm -rf case/0
 	rm -rf case/constant/polyMesh
@@ -146,13 +146,13 @@ cleanCase:
 
 
 # deletes the complete FreeCAD export folders inklusive the necessary source files, which are also stored in git
-deleteFreecadExports:
+delete-freecad-exports:
 	rm -rf meshCase
 	rm -rf case
 
 
 # removes all changes in this repository and switches to the last git commit
-reset: deleteFreecadExports
+reset: delete-freecad-exports
 	git reset --hard
 
 
