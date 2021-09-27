@@ -35,6 +35,9 @@ tmp
 # OpenFOAM Solving
 # =============================================================================
 
+## Libraries 
+case/system/turbulenceLib
+
 ## Timestep directories
 case/0/*
 case/0.*

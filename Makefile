@@ -143,6 +143,7 @@ clean-case:
 	rm -rf case/constant/polyMesh
 	rm -rf case/postProcessing
 	rm -rf case/processor[0-9]
+	rm -f  case/system/turbulenceLib
 
 
 # deletes the complete FreeCAD export folders inklusive the necessary source files, which are also stored in git
