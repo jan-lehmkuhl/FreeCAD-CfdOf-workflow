@@ -2,7 +2,7 @@
 
 runCommand()
 {
-    if [ "$1" == "mpirun" ]; then sol="$4"; else sol="$1"; fi
+    if [ "$1" == "mpiexec" ]; then sol="$4"; else sol="$1"; fi
     sol=$(basename -- "$sol")
     sol="${sol%.*}"
     if [ -f log."$sol" ]; then rm log."$sol"; fi
@@ -13,8 +13,11 @@ runCommand()
 
 # Unset and source bashrc
 FOAMDIR="/opt/openfoam7"
-source "$FOAMDIR/etc/config.sh/unset" 2> /dev/null
-source "$FOAMDIR/etc/bashrc"
+if [ ! -z "$FOAMDIR" ]
+then
+    source "$FOAMDIR/etc/config.sh/unset" 2> /dev/null
+    source "$FOAMDIR/etc/bashrc"
+fi
 
 # Copy mesh from mesh case dir if available
 MESHDIR="../meshCase"
@@ -28,6 +31,14 @@ then
     exit 1
 fi
 
+# Detect available turbulence lib
+if [ -f "$FOAM_LIBBIN/libmomentumTransportModels.so" ] || [ -f "$FOAM_LIBBIN/libmomentumTransportModels.dll" ]
+then
+    echo \"libmomentumTransportModels.so\" > system/turbulenceLib
+else
+    echo \"libturbulenceModels.so\" > system/turbulenceLib
+fi
+
 # Update patch name and type
 runCommand createPatch -overwrite
 
@@ -37,5 +48,5 @@ runCommand potentialFoam -initialiseUBCs -pName $PNAME
 
 # Run application in parallel
 runCommand decomposePar -force
-runCommand mpirun -np 2 simpleFoam -parallel
+runCommand mpiexec -np 2 simpleFoam -parallel
 

@@ -4,7 +4,7 @@ from paraview.simple import *
 paraview.simple._DisableFirstRenderCameraReset()
 
 # create a new OpenFOAMReader
-pfoam = OpenFOAMReader(FileName=r'case/pv.foam')
+pfoam = OpenFOAMReader(FileName=r'pv.foam')
 pfoam.CaseType = 'Decomposed Case'
 pfoam.Decomposepolyhedra = 0
 

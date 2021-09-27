@@ -43,7 +43,7 @@ runTimeModifiable true;
 libs
 (
     // Needed for availability of porous baffle boundary in potentialFoam
-    "libturbulenceModels.so"
+    #include "turbulenceLib"
 );
 
 // ************************************************************************* //
