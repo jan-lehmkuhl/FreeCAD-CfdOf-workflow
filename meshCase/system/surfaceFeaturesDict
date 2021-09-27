@@ -11,43 +11,31 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      blockMeshDict;
+    object      surfaceFeatureExtractDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-xMin    -0.099;
-xMax    0.099;
-yMin    -0.049000000000000016;
-yMax    0.2740000650802056;
-zMin    -0.4240001517866579;
-zMax    0.099;
-cellsX  21;
-cellsY  33;
-cellsZ  54;
-
-vertices
+surfaces
 (
-    ( $xMin  $yMin  $zMin)
-    ( $xMax  $yMin  $zMin)
-    ( $xMax  $yMax  $zMin)
-    ( $xMin  $yMax  $zMin)
-    ( $xMin  $yMin  $zMax)
-    ( $xMax  $yMin  $zMax)
-    ( $xMax  $yMax  $zMax)
-    ( $xMin  $yMax  $zMax)
+    "Body001_Geometry.stl"
 );
 
-blocks
-(
-    hex (0 1 2 3 4 5 6 7) ($cellsX $cellsY $cellsZ) simpleGrading (1 1 1)
-);
+includedAngle       150;
+geometricTestOnly   no;
 
-edges
-(
-);
+subsetFeatures
+{
+    nonManifoldEdges    yes;
+    openEdges           yes;
+}
 
-boundary
-(
-);
+trimFeatures
+{
+    minElem         0;
+    minLen          0.0;
+}
+
+writeObj            yes;
+verboseObj          no;
 
 // ************************************************************************* //

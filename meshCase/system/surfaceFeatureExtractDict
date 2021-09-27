@@ -22,7 +22,7 @@ Body001_Geometry.stl
     {
         includedAngle   150;
     }
-    writeObj            no;
+    writeObj            yes;
 }
 
 
