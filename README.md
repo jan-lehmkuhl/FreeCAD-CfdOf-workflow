@@ -47,7 +47,7 @@ If the installation is setup properly you should be able to start the complete c
 
 afterwards some results can be reviewed with paraview:
 
-    make viewResults
+    make view-results
 
 Before the flow variables can be seen in Paraview:  
 * the results have to be, marked as visible in the pipeline browser (eye in picture below),  
@@ -136,7 +136,7 @@ Keep in mind: You do not model the pipe, **you model the volume inside the pipe*
 
 This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D Models.  
 
-With `freecad freecad-cfd.FCStd` or `make openfreecadgui` you can open freecad and loading directly the already prepared data in the linked freecad-file. 
+With `freecad freecad-cfd.FCStd` or `make open-freecad` you can open freecad and loading directly the already prepared data in the linked freecad-file. 
 
     freecad freecad-cfd.FCStd
 
@@ -202,7 +202,7 @@ They are in the folder `meshCase/constant/polyMesh` and especially in the file `
 
 Afterwards you should review the created mesh with in a 3D viewer: 
 
-    make viewMesh
+    make view-mesh
 
 
 .3. CFD solving: starting the calculation
@@ -236,7 +236,7 @@ This might be the last step of a long journey and you might be exhausted, but th
 Here you get your information you can use to answer the questions you posed in chapter 0. 
 So **take your time and investigate the flow** before you start your next calculation. 
 
-    make viewResults
+    make view-results
 
 Keep in mind: **Do only small changes to the cfd setup** and verify the results after every change.  
 With to big steps you cannot draw solid conclusions. 
