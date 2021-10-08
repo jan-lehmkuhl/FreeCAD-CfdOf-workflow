@@ -61,7 +61,7 @@ log.*
 # =============================================================================
 
 # paraview/ParaFoam
-*.foam
+# *.foam
 *.OpenFOAM
 
 # function object and post-processing data
