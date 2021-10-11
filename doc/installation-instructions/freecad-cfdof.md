@@ -52,8 +52,9 @@ CfdOF-Plugin
 Installation
 ---------------------------------------------------------------------
 The CfdOF-Plugin can be installed in the FreeCAD-GUI with the [AddOn-Manager](https://wiki.freecadweb.org/Std_AddonMgr).  
-[Debug-Page](https://github.com/FreeCAD/FreeCAD-addons)  
-Please follow OS dependent instructions from the [CfdOF Readme](https://github.com/jaheyns/CfdOF)  
+Problems with the Addon-Manager are discussed at the [Debug-Page](https://github.com/FreeCAD/FreeCAD-addons).   
+
+To install the CfdOF-Plugin follow OS dependent instructions from the [CfdOF Readme](https://github.com/jaheyns/CfdOF), which are summarized in the next lines.  
 
 
 ### Plot Workbench
@@ -71,7 +72,7 @@ previous Restart of FreeCAD is important
 Restart FreeCAD again  
 
 
-### Disable unnecessary workbenches
+### Disable unnecessary workbenches (optional)
 [Freecad-Wiki](https://www.freecadweb.org/wiki/Interface_Customization)  
 
 Menu -> Tools -> Customize  
