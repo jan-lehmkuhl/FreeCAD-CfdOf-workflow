@@ -34,9 +34,13 @@ To access these data change your directory (`cd`) to these folders:
 
 
 ### Graphical output forwarding
-[Xming] helps to present the Linux graphical output as Window under Windows. 
+[VcXsrv] or [Xming] helping to present the Linux graphical output as Window under Windows. 
 This is not necessary but might be nice. 
 
+[VcXsrv]: https://sourceforge.net/projects/vcxsrv/
+[Xming]:  https://de.wikipedia.org/wiki/Xming  
+
+##### Xming
 Download and install Xming from [Sourceforge](https://sourceforge.net/projects/xming/)  
 After installing Xming should run in the windows tray. Then tell your WSL to output to a Display:
 
@@ -52,7 +56,6 @@ If this don't work everything in Linux can be done without an grafical output.
 Instead of using the graphical text editor `gedit` to change files, you can use terminal text editors like `nano` . 
 In Nano you can save the file with `Ctrl+s` and end the session with `Ctrl+x`. 
 
-[Xming]: https://de.wikipedia.org/wiki/Xming  
 
 
 Option 1b: Docker
