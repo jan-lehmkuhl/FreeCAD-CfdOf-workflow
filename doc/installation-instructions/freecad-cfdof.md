@@ -15,24 +15,29 @@ on Linux
 ---------------------------------------------------------------------
 [FreeCAD installation wiki](https://www.freecadweb.org/wiki/Install_on_Unix)
 
-add an apt-repository to tell Linux where he finds the latest version and get freecad 0.18.x
+add an [apt-repository] to tell Linux where he finds the latest stable version of freecad: 
 
     sudo add-apt-repository ppa:freecad-maintainers/freecad-stable
     sudo apt-get update
 
+[apt-repository]: https://launchpad.net/~freecad-maintainers/+archive/ubuntu/freecad-stable
+
+
 install freecad from packages 
 
-    sudo apt-get install freecad freecad-doc
+    sudo apt-get install freecad
     sudo apt-get upgrade
 
 
 ### use daily builds
-use daily builds when something went wrong  
+try [daily builds] when something went wrong  
 https://wiki.freecadweb.org/Install_on_Unix#Daily_PPA_through_the_console  
 
     sudo add-apt-repository ppa:freecad-maintainers/freecad-daily
     sudo apt-get update
     sudo apt-get install freecad-daily
+
+[daily builds]: https://launchpad.net/~freecad-maintainers/+archive/ubuntu/freecad-daily
 
 
 
@@ -43,6 +48,18 @@ on Windows
 3. read [CfdOF-github](https://github.com/jaheyns/CfdOF) remarks and proceed the install of CfdOF Workbench with the FreeCAD Addon Manager described in the next chapter
 
 If something is not working well, consider to download a [developer-version](https://github.com/FreeCAD/FreeCAD/releases/)  
+
+
+
+Optional FreeCAD customization
+------------------------------------------------------------------------------
+
+### remove unnecessary workbenches
+[Freecad-Wiki](https://www.freecadweb.org/wiki/Interface_Customization)  
+
+>Menu -> Tools -> Customize  
+
+![Workbench-Selector](../resources/freecad-workbench-selector.png)  
 
 
 
@@ -70,13 +87,6 @@ previous Restart of FreeCAD is important
 -> File -> Tools -> Addon-Manager  
 -> Install "CfdOF" Workbench link  
 Restart FreeCAD again  
-
-
-### Disable unnecessary workbenches (optional)
-[Freecad-Wiki](https://www.freecadweb.org/wiki/Interface_Customization)  
-
-Menu -> Tools -> Customize  
-![Workbench-Selector](./resources/freecad-workbench-selector.png)
 
 
 
@@ -122,18 +132,7 @@ Install with the buttons at least:
 
 
 Click on `Run dependency checker` and look in the output if its telling you something about missing openfoam files.  
-gmsh is not necessary. 
-
-
-
-Optional FreeCAD customization
-==============================================================================
-
-remove unnecessary workbenches
-------------------------------------------------------------------------------
-https://www.freecadweb.org/wiki/Interface_Customization  
-Menu -> Tools -> Customize  
-![Workbench-Selector](../resources/freecad-workbench-selector.png)  
+`gmsh` is not necessary. 
 
 
 
