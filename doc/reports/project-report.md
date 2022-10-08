@@ -32,10 +32,12 @@ Background
 Goals
 ---------------------------------------------------------------------
 <!-- 
-* which goals should be reached within this project
+* which goal should be reached within this project
   * maximum 400 characters
   * bulletpoints with max 10 words
   * more explanations belong to the background
+* more than one goal should be avoided
+  * multiple goals are complex to reach 
 * goals are about knowledge to achieve
   * e.g. optimize the flow in something, understand the physics from something
   * this is not about simulations
@@ -51,6 +53,7 @@ Major Work Packages
     * detailed explanations later
 * which simulations are/will be used to achieve your goals
 * which special information should each study (group of similar simulations) deliver to reach the project goals
+* which numbers are calculated in the postprocessing
  -->
 
 
@@ -82,6 +85,23 @@ Project-Forecast
 Available Resources
 ===============================================================================
 
+Timeframe
+---------------------------------------------------------------------
+<!-- 
+* deadlines
+* dependent projects
+* necessary completed projects
+ -->
+
+
+Human Resources
+---------------------------------------------------------------------
+<!-- 
+* full time project? 
+* estimated hours per week
+ -->
+
+
 Calculation Enviroment
 ---------------------------------------------------------------------
 <!-- 
@@ -94,7 +114,7 @@ Calculation Enviroment
 ### Hardware
 <!-- 
 |          |                                                                                        |
-| -------- | -------------------------------------------------------------------------------------- |
+| -------- | ------------------------------------------------------------------ |
 | Machine  | 
 | System   | Host: <br> Kernel: <br> Distro:  <br> Desktop: 
 | CPU      | COUNT x Name <br> Cache:  <br> Max. clock speed: XXXX MHz 
@@ -173,6 +193,12 @@ Model & Numerics
 * description of the general meshing approach
  -->
 
+#### Mesh Study
+<!-- 
+* create mesh study and define error 
+* use values of interest from Flow Analysis part
+-->
+
 #### Final Mesh Metrics
 <!-- 
 | Mesh                      | Value     |
@@ -190,16 +216,12 @@ Model & Numerics
  -->
 <!-- not used mesh elements can be deleted -->
 
-
 #### Final Mesh Specific Features
 <!-- 
 * show pictures of meshing from important geometry features
 * is there a specific fokus (mesh refinements at place X)
 * are special features applied (boundary layers, ...)
  -->
-
-#### Mesh Study
-<!-- create mesh study and define error -->
 
 
 ### Physical Modeling
@@ -235,6 +257,7 @@ Model & Numerics
 #### Imbalances
 
 #### Yplus
+<!-- only on relevant faces -->
 
 #### Monitor Point Stability
 
@@ -248,6 +271,7 @@ Model & Numerics
 ### Numerical Confidence
 <!-- 
 * how exact, do you think, are the calculation results
+* how big are the changes in the result, when you change the setup
  -->
 
 
@@ -259,6 +283,9 @@ Flow Analysis
 * show special and interesting flow features to get more insights
 * describe for every picture what you see and you want to be seen by the reader 
 * what is your conclusion of the picture
+* break the results down to single numbers, e.g.: 
+    * (average) velocities (at specific points of interest)
+    * pressure values
 * this should be the biggest part in this report
 
 ![](cfd-reports/XXX_001_Rep/Figure001.png) 
@@ -268,8 +295,6 @@ Flow Analysis
 actual study conclusions
 ---------------------------------------------------------------------
 <!-- 
-* what have you learned so far 
+* what have you learned so far in this study 
+* the overall conclusions should be placed in "Results" in the Management Summary
  -->
-
-
-<!-- Final results should be written down in the Management Summary -->
