@@ -135,6 +135,10 @@ Click on `Run dependency checker` and look in the output if its telling you some
 `gmsh` is not necessary. 
 
 
+**Windows Hints:**
+On Windows you need this second OpenFOAM installation for the data export, because the CfdOF plugin cannot access the installation in the Windows Subsystem for Linux (WSL).  
+
+
 
 Examples & Tutorials
 ==============================================================================
