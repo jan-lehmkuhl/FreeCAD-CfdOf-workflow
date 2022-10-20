@@ -5,13 +5,16 @@ OpenFOAM Installation on Windows
 OpenFOAM is a Linux Programm but there are several ways to run it under Windows.  
 In general it is not necessary for OpenFOAM to have a graphical user interface. 
 OpenFOAM reads text files and writes the output to text files. 
-So if you have access to these files, you can run your GUI-Programs like FreeCAD and Paraview nativly under Windows.
+So if you have access to these files, you can run your GUI-Programs like FreeCAD and Paraview nativly under Windows. 
+
+Beside installing OpenFOAM in a System like WSL or Docker, FreeCAD needs also a [OpenFOAM Windows installation](freecad-cfdof.md#install-cfdof-dependencies) to have access to some template files.  
+
 
 
 Option 1: Windows Subsystem for Linux" (WSL)
 ---------------------------------------------------------------------
 A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. 
-Beside the [WSL-activation] and the graphical-output-forwarding with [Xming] the installation should be very similar to the Linux installation described in this file in the next chapter.  
+Beside the [WSL-activation] the installation should be very similar to the Linux installation described in the [next chapter](#openfoam-installation-on-linux).  
 
 
 ### Installation
@@ -39,22 +42,6 @@ This is not necessary but might be nice.
 
 [VcXsrv]: https://sourceforge.net/projects/vcxsrv/
 [Xming]:  https://de.wikipedia.org/wiki/Xming  
-
-##### Xming
-Download and install Xming from [Sourceforge](https://sourceforge.net/projects/xming/)  
-After installing Xming should run in the windows tray. Then tell your WSL to output to a Display:
-
-    export DISPLAY=:0.0
-
-Afterwards you can start a GUI program.  
-
-When you get an error message similar like following, your Linux don't find a place where to put the graphical output: 
-
-    (gedit:1243): Gtk-WARNING **: 16:29:10.075: cannot open display: :0
-
-If this don't work everything in Linux can be done without an grafical output.
-Instead of using the graphical text editor `gedit` to change files, you can use terminal text editors like `nano` . 
-In Nano you can save the file with `Ctrl+s` and end the session with `Ctrl+x`. 
 
 
 
@@ -120,7 +107,7 @@ source /opt/openfoam7/etc/bashrc
 
 testing
 ---------------------------------------------------------------------
-Now you can test the installation by starting 
+Now you can test the installation in the WSL or Linux system by starting: 
 
     simpleFoam
 

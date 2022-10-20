@@ -1,5 +1,5 @@
 
-This example contains everything to run a complete [OpenFOAM]-simulation, created by the [CFDOF-Plugin] within [FreeCAD]. 
+Welcome to my example to run a complete [OpenFOAM]-simulation, created by the [CFDOF-Plugin] within [FreeCAD]. 
 
 
 
@@ -40,19 +40,27 @@ These are essential and you should try at least 60% and understand the meaning f
 
 start meshing and openfoam-solver
 ------------------------------------------------------------
-If the installation is setup properly you should be able to start the complete calculation from the repository root folder directly after downloading with: 
+If the installation is setup properly you should be able to start the complete calculation from the repository root folder. 
+At Windows this should be also executed in [WSL](doc/installation-instructions/openfoam.md#option-1-windows-subsystem-for-linux-wsl) Linux:  
 
     cd example-cfdof-workflow
     make all
 
-afterwards some results can be reviewed with paraview:
+
+Postprocessing
+------------------------------------------------------------
+Afterwards some results can be reviewed with Paraview. 
+In Windows you open Paraview from "Windows Search" and you open the file `pv.foam` in the `case`-folder. 
+In native Linux you execute: 
 
     make view-results
 
-Before the flow variables can be seen in Paraview:  
-* the results have to be, marked as visible in the pipeline browser (eye in picture below),  
+
+Before you the flow variables you have to do some preparation in Paraview:  
+
 * if the results are calculated on multiple cores, the results must be decomposed,  
   select `Case Type: Decomposed Case` and click on `Apply`  
+* the results have to be, marked as visible in the pipeline browser (eye in picture below),  
 * the last timestep (even for a mesh) has to be selected from the dropdown menu,  
 * a flow variable from the results (e.g. p, U, ...) must be selected.  
 
@@ -71,7 +79,7 @@ If everything is setup correctly you can start to look deeper in the scripts & f
 Makefile - a dictionary for your possible cli tasks
 -----------------------------------------------------------
 
-First you should use an editor to look into the `./Makefile` to see the different tasks which you can perform. 
+First you should use your preferred editor to look into the `./Makefile` to see the different tasks which you can perform. 
 These tasks (in Makefiles they are called "targets") you can execute within this example. 
 You should also know how the different targets work 
 
@@ -111,6 +119,7 @@ Detailed CFD Workflow
 Knowing everything works fine, we now can look deeper in the cfd workflow. 
 
 
+
 .0. Define your project
 ----------------------------------------------------------
 Before you start, think about your expectations of this cfd project. 
@@ -119,6 +128,7 @@ Before you start, think about your expectations of this cfd project.
 * What assumptions can you tolerate without loosing the accuracy you need? 
 
 If you did not answer these kind of project management questions before you start, you will be lost during the process and not succeed!
+
 
 
 .1. CFD Preprocessing: FreeCAD GUI preprocessing with CfdOF-Plugin
@@ -136,16 +146,20 @@ Keep in mind: You do not model the pipe, **you model the volume inside the pipe*
 
 This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D Models.  
 
-With `freecad freecad-cfd.FCStd` or `make open-freecad` you can open freecad and loading directly the already prepared data in the linked freecad-file. 
+
+Now open FreeCAD. 
+At Windows use your "Windows Search"
+At a native Linux you can open FreeCAD with `freecad freecad-cfd.FCStd` or `make open-freecad` and loading directly the already prepared data in the linked freecad-file. 
 
     freecad freecad-cfd.FCStd
+
 
 On the left side in the model tree all content in this file is listed.  
 ![](doc/resources/freecad-combo-view.png)  
 To toggle the visibility of specific entries you can mark some and hit the space bar. 
 To getting to know each entry make all entries invisible (greyed out) and test what is appearing when you switch it to visible again. 
 
- 
+
 ### Step 2: creating/modifying the mesh setup
 To do the CFD preprocessing switch to the CfdOF Workbench inside FreeCAD. 
 
@@ -166,6 +180,9 @@ When you finished your work, execute the `Write mesh case`-Button inside the Fre
 These command writes text files to the subfolders `meshCase` into the directory specified in the CfdOF-Plugin-Settings. 
 These files can be executed afterwards with OpenFOAM to build the mesh. 
 
+#### verify your output
+Now remove the folder `meshCase` and export it again, to verify the correct output path of the [FreeCAD-CfdOF-Plugin](doc/installation-instructions/freecad-cfdof.md#set-output-directory). 
+
 
 ### Step 3: creating/modifying the cfd setup
 The initialization was already done by the mesh creation process. 
@@ -178,13 +195,15 @@ If not existing, for every Face has a boundary condition to be applied.
 When the preprocessing is finished you export the mesh and cfd settings. 
 Doublecklick on `CFDAnalysis/CfdSolver` and execute the `Write`-Button inside the FreeCAD-Tasks
 
-These commands will write text files to the subfolder `case` into the directory specified in the CfdOF-Plugin-Settings. 
+These commands will write text files to the subfolder `case` into the directory specified in the CfdOF-Plugin-Settings, similar to `meshCase`. 
+
 
 
 .2. CFD meshing: create a mesh
 ----------------------------------------------------------
 The geometry creation and meshing setup is already prepared in the previous section with Freecad.  
-Therefore you can now create the mesh based on the text and stl-files in the folder `meshCase` with:
+Therefore you can now create the mesh based on the text and stl-files in the folder `meshCase`. 
+For this step you have to enter the WSL or Linux terminal and execute:
 
     cd meshCase
     ./Allmesh
@@ -193,6 +212,19 @@ or using the `Makefile` in the project root directory with the command:
 
     make mesh
 
+
+### test success
+these commands should create a lot terminal output with the final lines:
+
+    // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+    Reading surf from "mesh_outside.stl" ...
+    Writing surf to "mesh_outside.stl" ...
+    Scaling points by (1000 1000 1000)
+    End
+
+Beside others the file `meshCase/constant/polyMesh/points` should be created and hold a lot of points. 
+
+
 ### review the meshing process & the mesh
 Review the file `meshCase/Allmesh` for detailed information of the meshing process and read from the [OpenFOAM-documentation] the [OpenFOAM-User-Guide]. 
 [Chapter-5] covers the meshing process.  
@@ -200,14 +232,15 @@ Review the file `meshCase/Allmesh` for detailed information of the meshing proce
 Then you should have a look in the created files, to get a feeling of the process. 
 They are in the folder `meshCase/constant/polyMesh` and especially in the file `points`. 
 
-Afterwards you should review the created mesh with in a 3D viewer: 
+Afterwards you should review the created mesh within the 3D viewer Paraview. 
+At Windows start from the Search and in Linux execute: 
 
     make view-mesh
 
 
 .3. CFD solving: starting the calculation
 ----------------------------------------------------------
-with the created mesh in `meshCase` and the exported setup-files in the folder `case` you can start the calculation with: 
+with the created mesh in `meshCase` and the exported setup-files in the folder `case` you can start the calculation in WSL or Linux with: 
 
     cd case
     ./Allrun
@@ -216,6 +249,28 @@ or using the `Makefile` with
 
     make run
 
+
+### test success
+If the calculation runs, there is a lot of terminal output. 
+At the end there shoud be a success message like: 
+
+    GAMG:  Solving for p, Initial residual = 1.2947568e-08, Final residual = 1.8387204e-09, No Iterations 1
+    time step continuity errors : sum local = 1.1281226e-08, global = 3.6351064e-09, cumulative = -5.0078224e-06
+    smoothSolver:  Solving for omega, Initial residual = 9.7324543e-06, Final residual = 5.9005793e-07, No Iterations 3
+    smoothSolver:  Solving for k, Initial residual = 8.9986853e-05, Final residual = 5.6533897e-06, No Iterations 3
+    ExecutionTime = 3.16 s  ClockTime = 3 s
+
+
+    SIMPLE solution converged in 106 iterations
+
+    End
+
+    Finalising parallel run
+
+In the folder `case/processor0/100` or `case/100` you find for the timestep `100` files with the values for pressure (`p`) or velocities (`U`). 
+
+
+### review
 Review the file `meshCase/Allrun` for a detailed review of the calculation process and read from the [OpenFOAM-documentation] the [OpenFOAM-User-Guide]. 
 
 Then you should explore folder structure in `case`.  
@@ -229,6 +284,7 @@ Before calculation starts three folders exists:
 the file structure is documented in [Chapter-4.1] from the User Guide.
 
 
+
 .4. CFD postprocessing: Review the output
 ----------------------------------------------------------
 Afterall now its time to review the computed fluid flow. 
@@ -236,7 +292,7 @@ This might be the last step of a long journey and you might be exhausted, but th
 Here you get your information you can use to answer the questions you posed in chapter 0. 
 So **take your time and investigate the flow** before you start your next calculation. 
 
-    make view-results
+Open ParaView as already described in the [postprocessing section](#postprocessing).  
 
 Keep in mind: **Do only small changes to the cfd setup** and verify the results after every change.  
 With to big steps you cannot draw solid conclusions. 
