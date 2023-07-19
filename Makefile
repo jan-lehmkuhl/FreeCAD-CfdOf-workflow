@@ -128,6 +128,7 @@ clean: clean-mesh clean-case
 clean-mesh: clean-preliminary-meshes
 	rm -f  meshCase/log*
 	rm -f  meshCase/mesh_outside.stl
+	rm -f  meshCase/surfaceMesh.vtk
 	rm -rf meshCase/constant/extendedFeatureEdgeMesh
 	rm -rf meshCase/constant/polyMesh
 	rm -rf meshCase/constant/triSurface/*.eMesh
