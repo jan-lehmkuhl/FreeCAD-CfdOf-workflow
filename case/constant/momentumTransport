@@ -6,16 +6,11 @@
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
-    version     4.0;
+    version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      meshQualityDict;
+    object      momentumTransport;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// Include defaults parameters from master dictionary
-#includeIfPresent "$FOAM_ETC/caseDicts/meshQualityDict"
-#includeIfPresent "$FOAM_ETC/caseDicts/mesh/generation/meshQualityDict"
-
-// ************************************************************************* //
+#include "turbulenceProperties"

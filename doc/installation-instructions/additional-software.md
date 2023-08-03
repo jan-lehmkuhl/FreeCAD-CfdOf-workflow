@@ -22,11 +22,5 @@ VS Code
 VS Code is a versatile editor with git integration. 
 Install Code on your native GUI OS. 
 
-## Windows
-[Microsoft VS Code for Windows](https://code.visualstudio.com/docs/setup/windows) is described here. 
-
-## Linux
-[Microsoft VS Code for Linux](https://code.visualstudio.com/docs/setup/linux) can be installed in the command line by:
-
-    sudo snap install --classic code
-
+* [Microsoft VS Code for Windows](https://code.visualstudio.com/docs/setup/windows)  
+* [Microsoft VS Code for Linux](https://code.visualstudio.com/docs/setup/linux)  

@@ -67,26 +67,27 @@ Unfortunately blueCFD is stuck to openFOAM 5, but it's worth to test if the WSL 
 OpenFOAM Installation on Linux
 ===============================================================================
 
-This instructions refers to a Ubuntu 18.04 LTS installation and is described in [OpenFOAM Ubuntu instructions](https://openfoam.org/download/7-ubuntu/)  
+This instructions refers to a Ubuntu 20.04 LTS installation and is described in [OpenFOAM Ubuntu instructions](https://openfoam.org/download/)  
 A clean linux operating system can be applied on an USB-Stick, without major performance issues.  
 
 Further resources:  
 [OpenFOAM Linux Guide](https://cfd.direct/openfoam/linux-guide/)  
 [OpenFOAM Downloads](https://cfd.direct/openfoam/download/)  
-[OpenFOAM.org source files](https://github.com/OpenFOAM/OpenFOAM-7)  
+[OpenFOAM.org source files](https://github.com/OpenFOAM/OpenFOAM-11)  
 
 
 Package installation 
 ---------------------------------------------------------------------
 First you have to add a online-repository and tell Ubuntu where he find additional software
 
-    sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+    sudo sh -c "wget -O - https://dl.openfoam.org/gpg.key > /etc/apt/trusted.gpg.d/openfoam.asc"
     sudo add-apt-repository http://dl.openfoam.org/ubuntu
     sudo apt-get update
 
-then you can install with following command. Linux will download the needed files from the previous defined repository. 
+then you can install with following command. 
+Linux will download the needed files from the previous defined repository. 
 
-    sudo apt-get -y install openfoam7
+    sudo apt-get -y install openfoam11
 
 
 change .bashrc
@@ -101,7 +102,7 @@ open a texteditor with:
 paste in the `.bashrc` textfile following line: 
 
 ~~~bash
-source /opt/openfoam7/etc/bashrc
+source /opt/openfoam11/etc/bashrc
 ~~~
 
 
@@ -119,7 +120,7 @@ user@machine:~/simulations$ simpleFoam
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  6
+    \\  /    A nd           | Version:  11
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 ~~~

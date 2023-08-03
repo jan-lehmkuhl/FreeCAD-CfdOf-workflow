@@ -97,6 +97,7 @@ meshCase/constant/triSurface
 
 # freecad meshing
 mesh_outside.stl
+surfaceMesh.vtk
 
 # cfmesh
 meshCase/*.fms
