@@ -100,10 +100,10 @@ FreeCAD -> File -> Edit -> Preferences -> CFDOF
 ### install directory
 On **Linux** set OpenFOAM directory to: 
 ~~~
-/opt/openfoam7
+/opt/openfoam11
 ~~~
 
-On **Windows** this remains empty 
+On **Windows** this remains empty but you have to install later more [dependencies](#openfoam-only-on-windows).  
 
 
 ### Set Output directory 
@@ -122,21 +122,49 @@ Install CfdOF Dependencies
 ---------------------------------------------------------------------
 FreeCAD -> File -> Edit -> Preferences -> CfdOF
 
-Install with the buttons at least:
-
-* OpenFOAM (only on Windows)
-* ParaView (only on Windows)
-* cfMesh
-
+Install with the buttons at least:  
 ![](../resources/cfdof-settings-windows.jpg)
 
 
+### OpenFOAM (only on Windows)
+On Windows you need this second OpenFOAM installation for the data export from CfdOF plugin, because the CfdOF plugin cannot access the installation in the Windows Subsystem for Linux (WSL).  
+
+When you try to export the meshCase files something like this occurs in the "Report view":  
+~~~c
+15:50:16  Populating mesh dictionaries in folder C:\Users\lehmkuhj\tmp\meshCase
+15:50:16  Traceback (most recent call last):
+15:50:16    File "C:\Users\lehmkuhj\AppData\Roaming\FreeCAD\Mod\CfdOF\.\CfdOF\Mesh\TaskPanelCfdMesh.py", line 222, in writeMesh
+15:50:16      FreeCADGui.doCommand("cart_mesh.writeMesh()")
+15:50:16    File "<string>", line 1, in <module>
+15:50:16    File "C:\Users\lehmkuhj\AppData\Roaming\FreeCAD\Mod\CfdOF\.\CfdOF\Mesh\CfdMeshTools.py", line 84, in writeMesh
+15:50:16      self.writeMeshCase()
+15:50:16    File "C:\Users\lehmkuhj\AppData\Roaming\FreeCAD\Mod\CfdOF\.\CfdOF\Mesh\CfdMeshTools.py", line 693, in writeMeshCase
+15:50:16      'FoamRuntime': CfdTools.getFoamRuntime(),
+15:50:16    File "C:\Users\lehmkuhj\AppData\Roaming\FreeCAD\Mod\CfdOF\.\CfdOF\CfdTools.py", line 584, in getFoamRuntime
+15:50:16      raise IOError("OpenFOAM installation path not set and not detected")
+15:50:16  OSError: OpenFOAM installation path not set and not detected
+~~~
+
+With hitting the "Install OpenFOAM"-Button the ESI Version of OpenFOAM ist installed at Windows in following folder:  
+
+    C:\Users\lehmkuhj\AppData\Roaming\ESI-OpenCFD\OpenFOAM\v2206
+
+
+### ParaView (only on Windows)
+Paraview ist installed in a different 
+
+    C:\Program Files\ParaView 5.10.1-Windows-Python3.9-msvc2017-AMD64
+
+
+### cfMesh
+Is nice to have but not necessary.  
+
+
+### Check 
 Click on `Run dependency checker` and look in the output if its telling you something about missing openfoam files.  
 `gmsh` is not necessary. 
 
-
-**Windows Hints:**
-On Windows you need this second OpenFOAM installation for the data export, because the CfdOF plugin cannot access the installation in the Windows Subsystem for Linux (WSL).  
+![](../resources/dependency-checker-output.png)
 
 
 

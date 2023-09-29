@@ -88,6 +88,7 @@ then you can install with following command.
 Linux will download the needed files from the previous defined repository. 
 
     sudo apt-get -y install openfoam11
+    sudo apt-get install build-essential
 
 
 change .bashrc
@@ -96,8 +97,7 @@ after installation Ubuntu should know where he finds the OpenFOAM binaries, so t
 open a texteditor with: 
 
     nano ~/.bashrc
-    or
-    code ~/.bashrc
+
 
 paste in the `.bashrc` textfile following line: 
 
