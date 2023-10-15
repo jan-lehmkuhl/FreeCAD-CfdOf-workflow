@@ -13,6 +13,8 @@
 | checked by        | xxx
 <br>  
 
+<!-- Please add date of printing -->
+
 <!-- example picture for quick project identification -->
 ![](doc/images/XXX.png) 
 
