@@ -4,10 +4,10 @@
 # a target is executed from bash with:
 # 		make TARGETNAME
 # a target can have prerequirements, so target "all" will first execute target "clean", "mesh" and "run"
-# https://en.wikipedia.org/wiki/Make_(software) 
+# https://en.wikipedia.org/wiki/Make_(software)
 
 
-# some variables: 
+# some variables:
 date = $(shell date +"%Y%m%d-%H%M%S%p")
 archiveFolder = ARCHIVE/run-$(date)
 
@@ -36,14 +36,14 @@ store-0-as-0org:
 	if [ ! -d case/0.org ] ;  then      \
 		echo "*** copy 0 to 0.org"  ; \
 		cp -rf case/0    case/0.org   ; \
-	fi ; 
+	fi ;
 
 
 # meshing
 # -----------------------------------------------
 
 # starts Allmesh script within meshCase to create the mesh
-mesh: 
+mesh:
 	cd meshCase ;  ./Allmesh
 
 
@@ -55,6 +55,7 @@ copy-0org-to-0:
 
 # run copies the initial state from 0.org to 0 and starts the Allrun script
 run: store-0-as-0org copy-0org-to-0
+	sed -i -e 's/\.\.\\meshCase/\.\.\/meshCase/'  case/Allrun
 	cd case ;  ./Allrun
 
 
@@ -138,7 +139,7 @@ clean-preliminary-meshes:
 	rm -rf [1-9]
 
 # deletes all files and folders created by the openFOAM-solver
-clean-case: 
+clean-case:
 	rm -rf case/log.*
 	rm -rf case/0
 	rm -rf case/constant/polyMesh
@@ -159,7 +160,7 @@ reset: delete-freecad-exports
 
 
 # removes on windows machines bad line endings which prevents bash scripts to run
-fix-windows: 
+fix-windows:
 	# https://stackoverflow.com/questions/14219092/bash-script-and-bin-bashm-bad-interpreter-no-such-file-or-directory
 	# removes cariage return "\r" at a line end "$"
 	# to mask a "$" in a makefile an additional $ is needed
