@@ -7,6 +7,10 @@
 # https://en.wikipedia.org/wiki/Make_(software)
 
 
+# PHONY for all targets
+.PHONY: $(shell sed -n -e '/^$$/ { n ; /^[^ .\#][^ ]*:/ { s/:.*$$// ; p ; } ; }' $(MAKEFILE_LIST))
+
+
 # some variables:
 date = $(shell date +"%Y%m%d-%H%M%S%p")
 archiveFolder = ARCHIVE/run-$(date)
@@ -17,7 +21,7 @@ archiveFolder = ARCHIVE/run-$(date)
 # ======================================================
 
 # run "make all" if you want to create everything new
-all: clean mesh run
+all: clean mesh run post
 
 
 # freecad
@@ -48,6 +52,11 @@ run:
 
 # reviewing created mesh and results
 # -----------------------------------------------
+
+post:
+	cd case ;  ../scripts/python-postprocessing.py
+	# cd case ;  ../scripts/paraview-export-all.py
+
 
 # opens paraview for reviewing the mesh
 view-mesh:
