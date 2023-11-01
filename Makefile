@@ -27,16 +27,6 @@ all: clean mesh run
 # you can also execute the command "freecad freecad-cfd.FCStd" directly in the terminal
 open-freecad:
 	freecad freecad-cfd.FCStd
-	make store-0-as-0org
-
-
-# after exporting files from freecad everything inside case and meshCase will be overwriten
-# this target moves the folder 0 inside case to 0.org, because otherwise 0 will be overwritten from the openfoam-solver
-store-0-as-0org:
-	if [ ! -d case/0.org ] ;  then      \
-		echo "*** copy 0 to 0.org"  ; \
-		cp -rf case/0    case/0.org   ; \
-	fi ;
 
 
 # meshing
@@ -49,12 +39,9 @@ mesh:
 
 # OpenFOAM calculation
 # -----------------------------------------------
-copy-0org-to-0:
-	mkdir -p case/0
-	cp -rf  case/0.org/*  case/0
 
 # run copies the initial state from 0.org to 0 and starts the Allrun script
-run: store-0-as-0org copy-0org-to-0
+run:
 	sed -i -e 's/\.\.\\meshCase/\.\.\/meshCase/'  case/Allrun
 	cd case ;  ./Allrun
 
@@ -141,7 +128,6 @@ clean-preliminary-meshes:
 # deletes all files and folders created by the openFOAM-solver
 clean-case:
 	rm -rf case/log.*
-	rm -rf case/0
 	rm -rf case/constant/polyMesh
 	rm -rf case/postProcessing
 	rm -rf case/processor[0-9]

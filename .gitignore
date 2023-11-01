@@ -35,13 +35,11 @@ tmp
 # OpenFOAM Solving
 # =============================================================================
 
-## Libraries 
+## Libraries
 case/system/turbulenceLib
 
 ## Timestep directories
-case/0/*
 case/0.*
-!case/0.org
 case/[1-9]*
 
 ## Fields that must get ignored
