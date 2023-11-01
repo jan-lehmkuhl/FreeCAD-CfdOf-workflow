@@ -48,7 +48,6 @@ functions
 {
     #includeFunc residuals
     #includeFunc probes
-    #includeFunc minMaxMagnitude
     #includeFunc yPlus
 };
 
