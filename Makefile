@@ -10,10 +10,14 @@
 # PHONY for all targets
 .PHONY: $(shell sed -n -e '/^$$/ { n ; /^[^ .\#][^ ]*:/ { s/:.*$$// ; p ; } ; }' $(MAKEFILE_LIST))
 
+remove_paraview_state_variable_parts = sed --in-place --regexp-extended --expression  \
+	"s/(<Element index=\"0\" value=\")(.*)(pv\.foam\"\/>)/\1\3/g"
+
 
 # some variables:
 date = $(shell date +"%Y%m%d-%H%M%S%p")
 archiveFolder = ARCHIVE/run-$(date)
+paraviewState = '../post/paraview-state.pvsm'
 
 
 
@@ -59,13 +63,16 @@ post:
 
 
 # opens paraview for reviewing the mesh
-view-mesh:
+paraview-mesh:
 	cd meshCase  ;  paraFoam
 
+paraview-no-state:
+	cd case ;  paraview pv.foam
 
-# opens paraview for reviewing the results
-view-results:
-	cd case  ;  paraFoam -builtin
+# opens paraview with the referenced state file for reviewing the results
+paraview:
+	cd case ;  paraview --state=$(paraviewState)
+	cd case ;  ${remove_paraview_state_variable_parts} $(paraviewState)
 
 
 
