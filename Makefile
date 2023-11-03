@@ -59,7 +59,7 @@ run:
 
 post:
 	cd case ;  ../scripts/python-postprocessing.py
-	# cd case ;  ../scripts/paraview-export-all.py
+	cd case ;  pvbatch ../scripts/paraview-export-all.py
 
 
 # opens paraview for reviewing the mesh
