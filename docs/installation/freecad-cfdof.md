@@ -59,7 +59,7 @@ Optional FreeCAD customization
 
 >Menu -> Tools -> Customize  
 
-![Workbench-Selector](../resources/freecad-workbench-selector.png)  
+![Workbench-Selector](./../resources/freecad-workbench-selector.png)  
 
 
 
@@ -123,7 +123,7 @@ Install CfdOF Dependencies
 FreeCAD -> File -> Edit -> Preferences -> CfdOF
 
 Install with the buttons at least:  
-![](../resources/cfdof-settings-windows.jpg)
+![](./../resources/cfdof-settings-windows.jpg)
 
 
 ### OpenFOAM (only on Windows)
@@ -164,7 +164,7 @@ Is nice to have but not necessary.
 Click on `Run dependency checker` and look in the output if its telling you something about missing openfoam files.  
 `gmsh` is not necessary. 
 
-![](../resources/dependency-checker-output.png)
+![](./../resources/dependency-checker-output.png)
 
 
 

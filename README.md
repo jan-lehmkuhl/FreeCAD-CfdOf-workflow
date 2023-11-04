@@ -27,12 +27,12 @@ If you have no internet connection and a downloaded zip file you can extract the
 
 installation and troubleshooting
 -----------------------------------------------------------
-Detailed installation instructions for all operating systems are located in `docs/installation-instructions/*.md`. 
+Detailed installation instructions for all operating systems are located in [`docs/installation-instructions/*.md`](docs/installation-instructions/README.md). 
 Especially set the CfdOF-Plugin Output Directory to `.`. 
 
-[doc/installation-instructions/freecad-cfdof.md](doc/installation-instructions/freecad-cfdof.md)  
-[doc/installation-instructions/openfoam.md](doc/installation-instructions/openfoam.md)  
-[doc/installation-instructions/additional-tools.md](doc/installation-instructions/additional-tools.md)  
+[doc/installation-instructions/freecad-cfdof.md](docs/installation-instructions/freecad-cfdof.md)  
+[doc/installation-instructions/openfoam.md](docs/installation-instructions/openfoam.md)  
+[doc/installation-instructions/additional-tools.md](docs/installation-instructions/additional-tools.md)  
 
 The most important linux commands are shown in this [linux-guide]. 
 These are essential and you should try at least 60% and understand the meaning from all. 
@@ -41,7 +41,7 @@ These are essential and you should try at least 60% and understand the meaning f
 start meshing and openfoam-solver
 ------------------------------------------------------------
 If the installation is setup properly you should be able to start the complete calculation from the repository root folder. 
-At Windows this should be also executed in [WSL](doc/installation-instructions/openfoam.md#option-1-windows-subsystem-for-linux-wsl) Linux:  
+At Windows this should be also executed in [WSL](docs/installation-instructions/openfoam.md#option-1-windows-subsystem-for-linux-wsl) Linux:  
 
     cd example-cfdof-workflow
     make all
@@ -64,7 +64,7 @@ Before you the flow variables you have to do some preparation in Paraview:
 * the last timestep (even for a mesh) has to be selected from the dropdown menu,  
 * a flow variable from the results (e.g. p, U, ...) must be selected.  
 
-![](doc/resources/paraview-first-settings.png)
+![](docs/resources/paraview-first-settings.png)
 
 afterwards you should see something like the pipe on the right side from the above picture
 
@@ -155,7 +155,7 @@ At a native Linux you can open FreeCAD with `freecad freecad-cfd.FCStd` or `make
 
 
 On the left side in the model tree all content in this file is listed.  
-![](doc/resources/freecad-combo-view.png)  
+![](docs/resources/freecad-combo-view.png)  
 To toggle the visibility of specific entries you can mark some and hit the space bar. 
 To getting to know each entry make all entries invisible (greyed out) and test what is appearing when you switch it to visible again. 
 
@@ -181,7 +181,7 @@ These command writes text files to the subfolders `meshCase` into the directory 
 These files can be executed afterwards with OpenFOAM to build the mesh. 
 
 #### verify your output
-Now remove the folder `meshCase` and export it again, to verify the correct output path of the [FreeCAD-CfdOF-Plugin](doc/installation-instructions/freecad-cfdof.md#set-output-directory). 
+Now remove the folder `meshCase` and export it again, to verify the correct output path of the [FreeCAD-CfdOF-Plugin](docs/installation-instructions/freecad-cfdof.md#set-output-directory). 
 
 
 ### Step 3: creating/modifying the cfd setup
