@@ -1,5 +1,5 @@
 
-Welcome to my example to run a complete [OpenFOAM]-simulation, created by the [CFDOF-Plugin] within [FreeCAD]. 
+Welcome to my example to run a [OpenFOAM]-simulation, created by the [CFDOF-Plugin] within [FreeCAD]. 
 
 
 
@@ -16,7 +16,7 @@ Therefore you clone (copy) this example-repository directly from GitLab with the
 
     cd <SOMEWHERE>    # (e.g. /home/USER/simulations)
     git clone https://gitlab.com/schlupp/example-cfdof-workflow.git
-    # creates a folder "example-cfdof-workflow" with all files inside
+    # this creates a folder "example-cfdof-workflow" with all files inside
 
 with a specified folder like `git clone <REPOSITORY> <FOLDER>` after the the previous command the repository files will be placed inside this folder.  
 
@@ -27,15 +27,9 @@ If you have no internet connection and a downloaded zip file you can extract the
 
 installation and troubleshooting
 -----------------------------------------------------------
-Detailed installation instructions for all operating systems are located in [`docs/installation-instructions/*.md`](docs/installation-instructions/README.md). 
-Especially set the CfdOF-Plugin Output Directory to `.`. 
+Detailed installation instructions for all operating systems are located in [`docs/installation-instructions/*.md`](docs/installation/README.md). 
+Especially set the CfdOF-Plugin Output Directory to `.` or a good known place. 
 
-[doc/installation-instructions/freecad-cfdof.md](docs/installation-instructions/freecad-cfdof.md)  
-[doc/installation-instructions/openfoam.md](docs/installation-instructions/openfoam.md)  
-[doc/installation-instructions/additional-tools.md](docs/installation-instructions/additional-tools.md)  
-
-The most important linux commands are shown in this [linux-guide]. 
-These are essential and you should try at least 60% and understand the meaning from all. 
 
 
 start meshing and openfoam-solver
@@ -309,8 +303,6 @@ in `./doc` are different additional information stored in Markdown (*.md) files.
 [FreeCAD-Tutorial]:         https://www.freecadweb.org/wiki/Creating_a_simple_part_with_PartDesign 
 [CFDOF-Plugin]:             https://github.com/jaheyns/CfdOF
 [OpenFOAM]:                 https://openfoam.org/
-
-[linux-guide]:              https://cfd.direct/openfoam/linux-guide/
 
 [OpenFOAM-documentation]:   https://cfd.direct/openfoam/documentation/  
 [OpenFOAM-User-Guide]:      https://cfd.direct/openfoam/user-guide/  
