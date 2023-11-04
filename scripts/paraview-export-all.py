@@ -1,3 +1,6 @@
+# must be executed by pvbatch from paraview installation
+
+
 from paraview.simple import *
 
 import os

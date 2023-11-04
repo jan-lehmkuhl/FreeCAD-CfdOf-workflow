@@ -43,31 +43,45 @@ At Windows this should be also executed in [WSL](docs/installation-instructions/
 
 Postprocessing
 ------------------------------------------------------------
-Afterwards some results can be reviewed with Paraview. 
-In Windows you open Paraview from "Windows Search" and you open the file `pv.foam` in the `case`-folder. 
-In native Linux you execute: 
+After the calculation you should see the numerical values in file [`case/processor0/100/U`](case/processor0/100/U), 
+which is the data for the velocity in the 100 iteration.  
 
-    make view-results
+~~~c++
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   nonuniform List<vector> 
+2275
+(
+(-0.0041313212 0.021062818 -3.0098098)
+(0.043862117 -0.15867647 -3.2610956)
+(0.013769403 0.10046274 -2.9954474)
+(0.056011809 -0.089816178 -3.221244)
+(-0.097244635 0.076614349 -3.2684462)
+(0.034121441 0.1890505 -2.9816516)
+
+...
+~~~
+
+To analyze this data in a more convenient graphical way you should use Paraview. 
+The details are described in this [HowTo](docs/howtos/paraview-usage.md) but
+if everything is setup correct, you can open Paraview with: 
+
+    make paraview
 
 
-Before you the flow variables you have to do some preparation in Paraview:  
+If you stored a paraview state file the postprocessing for [scripts/paraview-export-all.py](scripts/paraview-export-all.py), 
+the pictures from different layouts are stored in [case/doc/paraview](case/doc/paraview/renderView1.png) after executing:  
 
-* if the results are calculated on multiple cores, the results must be decomposed,  
-  select `Case Type: Decomposed Case` and click on `Apply`  
-* the results have to be, marked as visible in the pipeline browser (eye in picture below),  
-* the last timestep (even for a mesh) has to be selected from the dropdown menu,  
-* a flow variable from the results (e.g. p, U, ...) must be selected.  
+    make post
 
-![](docs/resources/paraview-first-settings.png)
-
-afterwards you should see something like the pipe on the right side from the above picture
+The needed state file is defined in the [Makefile](Makefile#L20) as variable `paraviewState`. 
 
 
 
 Technical Remarks  
 =================================================================
 
-If everything is setup correctly you can start to look deeper in the scripts & files to understand the entire cfd workflow. 
+If everything is setup correctly or some troubleshooting is needed, you can start to look deeper in the scripts & files to understand the entire cfd workflow. 
 
 
 Makefile - a dictionary for your possible cli tasks
