@@ -25,7 +25,7 @@ paraviewState = '../post/paraview-state.pvsm'
 # ======================================================
 
 # run "make all" if you want to create everything new
-all: clean mesh run post
+all: clean fix-windows mesh run post
 
 
 # freecad
@@ -50,7 +50,7 @@ mesh:
 
 # run copies the initial state from 0.org to 0 and starts the Allrun script
 run:
-	sed -i -e 's/\.\.\\meshCase/\.\.\/meshCase/'  case/Allrun
+	sed --in-place --expression='s/\.\.\\meshCase/\.\.\/meshCase/'  case/Allrun
 	cd case ;  ./Allrun
 
 
@@ -163,8 +163,8 @@ reset: delete-freecad-exports
 
 # removes on windows machines bad line endings which prevents bash scripts to run
 fix-windows:
-	# https://stackoverflow.com/questions/14219092/bash-script-and-bin-bashm-bad-interpreter-no-such-file-or-directory
-	# removes cariage return "\r" at a line end "$"
-	# to mask a "$" in a makefile an additional $ is needed
-	sed -i -e 's/\r$$//'  meshCase/Allmesh
-	sed -i -e 's/\r$$//'  case/Allrun
+	@# https://stackoverflow.com/questions/14219092/bash-script-and-bin-bashm-bad-interpreter-no-such-file-or-directory
+	@# removes cariage return "\r" at a line end "$"
+	@# to mask a "$" in a makefile an additional $ is needed
+	sed --in-place --expression='s/\r$$//'  meshCase/Allmesh
+	sed --in-place --expression='s/\r$$//'  case/Allrun
