@@ -1,12 +1,16 @@
 Standard Python
 ======================================================================
 
-To execute [Python Postprocessing](../../scripts/python-postprocessing.py) from `make post` its necessary to install [Python](https://www.python.org) if its not yet present.  
+To execute [Python Postprocessing](../../scripts/python-postprocessing.py) from `make post` its necessary 
+to install [Python3](https://www.python.org) and 
+to install its installer "pip" if its not yet present.  
 
-    python --version
+    python3 --version
+    pip --version
 
     sudo apt update
     sudo apt-get install python3
+    sudo apt-get install python3-pip
 
 
 ## Pandas and Matplotlib
