@@ -9,40 +9,46 @@ Paraview bundled with OpenFOAM misses the Python scripting.
 Download & Extract
 ------------------------------------------------------------
 
-[Download](https://www.paraview.org/download/) the executables and extract with tar: 
+[Download](https://www.paraview.org/download/) the Linux executable and extract with tar inside WSL: 
 
-    cd ~/bin/paraview
-    tar -xf FILE
-
-
-Use `osmesa` version vor headless machines without x-server like Docker, when you have no GUI.  
-
+    cd 
+    mkdir bin
+    cd bin
+    tar --extract --file FILE
 
 
-Make available in PATH
+Use `osmesa` version for headless machines without x-server like Docker, when you have no GUI.  
+
+
+
+Make pvbatch and pvpython available in PATH
 ------------------------------------------------------------
 
-Do not source everything in `*/paraview/bin`. 
-This can lead to unexpected behaviour e.g. with `mpiexec`.  
+"pvbatch" from the downloaded paraview must be available from command line. 
+Often the it refers to the OpenFOAM version which has no build-in python.  
 
-    which mpiexec
-    # /usr/bin/mpiexec
+Change `.bashrc` and source `$HOME/.local/bin` after OpenFOAM. 
+Open a new terminal and test the order (`~/.local/bin` at the top) with:  
 
-change `.bashrc` and source `$HOME/.local/bin` after OpenFOAM.  
+    echo $PATH | tr : '\n'
+
+
 Then create softlinks to the desired files
 
     cd ~/.local/bin
-    ln s ~/bin/paraview/use/bin/paraview
-    ln s ~/bin/paraview/use/bin/pvbatch
-    ln s ~/bin/paraview/use/bin/pvpython
+
+    ln s ~/bin/ParaView-XXXXX/bin/pvbatch
+    ln s ~/bin/ParaView-XXXXX/bin/pvpython
 
 
 test version with: 
 
     cd
-    paraview --version
     pvbatch  --version
     pvpython --version
-    which paraview
     which pvbatch
     which pvpython
+
+
+Do not source everything in `*/paraview/bin`. 
+This can lead to unexpected behaviour e.g. with `mpiexec`.  
