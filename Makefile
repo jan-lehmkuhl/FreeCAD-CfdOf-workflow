@@ -168,3 +168,4 @@ fix-windows:
 	@# to mask a "$" in a makefile an additional $ is needed
 	sed --in-place --expression='s/\r$$//'  meshCase/Allmesh
 	sed --in-place --expression='s/\r$$//'  case/Allrun
+	sed --in-place --expression='s/\r$$//'  scripts/python-postprocessing.py
