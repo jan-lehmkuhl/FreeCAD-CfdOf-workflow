@@ -8,7 +8,8 @@
 
 
 # PHONY for all targets
-.PHONY: $(shell sed -n -e '/^$$/ { n ; /^[^ .\#][^ ]*:/ { s/:.*$$// ; p ; } ; }' $(MAKEFILE_LIST))
+MAKEFLAGS += --always-make
+
 
 remove_paraview_state_variable_parts = sed --in-place --regexp-extended --expression  \
 	"s/(<Element index=\"0\" value=\")(.*)(pv\.foam\"\/>)/\1\3/g"
