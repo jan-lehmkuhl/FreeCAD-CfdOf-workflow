@@ -83,31 +83,8 @@ Technical Remarks
 
 If everything is setup correctly or some troubleshooting is needed, you can start to look deeper in the scripts & files to understand the entire cfd workflow. 
 
-
-Makefile - a dictionary for your possible cli tasks
------------------------------------------------------------
-
-First you should use your preferred editor to look into the `./Makefile` to see the different tasks which you can perform. 
-These tasks (in Makefiles they are called "targets") you can execute within this example. 
-You should also know how the different targets work 
-
-    gedit Makefile
-
-all targets can be started with following command in the command line interface: 
-
-    make TARGETNAME
-
-Within the `Makefile` you find a list of targets and after each target with an indent the commands, which will be executed, when you call a specific target.  
-~~~Makefile
-TARGET1:
-    target1-bash-command1
-    target1-bash-command2
-
-# non-executed comment for TARGET2  
-TARGET2:
-    target2-bash-command1
-    target2-bash-command2
-~~~
+* use [Makefiles](docs/howtos/makefiles.md) as dictionary for your command line tasks
+* understand the 
 
 
 meshCase & case folder
