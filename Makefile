@@ -1,5 +1,5 @@
 
-# Makefiles are containing multiple "targets" (e.g. all, open-freecad, restore, ...)
+# Makefiles are containing multiple "targets" (e.g. all, freecad-open, restore, ...)
 # every target will execute normal bash commands
 # a target is executed from bash with:
 # 		make TARGETNAME
@@ -7,9 +7,15 @@
 # https://en.wikipedia.org/wiki/Make_(software)
 
 
+MAKEFLAGS += --always-make
+
+remove_paraview_state_variable_parts = sed --in-place --regexp-extended --expression  \
+	"s/(<Element index=\"0\" value=\")(.*)(pv\.foam\"\/>)/\1\3/g"
+
 # some variables:
 date = $(shell date +"%Y%m%d-%H%M%S%p")
 archiveFolder = ARCHIVE/run-$(date)
+paraviewState = '../post/paraview-state.pvsm'
 
 
 
@@ -17,7 +23,7 @@ archiveFolder = ARCHIVE/run-$(date)
 # ======================================================
 
 # run "make all" if you want to create everything new
-all: clean mesh run
+all: clean fix-windows mesh run post
 
 
 # freecad
@@ -25,7 +31,7 @@ all: clean mesh run
 
 # this target opens the freecad GUI
 # you can also execute the command "freecad freecad-cfd.FCStd" directly in the terminal
-open-freecad:
+freecad-open:
 	freecad freecad-cfd.FCStd
 
 
@@ -40,23 +46,30 @@ mesh:
 # OpenFOAM calculation
 # -----------------------------------------------
 
-# run copies the initial state from 0.org to 0 and starts the Allrun script
 run:
-	sed -i -e 's/\.\.\\meshCase/\.\.\/meshCase/'  case/Allrun
+	sed --in-place --expression='s/\.\.\\meshCase/\.\.\/meshCase/'  case/Allrun
 	cd case ;  ./Allrun
 
 
 # reviewing created mesh and results
 # -----------------------------------------------
 
+post:
+	cd case ;  ../scripts/python-postprocessing.py
+	cd case ;  pvbatch ../scripts/paraview-export-all.py
+
+
 # opens paraview for reviewing the mesh
-view-mesh:
+paraview-mesh:
 	cd meshCase  ;  paraFoam
 
+paraview-no-state:
+	cd case ;  paraview pv.foam
 
-# opens paraview for reviewing the results
-view-results:
-	cd case  ;  paraFoam -builtin
+# opens paraview with the referenced state file for reviewing the results
+paraview:
+	cd case ;  paraview --state=$(paraviewState)
+	cd case ;  ${remove_paraview_state_variable_parts} $(paraviewState)
 
 
 
@@ -147,8 +160,9 @@ reset: delete-freecad-exports
 
 # removes on windows machines bad line endings which prevents bash scripts to run
 fix-windows:
-	# https://stackoverflow.com/questions/14219092/bash-script-and-bin-bashm-bad-interpreter-no-such-file-or-directory
-	# removes cariage return "\r" at a line end "$"
-	# to mask a "$" in a makefile an additional $ is needed
-	sed -i -e 's/\r$$//'  meshCase/Allmesh
-	sed -i -e 's/\r$$//'  case/Allrun
+	@# https://stackoverflow.com/questions/14219092/bash-script-and-bin-bashm-bad-interpreter-no-such-file-or-directory
+	@# removes cariage return "\r" at a line end "$"
+	@# to mask a "$" in a makefile an additional $ is needed
+	sed --in-place --expression='s/\r$$//'  meshCase/Allmesh
+	sed --in-place --expression='s/\r$$//'  case/Allrun
+	sed --in-place --expression='s/\r$$//'  scripts/python-postprocessing.py

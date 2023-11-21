@@ -43,8 +43,12 @@ libs
     #include "turbulenceLib"
 );
 
+
 functions
 {
-}
+    #includeFunc residuals
+    #includeFunc probes
+    #includeFunc yPlus
+};
 
 // ************************************************************************* //
