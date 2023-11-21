@@ -1,16 +1,28 @@
+Workflow for FreeCAD with CfdOF-Plugin and OpenFOAM
+=================================================================
 
 Welcome to my example to run a [OpenFOAM]-simulation, created by the [CFDOF-Plugin] within [FreeCAD]. 
+
+This repository contains
+* a [FreeCAD file](freecad-cfd.FCStd) which contains a simple CFD setup 
+* the from FreeCAD exported OpenFOAM files to calculate: (compare [case folder docs](docs/howtos/case-folders.md))
+    * the mesh stored in folder `meshCase`
+    * the flow simulation stored in folder `case`
+* a [makefile](Makefile) to perform all basic tasks without remembering long commands (see [Makefile docs](docs/howtos/makefiles.md))
+* a lot of documentation in the folder `docs`
+* some scripts to simplify the postprocessing
+    * a [python script](scripts/python-postprocessing.py) to plot residuals and monitor points.  
+    * a [paraview script](scripts/paraview-export-all.py) to export all "layouts" from predefined [Paraview-State-file](post/paraview-state.pvsm) (compare [docs](docs/howtos/paraview-usage.md#open-paraview-with-saved-state-file)).  
 
 
 
 First Run
-=================================================================
+------------------------------------------------------------
 
 The first run is to do a functional test of your personal cfd-installation and do an automatic run without changes.  
 
 
-get files
-------------------------------------------------------------
+### get files
 To do a cfd-simulation you need a cfd-setup. 
 Therefore you clone (copy) this example-repository directly from GitLab with the command line interface (CLI): 
 
@@ -25,15 +37,13 @@ If you have no internet connection and a downloaded zip file you can extract the
     unzip <DOWNLOAD>.zip -d <ARBITRARYFOLDER>
 
 
-installation and troubleshooting
------------------------------------------------------------
+### installation and troubleshooting
 Detailed installation instructions for all operating systems are located in [`docs/installation-instructions/*.md`](docs/installation/README.md). 
 Especially set the CfdOF-Plugin Output Directory to `.` or a good known place. 
 
 
 
-start meshing and openfoam-solver
-------------------------------------------------------------
+### start meshing and openfoam-solver
 If the installation is setup properly you should be able to start the complete calculation from the repository root folder. 
 At Windows this should be also executed in [WSL](docs/installation-instructions/openfoam.md#option-1-windows-subsystem-for-linux-wsl) Linux:  
 
@@ -41,8 +51,8 @@ At Windows this should be also executed in [WSL](docs/installation-instructions/
     make all
 
 
-Postprocessing
-------------------------------------------------------------
+
+### Postprocessing
 After the calculation you should see the numerical values in file [`case/processor0/100/U`](case/processor0/100/U), 
 which is the data for the velocity in the 100 iteration.  
 
@@ -76,25 +86,6 @@ the pictures from different layouts are stored in [case/doc/paraview](case/doc/p
 
 The needed state file is defined in the [Makefile](Makefile#L20) as variable `paraviewState`. 
 
-
-
-Technical Remarks  
-=================================================================
-
-If everything is setup correctly or some troubleshooting is needed, you can start to look deeper in the scripts & files to understand the entire cfd workflow. 
-
-* use [Makefiles](docs/howtos/makefiles.md) as dictionary for your command line tasks
-* understand the 
-
-
-meshCase & case folder
------------------------------------------------------------
-In general FreeCAD don't performs the CFD calculation. 
-The FreeCAD-CFDOF-Plugin writes/exports the setup-data, which can be processed by OpenFOAM. 
-For the mesh this data is written in the folder `meshCase` and for the cfd calculations this data is written in `case`. 
-
-To make this example more robust the cfd-setup is already exported to these two folders. 
-But if you want, you can delete them and recreate them from within FreeCAD. 
 
 
 
