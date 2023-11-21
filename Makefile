@@ -1,5 +1,5 @@
 
-# Makefiles are containing multiple "targets" (e.g. all, open-freecad, restore, ...)
+# Makefiles are containing multiple "targets" (e.g. all, freecad-open, restore, ...)
 # every target will execute normal bash commands
 # a target is executed from bash with:
 # 		make TARGETNAME
@@ -7,13 +7,10 @@
 # https://en.wikipedia.org/wiki/Make_(software)
 
 
-# PHONY for all targets
 MAKEFLAGS += --always-make
-
 
 remove_paraview_state_variable_parts = sed --in-place --regexp-extended --expression  \
 	"s/(<Element index=\"0\" value=\")(.*)(pv\.foam\"\/>)/\1\3/g"
-
 
 # some variables:
 date = $(shell date +"%Y%m%d-%H%M%S%p")
@@ -34,7 +31,7 @@ all: clean fix-windows mesh run post
 
 # this target opens the freecad GUI
 # you can also execute the command "freecad freecad-cfd.FCStd" directly in the terminal
-open-freecad:
+freecad-open:
 	freecad freecad-cfd.FCStd
 
 
@@ -49,7 +46,6 @@ mesh:
 # OpenFOAM calculation
 # -----------------------------------------------
 
-# run copies the initial state from 0.org to 0 and starts the Allrun script
 run:
 	sed --in-place --expression='s/\.\.\\meshCase/\.\.\/meshCase/'  case/Allrun
 	cd case ;  ./Allrun

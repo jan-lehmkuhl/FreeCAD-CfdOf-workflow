@@ -17,7 +17,7 @@ This [FreeCAD-Tutorial] is a good start to get used to FreeCAD for creating 3D M
 
 Now open FreeCAD. 
 At Windows use your "Windows Search"
-At a native Linux you can open FreeCAD with `freecad freecad-cfd.FCStd` or `make open-freecad` and loading directly the already prepared data in the linked freecad-file. 
+At a native Linux you can open FreeCAD with `freecad freecad-cfd.FCStd` or `make freecad-open` and loading directly the already prepared data in the linked freecad-file. 
 
     freecad freecad-cfd.FCStd
 
