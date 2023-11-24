@@ -32,3 +32,7 @@ If you already have saved a state file like [paraview-state.pvsm](../../post/par
 This can easy be done from command line or by help of the [Makefile](../../Makefile) with: 
 
     make paraview
+
+It might be necessary to execute following makefile target in order to remove some hard coded file paths:  
+
+    make paraview-state-preparation

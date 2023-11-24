@@ -69,6 +69,9 @@ paraview-no-state:
 # opens paraview with the referenced state file for reviewing the results
 paraview:
 	cd case ;  paraview --state=$(paraviewState)
+	make paraview-state-preparation
+
+paraview-state-preparation:
 	cd case ;  ${remove_paraview_state_variable_parts} $(paraviewState)
 
 
