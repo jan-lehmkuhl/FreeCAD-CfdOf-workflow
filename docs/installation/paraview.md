@@ -37,11 +37,11 @@ Then create softlinks to the desired files
 
     cd ~/.local/bin
 
-    ln s ~/bin/ParaView-XXXXX/bin/pvbatch
-    ln s ~/bin/ParaView-XXXXX/bin/pvpython
+    ln -s ~/bin/ParaView-XXXXX/bin/pvbatch
+    ln -s ~/bin/ParaView-XXXXX/bin/pvpython
 
 
-test version with: 
+test installation version with following commands, which should refer to your new ParaView version: 
 
     cd
     pvbatch  --version
