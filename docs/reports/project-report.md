@@ -161,6 +161,7 @@ Reality Description
  -->
 
 
+
 ### Physics
 <!-- 
 * which physical effects occur
@@ -176,8 +177,16 @@ Reality Description
 | pressure              | xxx [Pa] 
 | velocities            | xxx [m/s]
 | temperature           | xxx [C]
-
  -->
+
+
+
+### Temporal Sequence 
+<!-- 
+* Which stuff is changing with time 
+* How is the steady-state developing if present
+ -->
+
 
 
 Model & Numerics
@@ -188,6 +197,7 @@ Model & Numerics
 * simplifications of the 3D model
 * show pictures of the CAD model
  -->
+
 
 
 ### Mesh
@@ -226,35 +236,49 @@ Model & Numerics
  -->
 
 
+
 ### Physical Modeling
 <!-- 
 * which special physical models are applied
 * e.g. bouyancy, energy transport, material models, ...
+* do you have a transient or steady state simulation
 
 | Domain    | Setting               | Value             | checked       |
 | --------- | --------------------- | ----------------- | ------------- |
 | Fluid     | Buoyancy              | Non               |               |
+| Fluid     | Turbulence Model      | SST               |               |
+| Fluid     | Reference Pressure    | X [Pa]            |               |
+ -->
+
+
+
+### Boundaries & Temporal Sequence
+<!-- 
+| Domain    | Setting               | Value             | checked       |
+| --------- | --------------------- | ----------------- | ------------- |
 | Inlet1    | Mass Flow / Vel       | XXX [m/s]         |               |
 | Outlet1   | Pressure-BC           | 0 Pa              |               |
  -->
 
 
-### Numerics 
+
+### Numerics & Convergence
 <!-- 
 | setting               | occuring range    |
 | --------------------- | ----------------- |
-| reference pressure    | xxx [Pa]
-| turbulence model      | SST
 | residual target       | 
- -->
+| timesteps             | 
 
 
-### Convergence
-<!-- 
-* show plots for all subtopics for at least the used runs in the postprocessing
+* how much calculation time needs your default simulation
+* is this a transient simulation or indicate the residuals and monitor points a transient behavior
  -->
 
 #### Global Residuals 
+<!-- 
+* show plots for for at least the default simulation in the postprocessing
+* add more simulation runs if the values changes significant and explain when
+ -->
 
 #### Imbalances
 
@@ -264,13 +288,16 @@ Model & Numerics
 #### Monitor Point Stability
 
 
-### Analysis Type
+
+### Postprocessing
 <!-- 
-* is this a transient simulation or indicate the residuals and monitor points a transient behaviour
+* explain the pictures and values you use to explain the flow behavior
+* do not explain the flow. This should be done in the next chapter
  -->
 
 
-### Numerical Confidence
+
+### Simulation Confidence
 <!-- 
 * how exact, do you think, are the calculation results
 * how big are the changes in the result, when you change the setup
@@ -292,6 +319,7 @@ Flow Analysis
 
 ![](cfd-reports/XXX_001_Rep/Figure001.png) 
  -->
+
 
 
 actual study conclusions
