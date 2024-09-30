@@ -67,7 +67,7 @@ Unfortunately blueCFD is stuck to openFOAM 5, but it's worth to test if the WSL 
 OpenFOAM Installation on Linux
 ===============================================================================
 
-This instructions refers to a Ubuntu 20.04 LTS installation and is described in [OpenFOAM Ubuntu instructions](https://openfoam.org/download/)  
+This instructions refers to a Ubuntu 24.04 LTS installation and is described in [OpenFOAM Ubuntu instructions](https://openfoam.org/download/)  
 A clean linux operating system can be applied on an USB-Stick, without major performance issues.  
 
 Further resources:  

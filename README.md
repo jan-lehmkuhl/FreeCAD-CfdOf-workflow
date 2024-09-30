@@ -5,11 +5,13 @@ Welcome to my example to run a [OpenFOAM]-simulation, created by the [CFDOF-Plug
 
 This repository contains
 * a [FreeCAD file](freecad-cfd.FCStd) which contains a simple CFD setup 
-* the from FreeCAD exported OpenFOAM files to calculate: (compare [case folder docs](docs/howtos/case-folders.md))
-    * the mesh stored in folder `meshCase`
-    * the flow simulation stored in folder `case`
-* a [makefile](Makefile) to perform all basic tasks without remembering long commands (see [Makefile docs](docs/howtos/makefiles.md))
-* a lot of documentation in the folder `docs`
+* the FreeCAD-exported OpenFOAM files to calculate: 
+    * the mesh stored in folder `meshCase`  
+    * the flow simulation stored in folder `case`  
+      (compare [case folder docs](docs/howtos/case-folders.md))
+* a [makefile](Makefile) to perform all basic tasks without remembering long commands 
+  (see [Makefile docs](docs/howtos/makefiles.md))
+* a lot of documentation in the `docs` folder  
 * some scripts to simplify the postprocessing
     * a [python script](scripts/python-postprocessing.py) to plot residuals and monitor points.  
     * a [paraview script](scripts/paraview-export-all.py) to export all "layouts" from predefined [Paraview-State-file](post/paraview-state.pvsm) (compare [docs](docs/howtos/paraview-usage.md#open-paraview-with-saved-state-file)).  
@@ -26,10 +28,10 @@ To do a cfd-simulation you need a cfd-setup.
 Therefore you clone (copy) this example-repository directly from GitLab with the command line interface (CLI): 
 
     cd <SOMEWHERE>    # (e.g. /home/USER/simulations)
-    git clone https://gitlab.com/schlupp/example-cfdof-workflow.git
-    # this creates a folder "example-cfdof-workflow" with all files inside
+    git clone https://github.com/jan-lehmkuhl/FreeCAD-CfdOf-workflow
 
-with a specified folder like `git clone <REPOSITORY> <FOLDER>` after the the previous command the repository files will be placed inside this folder.  
+This creates a folder "example-cfdof-workflow" with all files inside. 
+With a specified folder like `git clone <REPOSITORY> <FOLDER>` after the the previous command the repository files will be placed inside this folder.  
 
 If you have no internet connection and a downloaded zip file you can extract the files in the GUI or in the CLI to a an arbitrary place: 
 
@@ -40,7 +42,7 @@ If you have no internet connection and a downloaded zip file you can extract the
 Installation and Troubleshooting
 ------------------------------------------------------------
 
-Detailed installation instructions for all operating systems are located in [`docs/installation-instructions/*.md`](docs/installation/README.md). 
+Detailed installation instructions for all operating systems are located in [`docs/installation/*.md`](docs/installation/README.md). 
 Especially set the CfdOF-Plugin Output Directory to `.` or a good known place. 
 
 

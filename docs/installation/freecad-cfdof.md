@@ -15,6 +15,8 @@ on Linux
 ---------------------------------------------------------------------
 [FreeCAD installation wiki](https://www.freecadweb.org/wiki/Install_on_Unix)
 
+
+### install from ppa
 add an [apt-repository] to tell Linux where he finds the latest stable version of freecad: 
 
     sudo add-apt-repository ppa:freecad-maintainers/freecad-stable
@@ -51,17 +53,6 @@ If something is not working well, consider to download a [developer-version](htt
 
 
 
-Optional FreeCAD customization
-------------------------------------------------------------------------------
-
-### remove unnecessary workbenches
-[Freecad-Wiki](https://www.freecadweb.org/wiki/Interface_Customization)  
-
->Menu -> Tools -> Customize  
-
-![Workbench-Selector](./../resources/freecad-workbench-selector.png)  
-
-
 
 CfdOF-Plugin
 ==============================================================================
@@ -71,21 +62,24 @@ Installation
 The CfdOF-Plugin can be installed in the FreeCAD-GUI with the [AddOn-Manager](https://wiki.freecadweb.org/Std_AddonMgr).  
 Problems with the Addon-Manager are discussed at the [Debug-Page](https://github.com/FreeCAD/FreeCAD-addons).   
 
-To install the CfdOF-Plugin follow OS dependent instructions from the [CfdOF Readme](https://github.com/jaheyns/CfdOF), which are summarized in the next lines.  
+To install the CfdOF-Plugin follow OS dependent instructions from the [jaheyns/CfdOF Readme](https://github.com/jaheyns/CfdOF), which are summarized in the next lines.  
 
 
 ### Plot Workbench
-[source code](https://github.com/FreeCAD/freecad.plot)  
+goto "Tools" in the menu bar -> Addon-Manager  
+Search for ["Plot Workbench"](https://github.com/FreeCAD/freecad.plot) 
+-> Install  
 
--> File -> Tools -> Addon-Manager  
--> Install "Plot" Workbench link  
 Restart FreeCAD  
 
 
 ### CfdOF Workbench
 previous Restart of FreeCAD is important  
--> File -> Tools -> Addon-Manager  
--> Install "CfdOF" Workbench link  
+
+goto "Tools" in the menu bar -> Addon-Manager  
+Search for ["CfdOF" Workbench](https://github.com/jaheyns/CfdOF) 
+-> Install  
+
 Restart FreeCAD again  
 
 
