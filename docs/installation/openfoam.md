@@ -3,6 +3,7 @@ OpenFOAM Installation on Windows
 ===============================================================================
 [openfoam.org/download/windows](https://openfoam.org/download/windows/)  
 OpenFOAM is a Linux Programm but there are several ways to run it under Windows.  
+
 In general it is not necessary for OpenFOAM to have a graphical user interface. 
 OpenFOAM reads text files and writes the output to text files. 
 So if you have access to these files, you can run your GUI-Programs like FreeCAD and Paraview nativly under Windows. 
