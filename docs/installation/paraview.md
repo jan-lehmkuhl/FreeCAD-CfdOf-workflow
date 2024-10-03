@@ -1,8 +1,14 @@
 Paraview Python
 ======================================================================
 
-To run [Paraview Picture Export](../../scripts/paraview-export-all.py) you need to install a further Paraview version, which has the Python capabilities with `pvbatch` and `pvpython`. 
-Paraview bundled with OpenFOAM misses the Python scripting. 
+To run [Paraview Picture Export](../../scripts/paraview-export-all.py) you need Paraview Python capabilities with `pvbatch` and `pvpython`. 
+
+    pvbatch --version
+    pvpython --version
+
+
+Old Paraview packages bundled with OpenFOAM misses the Python scripting. 
+When these commands cannot be executed, an additional paraview installation must be installed. 
 
 
 

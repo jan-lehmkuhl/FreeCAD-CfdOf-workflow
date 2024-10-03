@@ -16,16 +16,8 @@ to install its installer "pip" if its not yet present.
 ## Pandas and Matplotlib
 Additionally some packages inside Python are used
 
-    python3 -m pip install matplotlib
-    python3 -m pip install pandas
-
-~~~bash
-# for matplotlib
-Requirement already satisfied: matplotlib in /usr/lib/python3/dist-packages (3.5.1)
-
-# for pandas
-Requirement already satisfied: pandas in /usr/lib/python3/dist-packages (1.3.5)
-~~~
+    sudo apt install python3-matplotlib
+    sudo apt install python3-pandas
 
 
 
