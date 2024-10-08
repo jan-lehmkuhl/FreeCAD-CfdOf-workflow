@@ -72,12 +72,14 @@ Install CfdOF Dependencies
 ---------------------------------------------------------------------
 FreeCAD -> File -> Edit -> Preferences -> CfdOF
 
-Install with the buttons at least:  
-![](./../resources/cfdof-settings-windows.jpg)
+Execute the installations with the `Install ...` Buttons for following topics:  
 
 
 ### OpenFOAM (only on Windows)
-On Windows you need this second OpenFOAM installation for the data export from CfdOF plugin, because the CfdOF plugin cannot access the installation in the Windows Subsystem for Linux (WSL).  
+On native Windows you need this second OpenFOAM installation for the data export from CfdOF plugin, because the CfdOF plugin cannot access the installation in the Windows Subsystem for Linux (WSL).  
+
+> ![](./../resources/cfdof-settings-windows.jpg)  
+
 
 When you try to export the meshCase files something like this occurs in the "Report view":  
 ~~~c

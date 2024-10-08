@@ -4,7 +4,7 @@ FreeCAD
 Installation on Windows
 ---------------------------------------------------------------------
 1. Download FreeCAD from [freecadweb.org](https://www.freecadweb.org/downloads.php) or [wiki.freecad.org](https://wiki.freecad.org/Download)  
-2. install the Download
+2. install the download or use a portable version of FreeCAD  
 3. read [CfdOF-github](https://github.com/jaheyns/CfdOF) remarks and proceed the install of CfdOF Workbench with the FreeCAD Addon Manager described in the next chapter
 
 If something is not working well, consider to download a [developer-version](https://github.com/FreeCAD/FreeCAD/releases/)  
@@ -14,6 +14,8 @@ If something is not working well, consider to download a [developer-version](htt
 Installation on Linux
 ---------------------------------------------------------------------
 [FreeCAD installation wiki](https://www.freecadweb.org/wiki/Install_on_Unix)
+
+This works also inside the Windows Subsystem for Linux, but is not necessary if your [FreeCAD Windows Installation](#installation-on-windows) is already running fine.  
 
 
 ### install from ppa
