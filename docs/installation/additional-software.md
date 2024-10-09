@@ -2,6 +2,7 @@
 These tools are helpful under Linux and Windows.  
 
 
+
 git 
 ===========================================================
 When you use the WSL (Windows Subsystem for Linux) it might be good to install it in both environments. 
@@ -9,12 +10,10 @@ When you use the WSL (Windows Subsystem for Linux) it might be good to install i
 ## Windows
 For Windows you have to download [git](https://git-scm.com/downloads) from their website and install it.
 
-## Linux
-Under Linux or within the WSL you can execute following command to install git: 
 
-    sudo apt-get install git 
-    sudo apt-get install gitk
-    sudo apt-get install git-gui
+## Linux
+Under Linux or within the WSL git should already be installed.  
+
 
 
 VS Code
