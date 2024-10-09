@@ -1,91 +1,41 @@
 
-FreeCAD-CfdOF Remarks
+FreeCAD CfdOF-Plugin
 ==============================================================================
 
 FreeCAD is not directly linked to OpenFOAM. 
-The CfdOF plugin will only write the text input files, which will be read by OpenFOAM. 
+The CfdOF FreeCAD-plugin will write the text input files, which will be read by OpenFOAM. 
+
 So you can run FreeCAD native under Windows and OpenFOAM within the Windows Subsystem for Linux (WSL). 
 Its only important, that every software can write in the same directories.  
 
 
-FreeCAD Installation
-==============================================================================
-
-on Linux
----------------------------------------------------------------------
-[FreeCAD installation wiki](https://www.freecadweb.org/wiki/Install_on_Unix)
-
-add an [apt-repository] to tell Linux where he finds the latest stable version of freecad: 
-
-    sudo add-apt-repository ppa:freecad-maintainers/freecad-stable
-    sudo apt-get update
-
-[apt-repository]: https://launchpad.net/~freecad-maintainers/+archive/ubuntu/freecad-stable
-
-
-install freecad from packages 
-
-    sudo apt-get install freecad
-    sudo apt-get upgrade
-
-
-### use daily builds
-try [daily builds] when something went wrong  
-https://wiki.freecadweb.org/Install_on_Unix#Daily_PPA_through_the_console  
-
-    sudo add-apt-repository ppa:freecad-maintainers/freecad-daily
-    sudo apt-get update
-    sudo apt-get install freecad-daily
-
-[daily builds]: https://launchpad.net/~freecad-maintainers/+archive/ubuntu/freecad-daily
-
-
-
-on Windows
----------------------------------------------------------------------
-1. Download FreeCAD from [freecadweb.org](https://www.freecadweb.org/downloads.php) 
-2. install the Download
-3. read [CfdOF-github](https://github.com/jaheyns/CfdOF) remarks and proceed the install of CfdOF Workbench with the FreeCAD Addon Manager described in the next chapter
-
-If something is not working well, consider to download a [developer-version](https://github.com/FreeCAD/FreeCAD/releases/)  
-
-
-
-Optional FreeCAD customization
-------------------------------------------------------------------------------
-
-### remove unnecessary workbenches
-[Freecad-Wiki](https://www.freecadweb.org/wiki/Interface_Customization)  
-
->Menu -> Tools -> Customize  
-
-![Workbench-Selector](./../resources/freecad-workbench-selector.png)  
-
-
-
-CfdOF-Plugin
-==============================================================================
 
 Installation
 ---------------------------------------------------------------------
+
+First you have to install [FreeCAD](freecad.md) to setup and use the CfdOF-Plugin.  
+
 The CfdOF-Plugin can be installed in the FreeCAD-GUI with the [AddOn-Manager](https://wiki.freecadweb.org/Std_AddonMgr).  
 Problems with the Addon-Manager are discussed at the [Debug-Page](https://github.com/FreeCAD/FreeCAD-addons).   
 
-To install the CfdOF-Plugin follow OS dependent instructions from the [CfdOF Readme](https://github.com/jaheyns/CfdOF), which are summarized in the next lines.  
+To install the CfdOF-Plugin follow OS dependent instructions from the [jaheyns/CfdOF Readme](https://github.com/jaheyns/CfdOF), which are summarized in the next lines.  
 
 
 ### Plot Workbench
-[source code](https://github.com/FreeCAD/freecad.plot)  
+goto "Tools" in the menu bar -> Addon-Manager  
+Search for ["Plot Workbench"](https://github.com/FreeCAD/freecad.plot) 
+-> Install  
 
--> File -> Tools -> Addon-Manager  
--> Install "Plot" Workbench link  
 Restart FreeCAD  
 
 
 ### CfdOF Workbench
 previous Restart of FreeCAD is important  
--> File -> Tools -> Addon-Manager  
--> Install "CfdOF" Workbench link  
+
+goto "Tools" in the menu bar -> Addon-Manager  
+Search for ["CfdOF" Workbench](https://github.com/jaheyns/CfdOF) 
+-> Install  
+
 Restart FreeCAD again  
 
 
@@ -122,12 +72,14 @@ Install CfdOF Dependencies
 ---------------------------------------------------------------------
 FreeCAD -> File -> Edit -> Preferences -> CfdOF
 
-Install with the buttons at least:  
-![](./../resources/cfdof-settings-windows.jpg)
+Execute the installations with the `Install ...` Buttons for following topics:  
 
 
 ### OpenFOAM (only on Windows)
-On Windows you need this second OpenFOAM installation for the data export from CfdOF plugin, because the CfdOF plugin cannot access the installation in the Windows Subsystem for Linux (WSL).  
+On native Windows you need this second OpenFOAM installation for the data export from CfdOF plugin, because the CfdOF plugin cannot access the installation in the Windows Subsystem for Linux (WSL).  
+
+> ![](./../resources/cfdof-settings-windows.jpg)  
+
 
 When you try to export the meshCase files something like this occurs in the "Report view":  
 ~~~c
@@ -165,25 +117,3 @@ Click on `Run dependency checker` and look in the output if its telling you some
 `gmsh` is not necessary. 
 
 ![](./../resources/dependency-checker-output.png)
-
-
-
-Examples & Tutorials
-==============================================================================
-
-first 3D part
----------------------------------------------------------------------
-
-[tutorial1](https://www.freecadweb.org/wiki/Creating_a_simple_part_with_PartDesign)  
-
-* chose "Part Design Workbench"
-* Tasks
-    * create Body
-    * create Sketch
-* Save
-
-
-Docs
----------------------------------------------------------------------
-
-https://www.freecadweb.org/wiki/Tutorials

@@ -9,6 +9,8 @@ import sys
 
 def main():
     paraviewState = '../post/paraview-state.pvsm'
+    outputPath = 'visualization/paraview'
+
     if not os.path.exists(paraviewState):
         print("Did not find state-file")
         return False
@@ -42,8 +44,8 @@ def main():
             SetActiveView(renderView1)
 
             print("save renderView: " +str(idx))
-            os.makedirs("doc/paraview", exist_ok=True)
-            SaveScreenshot('doc/paraview/renderView' +str(idx) +'.png', renderView1, ImageResolution=[1359, 798])
+            os.makedirs(outputPath, exist_ok=True)
+            SaveScreenshot(outputPath +'/renderView' +str(idx) +'.png', renderView1, ImageResolution=[1359, 798])
 
             idx += 1
         except:

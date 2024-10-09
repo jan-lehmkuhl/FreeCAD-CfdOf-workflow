@@ -12,7 +12,7 @@ def plot_data(file_path, logy= True):
     https://gist.github.com/kastnerp/e76fb8ec1394fe0b0926deb07b9689f1
     """
 
-    export_path = "doc/exports"
+    export_path = "visualization/plots"
     data_name = file_path.split("/")[-1].rstrip('.dat')
 
     if not os.path.exists(file_path):

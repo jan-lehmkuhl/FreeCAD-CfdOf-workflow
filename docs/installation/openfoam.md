@@ -3,6 +3,7 @@ OpenFOAM Installation on Windows
 ===============================================================================
 [openfoam.org/download/windows](https://openfoam.org/download/windows/)  
 OpenFOAM is a Linux Programm but there are several ways to run it under Windows.  
+
 In general it is not necessary for OpenFOAM to have a graphical user interface. 
 OpenFOAM reads text files and writes the output to text files. 
 So if you have access to these files, you can run your GUI-Programs like FreeCAD and Paraview nativly under Windows. 
@@ -11,22 +12,31 @@ Beside installing OpenFOAM in a System like WSL or Docker, FreeCAD needs also a 
 
 
 
-Option 1: Windows Subsystem for Linux" (WSL)
+Option 1: Windows Subsystem for Linux" (WSL) (Recommended)
 ---------------------------------------------------------------------
 A [Windows-10-installation] should be possible with the builtin "Windows Subsystem for Linux" (WSL) in Windows 10. 
 Beside the [WSL-activation] the installation should be very similar to the Linux installation described in the [next chapter](#openfoam-installation-on-linux).  
 
 
-### Installation
+### WSL Installation
 1. read: [openfoam.org-help](https://openfoam.org/download/windows-10/)
-2. Activate Windows Subsystem for Linux (WSL) like described in [WSL-activation]  
-   you need Administrator rights in the Powershell to execute.  
-3. install your desired Distro from `Microsoft Store` within Windows 10.  
-   At the end you have a terminal with Linux (WSL) running. 
+
+2. Activate Windows Subsystem for Linux (WSL) like described in [WSL-activation].  
+   For the first time you need Administrator rights in the Powershell to execute:  
+   
+        wsl --install
+
+   Then restart
+
+3. install your desired Distro from `Microsoft Store` or 
+   use Ubuntu, which should be installed by default after restart. 
+   At the end you can open Linux/WSL by typing e.g. "Ubuntu" in your Windows Search and get a terminal like:  
+   > ![](../resources/wsl-ubuntu.png)  
+
 4. Install OpenFOAM inside WSL described in the Linux-Installation-Chapter below  
 
 [Windows-10-installation]: https://openfoam.org/download/windows-10/  
-[WSL-activation]: https://docs.microsoft.com/en-gb/windows/wsl/install-win10  
+[WSL-activation]: https://learn.microsoft.com/en-gb/windows/wsl/install  
 
 
 ### hard disc access
@@ -34,15 +44,6 @@ The hard-disks (e.g. `C:`, `D:`) are mounted in the WSL at `/mnt/c` and `/mnt/d`
 To access these data change your directory (`cd`) to these folders:
 
     cd /mnt/c/YOURDIRECTORY
-
-
-### Graphical output forwarding
-[VcXsrv] or [Xming] helping to present the Linux graphical output as Window under Windows. 
-This is not necessary but might be nice. 
-
-[VcXsrv]: https://sourceforge.net/projects/vcxsrv/
-[Xming]:  https://de.wikipedia.org/wiki/Xming  
-
 
 
 Option 1b: Docker
@@ -60,14 +61,14 @@ Option 3: blueCFD-core
 ---------------------------------------------------------------------
 [bluecfd-github](http://bluecfd.github.io/Core/)
 This is based on [MinGW](http://www.mingw.org/) which is a minimalistic Linux enviroment for Windows. So you have also Unix-Bash, where you execute commands.  
-Unfortunately blueCFD is stuck to openFOAM 5, but it's worth to test if the WSL is not working.  
+Unfortunately blueCFD is stuck to openFOAM 8, but it's worth to test if the WSL is not working.  
 
 
 
 OpenFOAM Installation on Linux
 ===============================================================================
 
-This instructions refers to a Ubuntu 20.04 LTS installation and is described in [OpenFOAM Ubuntu instructions](https://openfoam.org/download/)  
+This instructions refers to a Ubuntu 24.04 LTS installation and is described in [OpenFOAM Ubuntu instructions](https://openfoam.org/download/)  
 A clean linux operating system can be applied on an USB-Stick, without major performance issues.  
 
 Further resources:  
@@ -88,7 +89,7 @@ then you can install with following command.
 Linux will download the needed files from the previous defined repository. 
 
     sudo apt-get -y install openfoam11
-    sudo apt-get install build-essential
+    sudo apt-get -y install build-essential
 
 
 change .bashrc
