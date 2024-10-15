@@ -10,9 +10,11 @@ to use [Python3](https://www.python.org) with some packages.
 ## Pandas and Matplotlib
 Additionally some packages inside Python are used
 
+    # already installed in Ubuntu
     sudo apt install python3-matplotlib
+
     sudo apt install python3-pandas
 
 
 
-To run [Paraview Picture Export](../../scripts/paraview-export-all.py) you need [Python from Paraview](paraview.md).  
+To run [Paraview Picture Export](../../scripts/paraview-export-all.py) you need [Python from Paraview](paraview.python.md).  
