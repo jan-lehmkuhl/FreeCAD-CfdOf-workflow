@@ -120,6 +120,10 @@ dynamicCode
 # =============================================================================
 *.FCStd[0-9]
 
+Allmesh.bat
+Allmesh.ps1
+Allrun.bat
+Allrun.ps1
 
 
 # End of https://www.gitignore.io/api/openfoam
