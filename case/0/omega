@@ -20,7 +20,7 @@ internalField   uniform 57.0;
 boundaryField
 {
 
-    Inlet
+    inlet1
     {
         type            turbulentMixingLengthFrequencyInlet;
         mixingLength    0.1;

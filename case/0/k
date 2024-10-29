@@ -20,7 +20,7 @@ internalField   uniform 0.01;
 boundaryField
 {
 
-    Inlet
+    inlet1
     {
         type        turbulentIntensityKineticEnergyInlet;
         intensity   0.1;
