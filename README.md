@@ -113,11 +113,11 @@ To analyze this data in a more convenient graphical way you should use Paraview.
 The details are described in this [HowTo](docs/howtos/paraview-usage.md) but
 if everything is setup correct, you can open Paraview with: 
 
-    make paraview
+    make paraview-run
 
 
 If you stored a paraview state file the postprocessing for [scripts/paraview-export-all.py](scripts/paraview-export-all.py), 
-the pictures from different layouts are stored in [case/doc/paraview](case/doc/paraview/renderView1.png) after executing:  
+the pictures from different layouts are stored in [case/visualization/paraview](case/visualization/paraview/renderView2.png) after executing:  
 
     make post
 
