@@ -19,7 +19,7 @@ pointSync false;
 patches
 (
     {
-        name Inlet;
+        name inlet1;
         patchInfo
         {
             type patch;

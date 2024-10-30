@@ -8,4 +8,9 @@ To run [Paraview Picture Export](../../scripts/paraview-export-all.py) under Lin
 
 
 In Ubuntu 24.06 these tools are bundled already with the [OpenFOAM](openfoam.md) installation. 
+These are shipped starting with Paraview version 5.11. 
+
+    paraview --version
+
+
 When these commands cannot be executed in the terminal, an [additional paraview](paraview.linux.manual.md) must be installed for Linux or WSL.  

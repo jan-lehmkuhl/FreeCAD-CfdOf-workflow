@@ -119,7 +119,12 @@ dynamicCode
 # FreeCAD
 # =============================================================================
 *.FCStd[0-9]
+*.[0-9]*-*[0-9].FCBak
 
+Allmesh.bat
+Allmesh.ps1
+Allrun.bat
+Allrun.ps1
 
 
 # End of https://www.gitignore.io/api/openfoam

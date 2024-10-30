@@ -61,17 +61,18 @@ post:
 
 # opens paraview for reviewing the mesh
 paraview-mesh:
-	cd meshCase  ;  paraFoam
+	cd meshCase  ;  paraview pv.foam
 
-paraview-no-state:
+
+paraview-run-no-state:
 	cd case ;  paraview pv.foam
 
 # opens paraview with the referenced state file for reviewing the results
-paraview:
+paraview-run:
 	cd case ;  paraview --state=$(paraviewState)
-	make paraview-state-preparation
+	make paraview-run-state-preparation
 
-paraview-state-preparation:
+paraview-run-state-preparation:
 	cd case ;  ${remove_paraview_state_variable_parts} $(paraviewState)
 
 
@@ -80,7 +81,7 @@ paraview-state-preparation:
 # ======================================================
 
 # creates a zipped filled of the current project without big mesh and calculated files
-zip-archive:
+zip-repository:
 	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='meshCase/constant' --exclude='*.stl' --exclude='*.pvsm' --exclude='case/0' --exclude='case/constant/polyMesh' --exclude='case/processor*' --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
 	ls -la     .
 

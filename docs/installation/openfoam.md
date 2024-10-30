@@ -111,24 +111,33 @@ testing
 ---------------------------------------------------------------------
 Now you can test the installation in the WSL or Linux system by starting: 
 
-    simpleFoam
-
-because there are no case-files, where you run `simpleFoam`, there will be errors but you see an header like this:  
+    foamRun -help
 
 ~~~
-user@machine:~/simulations$ simpleFoam 
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  11
-     \\/     M anipulation  |
-\*---------------------------------------------------------------------------*/
+user@machine:~/simulations$ foamRun -help
+
+Usage: foamRun [OPTIONS]
+options:
+  -case <dir>       specify alternate case directory, default is the cwd
+  -fileHandler <handler>
+                    override the fileHandler
+  -hostRoots <((host1 dir1) .. (hostN dirN))>
+                    slave root directories (per host) for distributed running
+  -libs '("lib1.so" ... "libN.so")'
+                    pre-load libraries
+  -noFunctionObjects
+                    do not execute functionObjects
+  -parallel         run in parallel
+  -roots <(dir1 .. dirN)>
+                    slave root directories for distributed running
+  -solver <name>    Solver name
+  -srcDoc           display source code in browser
+  -doc              display application documentation in browser
+  -help             print the usage
+
+Using: OpenFOAM-11 (see https://openfoam.org)
+Build: 11-e1fc8c682ae6
 ~~~
 
-also you should be able to execute `paraview` or `paraFoam` and a GUI should open, when you setup correctly the graphical forwarding
-
-    paraview
-    paraFoam
 
 Now you can try to run the main example described in the [README](../../README.md) in the root folder of this repository. 
