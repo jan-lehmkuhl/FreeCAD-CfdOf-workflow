@@ -3,6 +3,9 @@ Installation Instructions
 
 In this folder you find all needed installation instructions to run this the OpenFOAM calculation inside this repository. 
 
+OpenFOAM is Linux program, but can also be used at Windows with an additional Windows Subsystem for Linux (WSL) enviroment. 
+On Mac you should consider to use a linux virtual machine, which can be created for example by [multipass](https://multipass.run/).  
+
 * [openfoam.md](openfoam.md) to install the OpenFOAM solver.  
 * [freecad-cfdof.md](freecad-cfdof.md) to write the needed files from FreeCAD, which are calculated by OpenFOAM.  
 * [paraview](paraview.md) to review your results in the GUI. 

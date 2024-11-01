@@ -5,48 +5,70 @@ This should only be necessary, when the [Python in Paraview](paraview.python.md)
 
 
 
+Preparation
+------------------------------------------------------------
+
+    paraview --version 
+
+should lead to an error. 
+Otherwise you should deinstall the current version of ParaView maybe with: 
+
+    sudo apt remove paraview
+
+
+
 Download & Extract
 ------------------------------------------------------------
 
-[Download](https://www.paraview.org/download/) the Linux executable and extract with tar inside WSL: 
-
-    cd 
-    mkdir bin
-    cd bin
-    tar --extract --file FILE
-
-
+[Download](https://www.paraview.org/download/) the **Linux X64** executable (e.g. `ParaView-5.13.1-MPI-Linux-Python3.10-x86_64.tar.gz`). 
 Use `osmesa` version for headless machines without x-server like Docker, when you have no GUI.  
 
+Create a folder where you will place the binary files. 
+In Linux or WSL a good place might be: 
+
+    ~/bin
+    \\wsl.localhost\Ubuntu\home\jan\bin
+
+![](../resources/wsl.home.png)  
 
 
-Make pvbatch and pvpython available in PATH
+Copy the downloaded `*.tar.gz` file to the new `bin` folder.  
+Extract the `*.tar.gz` file with tar inside the terminal (WSL): 
+
+    cd ~/bin
+    tar --extract --file ParaView-5.13.1-MPI-Linux-Python3.10-x86_64.tar.gz
+
+
+
+Make paraview, pvbatch and pvpython available from terminal
 ------------------------------------------------------------
 
 "pvbatch" from the downloaded paraview must be available from command line. 
-Often the it refers to the OpenFOAM version which has no build-in python.  
-
-Change `.bashrc` and source `$HOME/.local/bin` after OpenFOAM. 
-Open a new terminal and test the order (`~/.local/bin` at the top) with:  
+The places where a terminal searches for programs are defined in the PATH variable. 
 
     echo $PATH | tr : '\n'
 
+Choose from this list an adequate folder like `/usr/local/bin`.
+Then create in this folder softlinks to the desired program files. 
+Remove the `sudo` prefix if you use a folder in your home. 
 
-Then create softlinks to the desired files
+    cd /usr/local/bin
 
-    cd ~/.local/bin
+    sudo ln -s ~/bin/ParaView-XXXXX/bin/pvbatch
+    sudo ln -s ~/bin/ParaView-XXXXX/bin/pvpython
+    sudo ln -s ~/bin/ParaView-XXXXX/bin/paraview
 
-    ln -s ~/bin/ParaView-XXXXX/bin/pvbatch
-    ln -s ~/bin/ParaView-XXXXX/bin/pvpython
 
+Open a new terminal that this changes take effect. 
+Test installation version with following commands, which should refer to your new ParaView version: 
 
-test installation version with following commands, which should refer to your new ParaView version: 
-
-    cd
+    paraview --version
     pvbatch  --version
     pvpython --version
+    which paraview
     which pvbatch
     which pvpython
+
 
 
 Do not source everything in `*/paraview/bin`. 

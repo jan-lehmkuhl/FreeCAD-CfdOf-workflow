@@ -16,6 +16,7 @@ remove_paraview_state_variable_parts = sed --in-place --regexp-extended --expres
 date = $(shell date +"%Y%m%d-%H%M%S%p")
 archiveFolder = ARCHIVE/run-$(date)
 paraviewState = '../post/paraview-state.pvsm'
+    # Hint: also hard coded in scripts/paraview-export-all.py
 
 
 
