@@ -23,7 +23,7 @@ def plot_data(file_path, logy= True):
         lines_starting_with_hash = [line for line in file if line.startswith('#')]
 
     print("write plot for " +file_path)
-    data = pd.read_csv(file_path, skiprows=len(lines_starting_with_hash)-1, delimiter='\s+').iloc[:, 1:].shift(+1,axis=1).drop(["Time"], axis= 1)
+    data = pd.read_csv(file_path, skiprows=len(lines_starting_with_hash)-1, delimiter=r'\s+').iloc[:, 1:].shift(+1,axis=1).drop(["Time"], axis= 1)
 
     plot = data.plot(logy= logy, figsize=(15,5))
     fig = plot.get_figure()
