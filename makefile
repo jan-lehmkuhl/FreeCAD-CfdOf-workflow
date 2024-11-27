@@ -83,18 +83,12 @@ paraview-run-state-preparation:
 
 # creates a zipped filled of the current project without big mesh and calculated files
 zip-repository:
-	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='meshCase/constant' --exclude='*.stl' --exclude='*.pvsm' --exclude='case/0' --exclude='case/constant/polyMesh' --exclude='case/processor*' --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
+	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='meshCase/constant'   --exclude='case/constant/polyMesh' --exclude='case/processor*' --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
 	ls -la     .
 
 # creates a zipped file of the current project without the ARCHIVE folder
 zip-debug:
-	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='ARCHIVE'   --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
-
-# split archives to 10mb parts for a better uploading
-# splitArchive:
-#   split -b 10M  ARCHIVE.tar.gz  ARCHIVE.tar.gz.part
-# rebuildArchive:
-#   cat  ARCHIVE.tar.gz.part*  >  ARCHIVE.tar.gz
+	tar -vcjf  ARCHIVE-$(notdir $(CURDIR))-$(shell date +"%Y%m%d-%H%M%p").tar.bz2  --exclude='ARCHIVE'   --exclude='case/constant/polyMesh' --exclude='case/processor*'   --exclude='*.tar.gz' --exclude='*.tar.bz2'  `ls -A -1`
 
 
 # checks if the main files are stored in git repository
