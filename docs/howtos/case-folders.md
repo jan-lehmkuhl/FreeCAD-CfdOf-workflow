@@ -1,4 +1,4 @@
-Case Folders
+OpenFOAM Case Files & Folders
 ======================================================================
 
 In general FreeCAD don't performs the CFD calculation. 

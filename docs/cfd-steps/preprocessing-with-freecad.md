@@ -23,7 +23,7 @@ At a native Linux you can open FreeCAD with `freecad freecad-cfd.FCStd` or `make
 
 
 On the left side in the model tree all content in this file is listed.  
-![](docs/resources/freecad-combo-view.png)  
+![](../resources/freecad-combo-view.png)  
 To toggle the visibility of specific entries you can mark some and hit the space bar. 
 To getting to know each entry make all entries invisible (greyed out) and test what is appearing when you switch it to visible again. 
 
@@ -37,21 +37,23 @@ To do the CFD preprocessing switch to the CfdOF Workbench inside FreeCAD.
 #### init: creating the CFD-FreeCAD-Container
 When you starting from scratch, you need to create the FreeCAD `CFDAnalysis` container which is shown in the tree at the level of and below `Body`: 
 * mark the `geometry/Body` and then "**Create an analysis** container with a CFD solver" for this Body
-* mark the `geometry/Body` and then "**Create a mesh** using cfMesh, snappyHexMesh or gmsh" for this Body
+* mark the `geometry/Body` and then "**Create a mesh** using snappyHexMesh for this Body
 
 in this example this container are already there
+
 
 #### change
 To change the mesh settings doubleclick on `CFDAnalysis/Body001_Mesh`. 
 In the following popping up `Tasks` menu (the second register beside the model tree) you can change the basic values. 
 Some values can also be changed in the properties menu below the model tree. 
 
+
 #### export to meshCase
 When you finished your work, execute the `Write mesh case`-Button inside the FreeCAD-Tasks. 
 These command writes text files to the subfolders `meshCase` into the directory specified in the CfdOF-Plugin-Settings. 
 
 These files can be executed afterwards with OpenFOAM to build the mesh. 
-See [docs/create-mesh](create-mesh.md) for further details.  
+See [docs/create-mesh](./calculate-mesh.md) for further details.  
 
 
 
@@ -64,6 +66,7 @@ The initialization was already done by the mesh creation process.
 Therefore you can doubleclick on the different settings and change the values if needed. 
 Also you can change values in the properties windows. 
 If not existing, for every Face has a boundary condition to be applied. 
+
 
 #### export to case
 When the preprocessing is finished you export the mesh and cfd settings. 

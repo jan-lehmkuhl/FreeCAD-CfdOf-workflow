@@ -31,7 +31,7 @@ Background
  -->
 
 
-Goals
+Goal
 ---------------------------------------------------------------------
 <!-- 
 * which goal should be reached within this project
@@ -67,7 +67,7 @@ Issues which jeopardize the project
  -->
 
 
-Results
+Result Statements
 ---------------------------------------------------------------------
 <!-- 
 * which goals or partial goals are reached at this moment
