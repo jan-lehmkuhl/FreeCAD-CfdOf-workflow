@@ -78,8 +78,9 @@ Result Statements
 Project-Forecast
 ---------------------------------------------------------------------
 <!-- 
-* next steps and timeframe
-* whats your plan for the next week
+* prioritize your next steps 
+* create a timeline for the important tasks
+* tell me what are you doing next and when
  -->
 
 
