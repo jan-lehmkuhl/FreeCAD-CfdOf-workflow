@@ -3,7 +3,7 @@ Executing the CFD-Process
 
 The CFD-process has following steps:  
 
-* [Preprocessing](preprocessing-with-freecad.md)
+* [Preprocessing](preprocessing/README.md)
     * the geometry
     * the mesh
     * the physics

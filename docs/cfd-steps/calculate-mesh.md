@@ -1,7 +1,7 @@
 Create Mesh with OpenFOAM
 ======================================================================
 
-After [exporting the mesh-setup](./preprocessing-with-freecad.md#step-2-creatingmodifying-the-mesh-setup) from FreeCAD to [`meshCase`](../howtos/case-folders.md) or using the default files in this repository 
+After [exporting the mesh-setup](./preprocessing/mesh.md) from FreeCAD to [`meshCase`](../howtos/case-folders.md) or using the default files in this repository 
 you can calculate the mesh from the terminal.  
 
     cd example-wf
