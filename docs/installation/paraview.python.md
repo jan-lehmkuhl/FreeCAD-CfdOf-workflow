@@ -17,7 +17,7 @@ When these commands cannot be executed in the terminal, an [additional paraview]
 
 
 
-Check
+Check Success
 ------------------------------------------------------------
 
 If everything works fine the command: 

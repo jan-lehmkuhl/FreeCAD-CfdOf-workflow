@@ -1,7 +1,7 @@
 Create Mesh with OpenFOAM
 ======================================================================
 
-After [exporting the mesh-setup](./preprocessing-with-freecad.md#step-2-creatingmodifying-the-mesh-setup) from FreeCAD to [`meshCase`](../howtos/case-folders.md) or using the default files in this repository 
+After [exporting the mesh-setup](./preprocessing/mesh.md) from FreeCAD to [`meshCase`](../howtos/case-folders.md) or using the default files in this repository 
 you can calculate the mesh from the terminal.  
 
     cd example-wf
@@ -61,10 +61,10 @@ FoamFile
 
 ### Review the mesh in 3D
 
-Afterwards you should review the created mesh within the 3D viewer [Paraview](./postprocessing-with-paraview.md). 
+Afterwards you should review the created mesh within the 3D viewer [Paraview](./postprocessing/paraview.open-3d-data.md). 
 At Windows start from the Search and in Linux execute: 
 
-    make view-mesh
+    make paraview-mesh
 
 
 

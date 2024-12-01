@@ -3,7 +3,7 @@ Executing the CFD-Process
 
 The CFD-process has following steps:  
 
-* [Preprocessing](preprocessing-with-freecad.md)
+* [Preprocessing](preprocessing/README.md)
     * the geometry
     * the mesh
     * the physics
@@ -12,5 +12,5 @@ The CFD-process has following steps:
 * Postprocessing
     * Review residuals 
     * Review monitor points
-    * Review the 3D data with [Paraview](postprocessing-with-paraview.md)  
+    * Review the 3D data with [Paraview](postprocessing/paraview.open-3d-data.md)  
     * [Export pictures as png](../installation/paraview.python.md)  

@@ -14,7 +14,7 @@ This repository contains
 * a lot of documentation in the `docs` folder  
 * some scripts to simplify the postprocessing
     * a [python script](scripts/python-postprocessing.py) to plot residuals and monitor points.  
-    * a [paraview script](scripts/paraview-export-all.py) to export all "layouts" from predefined [Paraview-State-file](post/paraview-state.pvsm) (compare [docs](docs/cfd-steps/postprocessing-with-paraview.md#open-paraview-with-saved-state-file)).  
+    * a [paraview script](scripts/paraview-export-all.py) to export all "layouts" from predefined [Paraview-State-file](post/paraview-state.pvsm) (compare [docs](docs/cfd-steps/postprocessing/paraview.open-3d-data.md#open-paraview-with-saved-state-file)).  
 
 
 The first run is to do a functional test of your personal cfd-installation and do an automatic run without changes.  
@@ -54,7 +54,7 @@ If the installation is setup properly you should be able to calculate this CFD c
 The actual [OpenFOAM-case-files](docs/howtos/case-folders.md) of this example are already exported from FreeCAD-CfdOF-Plugin and tracked in git.  
 
 If the [Postprocessing](#postprocessing-results) for the actual state was successful, 
-you may change the [preprocessing in FreeCAD](docs/cfd-steps/preprocessing-with-freecad.md) 
+you may change the [preprocessing in FreeCAD](docs/cfd-steps/preprocessing/README.md) 
 and modify geometry, mesh and boundary conditions. 
 Then you export from FreeCAD to the [case folder](docs/howtos/case-folders.md) and 
 you can run the calculation (see [CFD-Steps](docs/cfd-steps/README.md)) with only one command:  
