@@ -1,18 +1,24 @@
-# Physics
+Create Physics/CFDSolver Setup
+======================================================================
+
+The initialization of the `CFDAnalysis` container should already be done in the [mesh creation process](mesh.md#creating-the-cfd-freecad-container). 
 
 
-Step 3: creating/modifying the cfd setup
+Adapt CFD Setup
 ------------------------------------------------------------
 
-The initialization was already done by the mesh creation process. 
-
-Therefore you can doubleclick on the different settings and change the values if needed. 
+Open the CFDAnalysis container, review the different settings and change the values if needed. 
 Also you can change values in the properties windows. 
-If not existing, for every Face has a boundary condition to be applied. 
+
+For a new setup you need to apply boundary condition for every face. 
+The other values can be kept for the first try. 
 
 
-#### export to case
-When the preprocessing is finished you export the mesh and cfd settings. 
+
+export to case
+------------------------------------------------------------
+
+When the preprocessing is finished you export cfd settings. 
 Doublecklick on `CFDAnalysis/CfdSolver` and execute the `Write`-Button inside the FreeCAD-Tasks
 
 These commands will write text files to the subfolder `case` into the directory specified in the CfdOF-Plugin-Settings, similar to `meshCase`. 
@@ -25,6 +31,22 @@ Before calculation starts three folders exists:
 │   └── system
 ~~~
 the file structure is documented in [Chapter-4.1] from the User Guide.
+
+
+
+Check Success
+------------------------------------------------------------
+
+### Export Path
+Check if the files are exported to the folder you expect. 
+
+* delete the old `case`-folder
+* [Write case setup](#export-to-case) again
+* check if `case` is created where you expect
+
+
+### Run
+* [Now run the simulation](../solve-cfd-case.md) and check the success. 
 
 
 

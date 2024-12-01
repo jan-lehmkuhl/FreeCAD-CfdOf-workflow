@@ -1,8 +1,8 @@
 Solve CFD case
 ======================================================================
 
-If the [mesh is created](./calculate-mesh.md) successfully the CFD solving process can start. 
-Then the [setup must be exported](../cfd-steps/preprocessing/physics.md#export-to-case) to `case` and
+If the [mesh is created](./calculate-mesh.md#check-success) successfully and 
+the [cfd setup is exported](../cfd-steps/preprocessing/physics.md#export-to-case) to `case` and
 you can start the calculation in WSL or Linux with: 
 
     make run
@@ -11,6 +11,7 @@ or using the exported `Allrun` for debugging:
 
     cd case
     ./Allrun
+
 
 
 Check Success
