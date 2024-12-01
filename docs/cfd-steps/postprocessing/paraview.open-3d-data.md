@@ -18,6 +18,7 @@ In native Linux you execute:
     make paraview-no-state
 
 
+### Data Preparation
 Before you see the flow variables you have to do some preparation in Paraview:  
 
 * if the results are calculated on multiple cores, the results must be decomposed,  
@@ -45,6 +46,9 @@ This can easy be done from command line or by help of the [Makefile](../../../Ma
 It might be necessary to execute following makefile target in order to remove some hard coded file paths:  
 
     make paraview-state-preparation
+
+
+At Windows you can use the File menu and `Load State ...`  
 
 
 

@@ -19,4 +19,4 @@ To use the GUI in Windows you have to [Download](https://www.paraview.org/downlo
 Using Paraview
 ------------------------------------------------------------
 
-Goto [CFD-Steps/Postprocessing](../cfd-steps/postprocessing/3d-data-with-paraview.md)  
+Goto [CFD-Steps/Postprocessing](../cfd-steps/postprocessing/paraview.open-3d-data.md)  

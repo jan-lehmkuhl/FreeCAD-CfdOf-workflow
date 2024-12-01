@@ -17,7 +17,7 @@ This means you have to do more postprocessing.
     * when is the simulation starting to crash
 * Then look at the [monitor points](../cfd-steps/postprocessing/probes.md)
     * what do you expect and what do you see? 
-* Then [postprocessing with Paraview](../cfd-steps/postprocessing/3d-data-with-paraview.md). 
+* Then [postprocessing with Paraview](../cfd-steps/postprocessing/paraview.open-3d-data.md). 
     * Start with early timesteps. Here is the chance bigger that the simulation is not yet completly fucked up. 
       For this set "CFDSolver/Steady Write Intervall" to `1`. Then you can look in the first iteration results. 
 

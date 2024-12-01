@@ -103,7 +103,7 @@ see:
 
 ### Review 3D data with Paraview
 To analyze this data in a more convenient graphical way you should use Paraview. 
-The details are described in this [HowTo](postprocessing/3d-data-with-paraview.md). 
+The details are described in this [HowTo](postprocessing/paraview.open-3d-data.md). 
 
 
 
