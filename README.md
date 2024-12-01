@@ -14,7 +14,7 @@ This repository contains
 * a lot of documentation in the `docs` folder  
 * some scripts to simplify the postprocessing
     * a [python script](scripts/python-postprocessing.py) to plot residuals and monitor points.  
-    * a [paraview script](scripts/paraview-export-all.py) to export all "layouts" from predefined [Paraview-State-file](post/paraview-state.pvsm) (compare [docs](docs/cfd-steps/postprocessing-with-paraview.md#open-paraview-with-saved-state-file)).  
+    * a [paraview script](scripts/paraview-export-all.py) to export all "layouts" from predefined [Paraview-State-file](post/paraview-state.pvsm) (compare [docs](docs/cfd-steps/postprocessing/3d-data-with-paraview.md#open-paraview-with-saved-state-file)).  
 
 
 The first run is to do a functional test of your personal cfd-installation and do an automatic run without changes.  

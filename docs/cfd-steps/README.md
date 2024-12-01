@@ -12,5 +12,5 @@ The CFD-process has following steps:
 * Postprocessing
     * Review residuals 
     * Review monitor points
-    * Review the 3D data with [Paraview](postprocessing-with-paraview.md)  
+    * Review the 3D data with [Paraview](postprocessing/3d-data-with-paraview.md)  
     * [Export pictures as png](../installation/paraview.python.md)  

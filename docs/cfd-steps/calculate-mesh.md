@@ -61,7 +61,7 @@ FoamFile
 
 ### Review the mesh in 3D
 
-Afterwards you should review the created mesh within the 3D viewer [Paraview](./postprocessing-with-paraview.md). 
+Afterwards you should review the created mesh within the 3D viewer [Paraview](./postprocessing/3d-data-with-paraview.md). 
 At Windows start from the Search and in Linux execute: 
 
     make paraview-mesh
