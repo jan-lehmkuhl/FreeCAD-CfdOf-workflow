@@ -15,7 +15,7 @@ This means you have to do more postprocessing.
 * First look at the [residuals](../cfd-steps/postprocessing/residuals.md)  
     * are the first steps looking good
     * when is the simulation starting to crash
-* Then look at the [monitor points](../cfd-steps/postprocessing/monitor-points.md)
+* Then look at the [monitor points](../cfd-steps/postprocessing/probes.md)
     * what do you expect and what do you see? 
 * Then [postprocessing with Paraview](../cfd-steps/postprocessing/3d-data-with-paraview.md). 
     * Start with early timesteps. Here is the chance bigger that the simulation is not yet completly fucked up. 

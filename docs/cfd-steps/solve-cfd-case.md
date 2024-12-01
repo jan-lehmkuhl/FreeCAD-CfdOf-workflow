@@ -94,6 +94,13 @@ If not you have to search for problems in your mesh or physical setup.
 
 
 
+### Review Monitor Points & Residuals
+see: 
+* [postprocessing/residuals](postprocessing/residuals.md)  
+* [postprocessing/probes](postprocessing/probes.md)
+
+
+
 ### Review 3D data with Paraview
 To analyze this data in a more convenient graphical way you should use Paraview. 
 The details are described in this [HowTo](postprocessing/3d-data-with-paraview.md). 

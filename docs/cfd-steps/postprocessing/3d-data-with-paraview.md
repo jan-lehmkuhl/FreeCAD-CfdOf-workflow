@@ -62,3 +62,9 @@ This can be started by:
 The needed state file is defined in the [Makefile](../../../makefile#L20) as variable `paraviewState` and
 in [scripts/paraview-export-all.py](../../../scripts/paraview-export-all.py#L11).  
 
+
+
+Check Success
+------------------------------------------------------------
+
+See if [case/visualization/paraview](../../../case/visualization/paraview/renderView4.png) contains all your Paraview Layouts.  
