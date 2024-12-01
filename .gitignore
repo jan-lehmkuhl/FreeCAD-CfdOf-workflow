@@ -91,7 +91,8 @@ case/postProcessing
 # snappyHexMesh files that are not snappyHexMeshDict
 meshCase/constant/polyMesh/refinementHistory*
 meshCase/constant/polyMesh/surfaceIndex*
-meshCase/constant/triSurface
+meshCase/constant/triSurface/patch_*_0.stl
+meshCase/constant/triSurface/*.eMesh
 
 # freecad meshing
 mesh_outside.stl
