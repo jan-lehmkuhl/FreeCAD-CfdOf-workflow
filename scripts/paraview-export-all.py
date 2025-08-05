@@ -1,4 +1,22 @@
-# must be executed by pvbatch from paraview installation
+# ================================================================================
+#      ___                 _            _                 _            _      _ 
+#     |_  |               | |          | |               | |          | |    | |
+#       | |  __ _  _ __   | |      ___ | |__   _ __ ___  | | __ _   _ | |__  | |
+#       | | / _` || '_ \  | |     / _ \| '_ \ | '_ ` _ \ | |/ /| | | || '_ \ | |
+#   /\__/ /| (_| || | | | | |____|  __/| | | || | | | | ||   < | |_| || | | || |
+#   \____/  \__,_||_| |_| \_____/ \___||_| |_||_| |_| |_||_|\_\ \__,_||_| |_||_|
+#  
+#   https://github.com/jan-lehmkuhl
+#  
+#   Purpose:    Export all Layouts from specified Paraview state as png
+#   Author(s):  Jan Lehmkuhl
+#  
+#   Description:
+#   Can be executed with 
+#       pvbatch THIS_SCRIPT.py
+#   or from "Run Script" in Paraview GUI
+#  
+# ================================================================================
 
 
 from paraview.simple import *
@@ -8,33 +26,42 @@ import sys
 
 
 def main():
-    paraviewState = '../post/paraview-state.pvsm'
-    outputPath = 'visualization/paraview'
+    load_data('pv.foam')
+    load_state('../post/paraview-state.pvsm')
+    export_views('visualization/paraview')
+
+
+def load_data(paraviewDataDummy):
+    print("load "+paraviewDataDummy)
+    if not os.path.exists(paraviewDataDummy):
+        print("ERROR: >" +paraviewDataDummy +"< not found")
+        print( os.path.abspath(paraviewDataDummy) )
+        return
+
+    pvfoam = OpenFOAMReader(FileName=paraviewDataDummy)
+
+
+def load_state(paraviewState):
+    print("load paraview state: ")
+    print( os.path.abspath(paraviewState) )
 
     if not os.path.exists(paraviewState):
-        print("Did not find state-file")
-        return False
+        print("ERROR: paraview state-file not found")
+        return
 
-
-
-    print("load pv.foam and paraview state")
-    # ==========================================================
-
-    pvfoam = OpenFOAMReader(FileName='pv.foam')
     LoadState(paraviewState,
-        DataDirectory='../shared/postStates',
-        pvfoamFileName='pv.foam')
+        # DataDirectory='../shared/postStates',
+        # pvfoamFileName='pv.foam'
+        )
 
     animationScene1 = GetAnimationScene()
     animationScene1.GoToLast()
 
 
+def export_views(outputPath):
+    print("export renderViews to path:")
+    print( os.path.abspath(outputPath) )
 
-    print("execute picture export")
-    # ==========================================================
-
-    #   export renderViews
-    # ------------------------------------------------
     idx = 1
     while True:
         try:
@@ -53,4 +80,7 @@ def main():
 
 
 if __name__ == "__main__":
+    main()
+elif __name__ =="__vtkconsole__":
+    print("run script inside Paraview Python Shell")
     main()
