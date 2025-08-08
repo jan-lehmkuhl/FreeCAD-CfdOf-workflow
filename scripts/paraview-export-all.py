@@ -25,10 +25,9 @@ import os
 import sys
 
 
-def main():
-    load_data('pv.foam')
-    load_state('../post/paraview-state.pvsm')
-    export_views('visualization/paraview')
+paraview_state =    '../post/paraview-state.pvsm'
+output_dir =        'visualization/paraview'
+
 
 
 def load_data(paraviewDataDummy):
@@ -80,7 +79,10 @@ def export_views(outputPath):
 
 
 if __name__ == "__main__":
-    main()
+    load_data('pv.foam')
+    load_state(paraview_state)
+    export_views(output_dir)
+
 elif __name__ =="__vtkconsole__":
     print("run script inside Paraview Python Shell")
-    main()
+    export_views(output_dir)
