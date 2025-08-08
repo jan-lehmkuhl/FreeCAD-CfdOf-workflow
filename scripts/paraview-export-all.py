@@ -19,6 +19,7 @@
 # ================================================================================
 
 
+from paraview.servermanager import ProxyManager
 from paraview.simple import *
 
 import os
@@ -61,27 +62,36 @@ def export_views(outputPath):
     print("export renderViews to path:")
     print( os.path.abspath(outputPath) )
 
-    idx = 0
-    while True:
+    layouts = ProxyManager().GetProxiesInGroup("layouts")
+
+    for layout_name, layout_proxy in layouts.items():
+        # print(f"Processing layout: {layout_name}")
+        
+        if layout_proxy is None:
+            print(f"Layout proxy is None, skipping.")
+            continue
+
+        # Get the view from the layout
         try:
-            idx += 1
-            renderView1 = FindView('RenderView' +str(idx))
+            view = layout_proxy.GetView(0)
+            if view is None:
+                print(f"No view found in layout: {layout_name}")
+                continue
 
-            renderView1.ViewSize = [1359, 799]
-            SetActiveView(renderView1)
+            # Use only the first part of layout_name tuple for filename
+            layout_base_name = layout_name[0] if isinstance(layout_name, tuple) else str(layout_name)
+            layout_base_name = layout_base_name.replace('#','').replace(' ','-')
+            filename = f"{output_dir}/{layout_base_name}.png"
 
-            print("save renderView: " +str(idx))
-            os.makedirs(outputPath, exist_ok=True)
-            SaveScreenshot(outputPath +'/renderView' +str(idx) +'.png', renderView1, ImageResolution=[1359, 798])
+            # Save screenshot
+            os.makedirs(output_dir, exist_ok=True)
+            SaveScreenshot(filename, view)
+            print(f"Saved: '{layout_base_name}'")
 
-            not_found_renderViews = 0
+        except Exception as e:
+            print(f"Error processing layout {layout_name}: {e}")
+            continue
 
-        except:
-            # print("next renderView "+str(idx) +" not found")
-            not_found_renderViews += 1
-            if not_found_renderViews >= 5 :
-                print( str(not_found_renderViews) +" consecutively renderViews not found and not expeciting more")
-                break
 
 
 if __name__ == "__main__":
