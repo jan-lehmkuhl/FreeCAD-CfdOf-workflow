@@ -61,9 +61,10 @@ def export_views(outputPath):
     print("export renderViews to path:")
     print( os.path.abspath(outputPath) )
 
-    idx = 1
+    idx = 0
     while True:
         try:
+            idx += 1
             renderView1 = FindView('RenderView' +str(idx))
 
             renderView1.ViewSize = [1359, 799]
@@ -73,9 +74,14 @@ def export_views(outputPath):
             os.makedirs(outputPath, exist_ok=True)
             SaveScreenshot(outputPath +'/renderView' +str(idx) +'.png', renderView1, ImageResolution=[1359, 798])
 
-            idx += 1
+            not_found_renderViews = 0
+
         except:
-            break
+            # print("next renderView "+str(idx) +" not found")
+            not_found_renderViews += 1
+            if not_found_renderViews >= 5 :
+                print( str(not_found_renderViews) +" consecutively renderViews not found and not expeciting more")
+                break
 
 
 if __name__ == "__main__":
