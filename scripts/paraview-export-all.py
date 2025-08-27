@@ -8,7 +8,7 @@
 #  
 #   https://github.com/jan-lehmkuhl
 #  
-#   Purpose:    Export all Layouts from specified Paraview state as png
+#   Purpose:    Export all Views from Layouts specified in Paraview state as png
 #   Author(s):  Jan Lehmkuhl
 #  
 #   Description:
@@ -23,7 +23,6 @@ from paraview.servermanager import ProxyManager
 from paraview.simple import *
 
 import os
-import sys
 
 
 paraview_state =    '../post/paraview-state.pvsm'
@@ -59,39 +58,40 @@ def load_state(paraviewState):
 
 
 def export_views(outputPath):
-    print("export renderViews to path:")
+    print("export Paraview-Views as image to path:")
     print( os.path.abspath(outputPath) )
 
-    layouts = ProxyManager().GetProxiesInGroup("layouts")
+    views = ProxyManager().GetProxiesInGroup("views")
 
-    for layout_name, layout_proxy in layouts.items():
-        # print(f"Processing layout: {layout_name}")
-        
-        if layout_proxy is None:
-            print(f"Layout proxy is None, skipping.")
+    if not views:
+        print("No views found")
+        return
+
+    for view_name, view in views.items():
+        if view is None:
+            print(f"View {view_name} is None, skipping.")
             continue
 
-        # Get the view from the layout
         try:
-            view = layout_proxy.GetView(0)
-            if view is None:
-                print(f"No view found in layout: {layout_name}")
-                continue
-
-            # Use only the first part of layout_name tuple for filename
-            layout_base_name = layout_name[0] if isinstance(layout_name, tuple) else str(layout_name)
-            layout_base_name = layout_base_name.replace('#','').replace(' ','-')
-            filename = f"{output_dir}/{layout_base_name}.png"
+            if isinstance(view_name, tuple):
+                clean_name = str(view_name[0])
+            else:
+                clean_name = str(view_name)
+            
+            clean_name = clean_name.replace('#','').replace(' ','-').replace('/','-')
+            
+            # Create filename
+            filename = f"{output_dir}/{clean_name}.png"
 
             # Save screenshot
             os.makedirs(output_dir, exist_ok=True)
             SaveScreenshot(filename, view, 
                            ImageResolution=[1280, 720],
                            )
-            print(f"Saved: '{layout_base_name}'")
+            print(f"Saved: '{clean_name}'")
 
         except Exception as e:
-            print(f"Error processing layout {layout_name}: {e}")
+            print(f"Error processing view {view_name}: {e}")
             continue
 
 
