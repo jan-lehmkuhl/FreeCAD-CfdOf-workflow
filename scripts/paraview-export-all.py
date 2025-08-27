@@ -85,7 +85,9 @@ def export_views(outputPath):
 
             # Save screenshot
             os.makedirs(output_dir, exist_ok=True)
-            SaveScreenshot(filename, view)
+            SaveScreenshot(filename, view, 
+                           ImageResolution=[1280, 720],
+                           )
             print(f"Saved: '{layout_base_name}'")
 
         except Exception as e:
