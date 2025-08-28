@@ -28,6 +28,9 @@ import os
 paraview_state =    '../post/paraview-state.pvsm'
 output_dir =        'visualization/paraview'
 
+legend_font_size = 8    # Font size for legend labels
+title_font_size = 10    # Font size for legend titles
+
 
 
 def load_data(paraviewDataDummy):
@@ -38,6 +41,7 @@ def load_data(paraviewDataDummy):
         return
 
     pvfoam = OpenFOAMReader(FileName=paraviewDataDummy)
+
 
 
 def load_state(paraviewState):
@@ -55,6 +59,34 @@ def load_state(paraviewState):
 
     animationScene1 = GetAnimationScene()
     animationScene1.GoToLast()
+
+
+
+def adjust_legend_font_sizes(view, legend_font_size=14, title_font_size=16):
+    try:
+        representations = view.Representations
+        
+        for rep in representations:
+            if str(type(rep)).find('ScalarBarWidget') != -1:
+                if hasattr(rep, 'LabelFontSize'):
+                    rep.LabelFontSize = legend_font_size
+                if hasattr(rep, 'TitleFontSize'):
+                    rep.TitleFontSize = title_font_size
+                
+                # Additional scalar bar formatting options
+                if hasattr(rep, 'LabelBold'):
+                    rep.LabelBold = 0  # 0 = not bold, 1 = bold
+                if hasattr(rep, 'TitleBold'):
+                    rep.TitleBold = 1  # Make title bold
+                if hasattr(rep, 'LabelItalic'):
+                    rep.LabelItalic = 0  # 0 = not italic, 1 = italic
+                if hasattr(rep, 'TitleItalic'):
+                    rep.TitleItalic = 0
+    except Exception as e:
+        print(f"Warning: Could not adjust legend font sizes: {e}")
+        import traceback
+        traceback.print_exc()
+
 
 
 def export_views(outputPath):
@@ -82,6 +114,8 @@ def export_views(outputPath):
 
             # Save screenshot
             os.makedirs(output_dir, exist_ok=True)
+            adjust_legend_font_sizes(view, legend_font_size, title_font_size)
+
             SaveScreenshot(filename, view, 
                            ImageResolution=[1280, 720],
                            )
