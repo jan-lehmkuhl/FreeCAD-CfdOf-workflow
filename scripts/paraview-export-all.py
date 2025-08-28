@@ -49,8 +49,8 @@ def load_state(paraviewState):
         return
 
     LoadState(paraviewState,
-        # DataDirectory='../shared/postStates',
-        # pvfoamFileName='pv.foam'
+        data_directory='.',
+        restrict_to_data_directory=True,
         )
 
     animationScene1 = GetAnimationScene()
@@ -62,7 +62,6 @@ def export_views(outputPath):
     print( os.path.abspath(outputPath) )
 
     views = ProxyManager().GetProxiesInGroup("views")
-
     if not views:
         print("No views found")
         return
@@ -79,8 +78,6 @@ def export_views(outputPath):
                 clean_name = str(view_name)
             
             clean_name = clean_name.replace('#','').replace(' ','-').replace('/','-')
-            
-            # Create filename
             filename = f"{output_dir}/{clean_name}.png"
 
             # Save screenshot
