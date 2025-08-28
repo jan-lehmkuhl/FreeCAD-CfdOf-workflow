@@ -65,14 +65,15 @@ def load_state(paraviewState):
 def adjust_legend_font_sizes(view, legend_font_size=14, title_font_size=16):
     try:
         representations = view.Representations
-        
+
+        # Handle scalar bar widgets (for 3D views)
         for rep in representations:
             if str(type(rep)).find('ScalarBarWidget') != -1:
                 if hasattr(rep, 'LabelFontSize'):
                     rep.LabelFontSize = legend_font_size
                 if hasattr(rep, 'TitleFontSize'):
                     rep.TitleFontSize = title_font_size
-                
+
                 # Additional scalar bar formatting options
                 if hasattr(rep, 'LabelBold'):
                     rep.LabelBold = 0  # 0 = not bold, 1 = bold
@@ -82,6 +83,39 @@ def adjust_legend_font_sizes(view, legend_font_size=14, title_font_size=16):
                     rep.LabelItalic = 0  # 0 = not italic, 1 = italic
                 if hasattr(rep, 'TitleItalic'):
                     rep.TitleItalic = 0
+
+        # Handle line chart views specifically
+        if hasattr(view, 'LegendFontSize'):
+            view.LegendFontSize = legend_font_size
+        if hasattr(view, 'LegendBold'):
+            view.LegendBold = 0
+        if hasattr(view, 'LegendItalic'):
+            view.LegendItalic = 0
+
+        # For line chart views, also try to adjust axis label fonts
+        view_type = str(type(view))
+        if 'LineChart' in view_type or 'XYChart' in view_type:
+            # Left axis properties
+            if hasattr(view, 'LeftAxisLabelFontSize'):
+                view.LeftAxisLabelFontSize = legend_font_size
+            if hasattr(view, 'LeftAxisTitleFontSize'):
+                view.LeftAxisTitleFontSize = title_font_size
+            # Bottom axis properties
+            if hasattr(view, 'BottomAxisLabelFontSize'):
+                view.BottomAxisLabelFontSize = legend_font_size
+            if hasattr(view, 'BottomAxisTitleFontSize'):
+                view.BottomAxisTitleFontSize = title_font_size
+            # Right axis properties
+            if hasattr(view, 'RightAxisLabelFontSize'):
+                view.RightAxisLabelFontSize = legend_font_size
+            if hasattr(view, 'RightAxisTitleFontSize'):
+                view.RightAxisTitleFontSize = title_font_size
+            # Top axis properties
+            if hasattr(view, 'TopAxisLabelFontSize'):
+                view.TopAxisLabelFontSize = legend_font_size
+            if hasattr(view, 'TopAxisTitleFontSize'):
+                view.TopAxisTitleFontSize = title_font_size
+
     except Exception as e:
         print(f"Warning: Could not adjust legend font sizes: {e}")
         import traceback
