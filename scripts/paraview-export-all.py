@@ -23,6 +23,7 @@ from paraview.servermanager import ProxyManager
 from paraview.simple import *
 
 import os
+import datetime
 
 
 paraview_state =    '../post/paraview-state.pvsm'
@@ -167,5 +168,9 @@ if __name__ == "__main__":
     export_views(output_dir)
 
 elif __name__ =="__vtkconsole__":
-    print("run script inside Paraview Python Shell")
+    print("Export Screenshots inside Paraview Python Shell")
+    print( datetime.datetime.now().isoformat())
+
     export_views(output_dir)
+
+    print("finished export at: " + datetime.datetime.now().isoformat())
