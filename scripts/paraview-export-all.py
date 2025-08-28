@@ -64,7 +64,10 @@ def load_state(paraviewState):
 
 
 def adjust_legend_font_sizes(view, legend_font_size=14, title_font_size=16):
+    verbose = False
     try:
+        if verbose: print(f"Adjusting legend properties: font={legend_font_size}, title={title_font_size}")
+
         representations = view.Representations
 
         # Handle scalar bar widgets (for 3D views)
@@ -72,50 +75,72 @@ def adjust_legend_font_sizes(view, legend_font_size=14, title_font_size=16):
             if str(type(rep)).find('ScalarBarWidget') != -1:
                 if hasattr(rep, 'LabelFontSize'):
                     rep.LabelFontSize = legend_font_size
+                    if verbose: print(f"  Set ScalarBar LabelFontSize to {legend_font_size}")
                 if hasattr(rep, 'TitleFontSize'):
                     rep.TitleFontSize = title_font_size
+                    if verbose: print(f"  Set ScalarBar TitleFontSize to {title_font_size}")
 
                 # Additional scalar bar formatting options
                 if hasattr(rep, 'LabelBold'):
                     rep.LabelBold = 0  # 0 = not bold, 1 = bold
+                    if verbose: print(f"  Set ScalarBar LabelBold to 0")
                 if hasattr(rep, 'TitleBold'):
                     rep.TitleBold = 1  # Make title bold
+                    if verbose: print(f"  Set ScalarBar TitleBold to 1")
                 if hasattr(rep, 'LabelItalic'):
                     rep.LabelItalic = 0  # 0 = not italic, 1 = italic
+                    if verbose: print(f"    Set ScalarBar LabelItalic to 0")
                 if hasattr(rep, 'TitleItalic'):
                     rep.TitleItalic = 0
+                    if verbose: print(f"    Set ScalarBar TitleItalic to 0")
 
         # Handle line chart views specifically
         if hasattr(view, 'LegendFontSize'):
             view.LegendFontSize = legend_font_size
+            if verbose: print(f"  Set view LegendFontSize to {legend_font_size}")
         if hasattr(view, 'LegendBold'):
             view.LegendBold = 0
+            if verbose: print(f"  Set view LegendBold to 0")
         if hasattr(view, 'LegendItalic'):
             view.LegendItalic = 0
+            if verbose: print(f"  Set view LegendItalic to 0")
 
         # For line chart views, also try to adjust axis label fonts
         view_type = str(type(view))
         if 'LineChart' in view_type or 'XYChart' in view_type:
+            if verbose: print(f"  Found line chart view, adjusting axis fonts")
+
             # Left axis properties
             if hasattr(view, 'LeftAxisLabelFontSize'):
                 view.LeftAxisLabelFontSize = legend_font_size
+                if verbose: print(f"  Set LeftAxisLabelFontSize to {legend_font_size}")
             if hasattr(view, 'LeftAxisTitleFontSize'):
                 view.LeftAxisTitleFontSize = title_font_size
+                if verbose: print(f"  Set LeftAxisTitleFontSize to {title_font_size}")
             # Bottom axis properties
             if hasattr(view, 'BottomAxisLabelFontSize'):
                 view.BottomAxisLabelFontSize = legend_font_size
+                if verbose: print(f"  Set BottomAxisLabelFontSize to {legend_font_size}")
             if hasattr(view, 'BottomAxisTitleFontSize'):
                 view.BottomAxisTitleFontSize = title_font_size
+                if verbose: print(f"  Set BottomAxisTitleFontSize to {title_font_size}")
             # Right axis properties
             if hasattr(view, 'RightAxisLabelFontSize'):
                 view.RightAxisLabelFontSize = legend_font_size
+                if verbose: print(f"  Set RightAxisLabelFontSize to {legend_font_size}")
             if hasattr(view, 'RightAxisTitleFontSize'):
                 view.RightAxisTitleFontSize = title_font_size
+                if verbose: print(f"  Set RightAxisTitleFontSize to {title_font_size}")
             # Top axis properties
             if hasattr(view, 'TopAxisLabelFontSize'):
                 view.TopAxisLabelFontSize = legend_font_size
+                if verbose: print(f"  Set TopAxisLabelFontSize to {legend_font_size}")
             if hasattr(view, 'TopAxisTitleFontSize'):
                 view.TopAxisTitleFontSize = title_font_size
+                if verbose: print(f"  Set TopAxisTitleFontSize to {title_font_size}")
+
+
+        if verbose: print(f"  Completed font adjustments for view")
 
     except Exception as e:
         print(f"Warning: Could not adjust legend font sizes: {e}")
