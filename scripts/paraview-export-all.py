@@ -39,7 +39,7 @@ def load_data(paraviewDataDummy):
     if not os.path.exists(paraviewDataDummy):
         print("ERROR: >" +paraviewDataDummy +"< not found")
         print( os.path.abspath(paraviewDataDummy) )
-        return
+        exit()
 
     pvfoam = OpenFOAMReader(FileName=paraviewDataDummy)
 
@@ -51,7 +51,7 @@ def load_state(paraviewState):
 
     if not os.path.exists(paraviewState):
         print("ERROR: paraview state-file not found")
-        return
+        exit()
 
     LoadState(paraviewState,
         data_directory='.',
