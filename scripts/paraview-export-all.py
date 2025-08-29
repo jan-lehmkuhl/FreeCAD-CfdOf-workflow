@@ -38,7 +38,7 @@ def load_data(paraviewDataDummy):
     print("load "+paraviewDataDummy)
     if not os.path.exists(paraviewDataDummy):
         print("ERROR: >" +paraviewDataDummy +"< not found")
-        print( os.path.abspath(paraviewDataDummy) )
+        print("    " + os.path.abspath(paraviewDataDummy) )
         exit()
 
     pvfoam = OpenFOAMReader(FileName=paraviewDataDummy)
@@ -47,15 +47,20 @@ def load_data(paraviewDataDummy):
 
 def load_state(paraviewState):
     print("load paraview state: ")
-    print( os.path.abspath(paraviewState) )
+    print("    " + os.path.abspath(paraviewState) )
+    print("in current working directory: ")
+    print("    " + os.getcwd() )
 
     if not os.path.exists(paraviewState):
         print("ERROR: paraview state-file not found")
         exit()
 
-    LoadState(paraviewState,
-        data_directory='.',
-        restrict_to_data_directory=True,
+    LoadState(
+        paraviewState,
+        filenames=[ {
+                'FileName': os.path.join( os.getcwd(), "pv.foam" ),
+                'name': 'pv.foam',
+            }]
         )
 
     animationScene1 = GetAnimationScene()
@@ -194,7 +199,7 @@ if __name__ == "__main__":
 
 elif __name__ =="__vtkconsole__":
     print("Export Screenshots inside Paraview Python Shell")
-    print( datetime.datetime.now().isoformat())
+    print("    " + datetime.datetime.now().isoformat())
 
     export_views(output_dir)
 
