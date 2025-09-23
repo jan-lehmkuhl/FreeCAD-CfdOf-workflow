@@ -19,6 +19,51 @@ tmp
 
 
 
+# FreeCAD
+# =============================================================================
+*.FCStd[0-9]
+*.[0-9]*-*[0-9].FCBak
+
+Allmesh.bat
+Allmesh.ps1
+Allrun.bat
+Allrun.ps1
+
+
+
+# OpenFOAM Meshing
+# =============================================================================
+
+# mesh data that is no dictionary
+*ase/constant/polyMesh
+*ase/constant/polyMesh/points*
+*ase/constant/polyMesh/faces*
+*ase/constant/polyMesh/owner*
+*ase/constant/polyMesh/neighbour*
+*ase/constant/polyMesh/boundary*
+*ase/constant/polyMesh/sets
+*ase/constant/polyMesh/*
+*ase/constant/extendedFeatureEdgeMesh/*
+
+# Zones and levels
+*Level*
+*Zone*
+
+# snappyHexMesh files that are not snappyHexMeshDict
+meshCase/constant/polyMesh/refinementHistory*
+meshCase/constant/polyMesh/surfaceIndex*
+meshCase/constant/triSurface/patch_*_0.stl
+meshCase/constant/triSurface/*.eMesh
+
+# freecad meshing
+mesh_outside.stl
+surfaceMesh.vtk
+
+# cfmesh
+meshCase/*.fms
+
+
+
 # OpenFOAM Preprocessing
 # =============================================================================
 
@@ -72,39 +117,6 @@ case/postProcessing
 
 
 
-# OpenFOAM Meshing
-# =============================================================================
-
-# mesh data that is no dictionary
-*ase/constant/polyMesh
-*ase/constant/polyMesh/points*
-*ase/constant/polyMesh/faces*
-*ase/constant/polyMesh/owner*
-*ase/constant/polyMesh/neighbour*
-*ase/constant/polyMesh/boundary*
-*ase/constant/polyMesh/sets
-*ase/constant/polyMesh/*
-*ase/constant/extendedFeatureEdgeMesh/*
-
-# Zones and levels
-*Level*
-*Zone*
-
-# snappyHexMesh files that are not snappyHexMeshDict
-meshCase/constant/polyMesh/refinementHistory*
-meshCase/constant/polyMesh/surfaceIndex*
-meshCase/constant/triSurface/patch_*_0.stl
-meshCase/constant/triSurface/*.eMesh
-
-# freecad meshing
-mesh_outside.stl
-surfaceMesh.vtk
-
-# cfmesh
-meshCase/*.fms
-
-
-
 # OpenFOAM additional stuff
 # =============================================================================
 
@@ -118,16 +130,6 @@ Darwin*
 dynamicCode
 
 
-
-# FreeCAD
-# =============================================================================
-*.FCStd[0-9]
-*.[0-9]*-*[0-9].FCBak
-
-Allmesh.bat
-Allmesh.ps1
-Allrun.bat
-Allrun.ps1
 
 
 # End of https://www.gitignore.io/api/openfoam
