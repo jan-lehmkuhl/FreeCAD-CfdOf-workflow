@@ -24,6 +24,7 @@ from paraview.simple import *
 
 import os
 import datetime
+import re
 
 
 paraview_state =    '../post/paraview-state.pvsm'
@@ -45,6 +46,38 @@ def load_data(paraviewDataDummy):
 
 
 
+def check_state_file_compatibility(state_file_path):
+    """Check ParaView state file for common compatibility issues"""
+    print(f"Analyzing state file: {state_file_path}")
+    
+    try:
+        with open(state_file_path, 'r') as f:
+            content = f.read()
+            
+        # Check ParaView version
+        version_match = re.search(r'<ServerManagerState version="([^"]+)"', content)
+        if version_match:
+            state_version = version_match.group(1)
+            print(f"State file created with ParaView version: {state_version}")
+        
+        # Check for problematic patterns that might cause the NoneType error
+        proxy_without_id = re.findall(r'<Proxy[^>]*(?!.*id=)[^>]*>', content)
+        if proxy_without_id:
+            print(f"Warning: Found {len(proxy_without_id)} Proxy elements without id attribute")
+            print("This might cause compatibility issues with some ParaView versions")
+        
+        # Check for file references
+        file_refs = re.findall(r'FileName[^>]*>([^<]+)', content)
+        if file_refs:
+            print(f"Found file references in state: {set(file_refs[:5])}...")  # Show first 5
+            
+        return True
+    except Exception as e:
+        print(f"Error analyzing state file: {e}")
+        return False
+
+
+
 def load_state(paraviewState):
     print("load paraview state: ")
     print("    " + os.path.abspath(paraviewState) )
@@ -55,15 +88,56 @@ def load_state(paraviewState):
         print("ERROR: paraview state-file not found")
         exit()
 
-    LoadState(
-        paraviewState,
-        filenames=[ {
-                'FileName': os.path.join( os.getcwd(), "pv.foam" ),
-                'name': 'pv.foam',
-            }]
-        )
+    check_state_file_compatibility(paraviewState)
 
-    animationScene1 = GetAnimationScene()
+    # Strategy 1: Try with DataPath method (newer ParaView versions)
+    try:
+        print("Attempt 1: Loading with DataPath mapping...")
+        LoadState(paraviewState, 
+                 data_directory=os.getcwd(),
+                 restrict_to_data_directory=True)
+        print("State loaded successfully with DataPath method")
+        animationScene1 = GetAnimationScene()
+        animationScene1.GoToLast()
+        return
+    except Exception as e:
+        print(f"DataPath method failed: {e}")
+
+    # Strategy 2: Try with filenames parameter (traditional method)
+    try:
+        print("Attempt 2: Loading with filenames mapping...")
+        LoadState(paraviewState, 
+                 filenames=[{
+                     'FileName': os.path.join( os.getcwd(), "pv.foam" ),
+                     'name': 'pv.foam',
+                 }])
+        print("State loaded successfully with filenames method")
+        animationScene1 = GetAnimationScene()
+        animationScene1.GoToLast()
+        return
+    except Exception as e:
+        print(f"Filenames method failed: {e}")
+
+    # Strategy 3: Load without file mapping (least robust but most compatible)
+    try:
+        print("Attempt 3: Loading without file mapping...")
+        LoadState(paraviewState)
+        print("State loaded successfully without file mapping")
+        print("WARNING: File paths in state may not be properly mapped!")
+        animationScene1 = GetAnimationScene()
+        animationScene1.GoToLast()
+        return
+    except Exception as e:
+        print(f"No mapping method failed: {e}")
+
+    # If all methods fail, give detailed error information
+    print("ERROR: All state loading methods failed.")
+    print("This suggests a fundamental incompatibility with the ParaView state file.")
+    print("Possible solutions:")
+    print("1. Regenerate the state file with your current ParaView version")
+    print("2. Check ParaView version compatibility")
+    print("3. Manually verify the state file XML structure")
+    exit(1)
     animationScene1.GoToLast()
 
 
