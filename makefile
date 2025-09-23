@@ -9,9 +9,6 @@
 
 MAKEFLAGS += --always-make
 
-remove_paraview_state_variable_parts = sed --in-place --regexp-extended --expression  \
-	"s/(<Element index=\"0\" value=\")(.*)(pv\.foam\"\/>)/\1\3/g"
-
 # some variables:
 date = $(shell date +"%Y%m%d-%H%M%S%p")
 archiveFolder = ARCHIVE/run-$(date)
@@ -71,11 +68,6 @@ paraview-run-no-state:
 # opens paraview with the referenced state file for reviewing the results
 paraview-run:
 	cd case ;  paraview --state=$(paraviewState)
-	make paraview-run-state-preparation
-
-paraview-run-state-preparation:
-	cd case ;  ${remove_paraview_state_variable_parts} $(paraviewState)
-
 
 
 # archiving current data
