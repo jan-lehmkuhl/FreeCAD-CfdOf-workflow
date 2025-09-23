@@ -25,6 +25,7 @@ from paraview.simple import *
 import os
 import datetime
 import re
+import fileinput
 
 
 paraview_state =    '../post/paraview-state.pvsm'
@@ -63,7 +64,7 @@ def check_state_file_compatibility(state_file_path):
         # Check for problematic patterns that might cause the NoneType error
         proxy_without_id = re.findall(r'<Proxy[^>]*(?!.*id=)[^>]*>', content)
         if proxy_without_id:
-            print(f"Warning: Found {len(proxy_without_id)} Proxy elements without id attribute")
+            print(f"WARNING: Found {len(proxy_without_id)} Proxy elements without id attribute")
             print("This might cause compatibility issues with some ParaView versions")
         
         # Check for file references
@@ -75,6 +76,19 @@ def check_state_file_compatibility(state_file_path):
     except Exception as e:
         print(f"Error analyzing state file: {e}")
         return False
+
+
+
+def remove_path_before_pvfoam(paraviewState): 
+    """
+    Remove any path before 'pv.foam' in the ParaView state file, so that only 'pv.foam' remains as the file reference.
+    This is useful for making the state file portable across different machines/directories.
+    """
+
+    print("WARNING: Replace values=\"...pv.foam\" with value=\"pv.foam\" in state file")
+    for line in fileinput.input(paraviewState, inplace=True):
+        line = re.sub(r'(<Element[^>]*value=")[^"]*pv\.foam(")', r'\1pv.foam\2', line)
+        print(line, end='')
 
 
 
@@ -121,6 +135,7 @@ def load_state(paraviewState):
     # Strategy 3: Load without file mapping (least robust but most compatible)
     try:
         print("Attempt 3: Loading without file mapping...")
+        remove_path_before_pvfoam(paraviewState)
         LoadState(paraviewState)
         print("State loaded successfully without file mapping")
         print("WARNING: File paths in state may not be properly mapped!")
@@ -222,7 +237,7 @@ def adjust_legend_font_sizes(view, legend_font_size=14, title_font_size=16):
         if verbose: print(f"  Completed font adjustments for view")
 
     except Exception as e:
-        print(f"Warning: Could not adjust legend font sizes: {e}")
+        print(f"WARNING: Could not adjust legend font sizes: {e}")
         import traceback
         traceback.print_exc()
 
