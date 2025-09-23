@@ -36,6 +36,8 @@ tmp
 # =============================================================================
 
 ## Libraries
+case/system/alphaDivScheme
+case/system/cAlpha
 case/system/turbulenceLib
 
 ## Timestep directories
