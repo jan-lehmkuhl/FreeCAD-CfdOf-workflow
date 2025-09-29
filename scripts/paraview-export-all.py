@@ -27,6 +27,9 @@ import datetime
 import re
 import fileinput
 
+import matplotlib.pyplot as plt
+import pandas as pd
+
 
 paraview_state =    '../post/paraview-state.pvsm'
 output_dir =        'visualization/paraview'
@@ -35,6 +38,9 @@ legend_font_size = 8    # Font size for legend labels
 title_font_size = 10    # Font size for legend titles
 
 
+
+#   Paraview Picture Export
+# ==============================================================================
 
 def load_data(paraviewDataDummy):
     print("load "+paraviewDataDummy)
@@ -281,7 +287,50 @@ def export_views(outputPath):
 
 
 
+#   Plotting Data from "postProcessing" Folder
+# ==============================================================================
+
+def plot_data(file_path, logy= True):
+    """
+    https://gist.github.com/kastnerp/e76fb8ec1394fe0b0926deb07b9689f1
+    """
+
+    export_path = "visualization/plots"
+    data_name = file_path.split("/")[-1].rstrip('.dat')
+
+    if not os.path.exists(file_path):
+        print("File not found: ", file_path)
+        return False
+
+    with open(file_path, 'r') as file:
+        lines_starting_with_hash = [line for line in file if line.startswith('#')]
+
+    print("write plot for " +file_path)
+    data = pd.read_csv(file_path, skiprows=len(lines_starting_with_hash)-1, delimiter=r'\s+').iloc[:, 1:].shift(+1,axis=1).drop(["Time"], axis= 1)
+
+    plot = data.plot(logy= logy, figsize=(15,5))
+    fig = plot.get_figure()
+    ax = plt.gca()
+    ax.legend(loc='upper right')
+    ax.set_xlabel("Iterations")
+    ax.set_ylabel(data_name)
+    ax.grid(linestyle="--")
+
+    os.makedirs(export_path, exist_ok=True)
+    plt.savefig(os.path.join(export_path, data_name +".png") ,dpi=600)
+
+
+def plot_postProcessing_data():
+    plot_data("postProcessing/residuals/0/residuals.dat")
+    plot_data("postProcessing/probes/0/p", logy= False)
+
+
+
 if __name__ == "__main__":
+    print("\nCrete plots from postProcessing folder\n==================================================")
+    plot_postProcessing_data()
+
+    print("\nCrete ParaView visualizations\n==================================================")
     load_data('pv.foam')
     load_state(paraview_state)
     export_views(output_dir)
