@@ -103,7 +103,7 @@ With hitting the "Install OpenFOAM"-Button the ESI Version of OpenFOAM ist insta
 
 
 ### ParaView (only on Windows)
-Paraview ist installed in a different 
+[Paraview](paraview.md) ist installed in a place like:
 
     C:\Program Files\ParaView 5.10.1-Windows-Python3.9-msvc2017-AMD64
 

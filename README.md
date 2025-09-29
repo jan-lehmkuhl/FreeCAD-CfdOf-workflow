@@ -74,8 +74,7 @@ As final calculation results you should get some postprocessing pictures which a
 For example:  
 
 > ![case/visualization/plots/residuals.png](case/visualization/plots/residuals.png)  
-> ![case/visualization/paraview/renderView4.png](case/visualization/paraview/renderView4.png)  
-
+> ![case/visualization/paraview/renderView4.png](case/visualization/paraview/RenderView4.png)  
 
 
 

@@ -24,6 +24,7 @@ geometry
     {
         type triSurfaceMesh;
         name Body001_Geometry;
+        file "Body001_Geometry.stl";
         regions
         {
             patch_1_0
@@ -52,6 +53,7 @@ castellatedMeshControls
     maxGlobalCells 2000000000;
     minRefinementCells 0;
     nCellsBetweenLevels 3;
+    maxLoadUnbalance 0.20;
 
     features
     (

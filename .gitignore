@@ -19,54 +19,15 @@ tmp
 
 
 
-# OpenFOAM Preprocessing
+# FreeCAD
 # =============================================================================
+*.FCStd[0-9]
+*.[0-9]*-*[0-9].FCBak
 
-#exclude important folders and files:
-!case/0/
-!case/constant/thermophysicalProperties
-!case/constant/turbulenceProperties
-!case/system/
-!meshCase/system/
-!.gitignore
-
-
-
-# OpenFOAM Solving
-# =============================================================================
-
-## Libraries
-case/system/turbulenceLib
-
-## Timestep directories
-case/0.*
-case/[1-9]*
-
-## Fields that must get ignored
-*/phi*
-*/meshPhi*
-
-## Decomposed domain
-processor*
-
-## logfiles
-log.*
-*log
-
-
-
-# OpenFOAM Postprocessing
-# =============================================================================
-
-# paraview/ParaFoam
-# *.foam
-*.OpenFOAM
-
-# function object and post-processing data
-forces
-case/forces
-postProcessing
-case/postProcessing
+Allmesh.bat
+Allmesh.ps1
+Allrun.bat
+Allrun.ps1
 
 
 
@@ -103,6 +64,59 @@ meshCase/*.fms
 
 
 
+# OpenFOAM Preprocessing
+# =============================================================================
+
+#exclude important folders and files:
+!case/0/
+!case/constant/thermophysicalProperties
+!case/constant/turbulenceProperties
+!case/system/
+!meshCase/system/
+!.gitignore
+
+
+
+# OpenFOAM Solving
+# =============================================================================
+
+## Libraries
+case/system/alphaDivScheme
+case/system/cAlpha
+case/system/turbulenceLib
+
+## Timestep directories
+case/0.*
+case/[1-9]*
+
+## Fields that must get ignored
+*/phi*
+*/meshPhi*
+
+## Decomposed domain
+processor*
+
+## logfiles
+log.*
+*log
+
+
+
+# OpenFOAM Postprocessing
+# =============================================================================
+
+# paraview/ParaFoam
+# *.foam
+*.OpenFOAM
+
+# function object and post-processing data
+forces
+case/forces
+postProcessing
+case/postProcessing
+
+
+
 # OpenFOAM additional stuff
 # =============================================================================
 
@@ -116,16 +130,6 @@ Darwin*
 dynamicCode
 
 
-
-# FreeCAD
-# =============================================================================
-*.FCStd[0-9]
-*.[0-9]*-*[0-9].FCBak
-
-Allmesh.bat
-Allmesh.ps1
-Allrun.bat
-Allrun.ps1
 
 
 # End of https://www.gitignore.io/api/openfoam
