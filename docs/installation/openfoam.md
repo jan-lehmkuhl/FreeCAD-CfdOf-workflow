@@ -92,22 +92,33 @@ Linux will download the needed files from the previous defined repository.
     sudo apt-get -y install build-essential
 
 
-change .bashrc
+Sourcing and changing .bashrc
 ---------------------------------------------------------------------
-after installation Ubuntu should know where he finds the OpenFOAM binaries, so that you can call them from the terminal.  
-open a texteditor with: 
+When you installed OpenFOAM the binaries are at your computer, but you only can start them, when you address them directly. 
+For example: 
+
+    /opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/foamRun
+
+To make your OpenFOAM installation available in your terminal session, you can execute: 
+
+    source /opt/openfoam13/etc/bashrc
+
+Then you can execute foamRun at every location in your terminal directly with: 
+
+    foamRun
+
+
+To make this sourcing permanent, you can add the `source ...` command into the `~/.bashrc` file. 
+This will be loaded everytime you open a terminal. 
 
     nano ~/.bashrc
 
 
-paste in the `.bashrc` textfile following line: 
-
-~~~bash
-source /opt/openfoam11/etc/bashrc
-~~~
+At best, the settings in FreeCAD-CfdOF are correct, and the paths to OpenFOAM are set directly in Allmesh and Allrun. 
+Then the sourcing is not necessary, but sometimes it avoids errors. 
 
 
-testing
+Testing
 ---------------------------------------------------------------------
 Now you can test the installation in the WSL or Linux system by starting: 
 

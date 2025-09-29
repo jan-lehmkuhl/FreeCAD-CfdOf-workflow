@@ -7,8 +7,8 @@ OpenFOAM is Linux program, but can also be used at Windows with an additional Wi
 On Mac you should consider to use a linux virtual machine, which can be created for example by [multipass](https://multipass.run/).  
 
 * [openfoam.md](openfoam.md) to install the OpenFOAM solver.  
-* [freecad-cfdof.md](freecad-cfdof.md) to write the needed files from FreeCAD, which are calculated by OpenFOAM.  
 * [paraview](paraview.md) to review your results in the GUI. 
+* [freecad-cfdof.md](freecad-cfdof.md) to write the needed files from FreeCAD, which are calculated by OpenFOAM.  
 * [python.md](python.md) and [paraview.python.md](paraview.python.md) to run the postprocessing in the command line.  
 * [additional-tools.md](additional-software.md) to make this repository work.  
 
