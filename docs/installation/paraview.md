@@ -5,7 +5,7 @@ Linux
 ------------------------------------------------------------
 
 At Linux or WSL Paraview is automatically installed with [OpenFOAM](openfoam.md) packages. 
-Normally also the [command line Python tools](paraview.python.md) are working.  
+Make sure also the [command line Python tools](paraview.python.md) are working.  
 
 
 
