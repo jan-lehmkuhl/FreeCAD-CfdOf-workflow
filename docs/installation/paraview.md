@@ -13,6 +13,7 @@ Windows
 ------------------------------------------------------------
 
 To use the GUI in Windows you have to [Download](https://www.paraview.org/download/) the executable and install it in Windows.  
+After this set the Paraview path in [FreeCAD-CfdOF Settings](freecad-cfdof.md#paraview-only-on-windows).  
 
 
 

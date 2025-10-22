@@ -2,10 +2,10 @@
 FreeCAD CfdOF-Plugin
 ==============================================================================
 
-FreeCAD is not directly linked to OpenFOAM. 
+FreeCAD is not necessary linked to OpenFOAM. 
 The CfdOF FreeCAD-plugin will write the text input files, which will be read by OpenFOAM. 
 
-So you can run FreeCAD native under Windows and OpenFOAM within the Windows Subsystem for Linux (WSL). 
+So you can run FreeCAD native under Windows and OpenFOAM within the Windows Subsystem for Linux (WSL) or inside a Docker container. 
 Its only important, that every software can write in the same directories.  
 
 
@@ -13,7 +13,7 @@ Its only important, that every software can write in the same directories.
 Installation
 ---------------------------------------------------------------------
 
-First you have to install [FreeCAD](freecad.md) to setup and use the CfdOF-Plugin.  
+First you have to install [FreeCAD](freecad.md) in your native OS to setup and use the CfdOF-Plugin.  
 
 The CfdOF-Plugin can be installed in the FreeCAD-GUI with the [AddOn-Manager](https://wiki.freecadweb.org/Std_AddonMgr).  
 Problems with the Addon-Manager are discussed at the [Debug-Page](https://github.com/FreeCAD/FreeCAD-addons).   
@@ -48,12 +48,13 @@ FreeCAD -> File -> Edit -> Preferences -> CFDOF
 
 
 ### install directory
-On **Linux** set OpenFOAM directory to: 
+On **Linux** set OpenFOAM directory to something like: 
 ~~~
 /opt/openfoam11
 ~~~
 
-On **Windows** this remains empty but you have to install later more [dependencies](#openfoam-only-on-windows).  
+On **Windows** this first remains empty but you have to install later more [dependencies](#openfoam-only-on-windows) and
+then you have to enter the used installation path like `C:\...`.  
 
 
 ### Set Output directory 
