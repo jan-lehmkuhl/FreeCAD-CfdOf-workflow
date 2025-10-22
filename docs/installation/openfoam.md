@@ -9,6 +9,7 @@ So if you have access to these files, you can run your GUI-Programs like FreeCAD
 OpenFOAM is a Linux Programm but there are several ways to run Linux under Windows or MacOS.
 Before installing OpenFOAM install Linux by your prefered method:  
 * [WSL](windows-subsystem-for-linux.md) (recommended for Windows)
+* [Docker](openfoam.docker.md) (recommended for MacOS)  
 * A virtual machine with Linux 
    (see [openfoam.org](https://openfoam.org/download/windows-vm/))  
 
