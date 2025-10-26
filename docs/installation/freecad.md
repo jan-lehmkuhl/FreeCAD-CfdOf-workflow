@@ -10,6 +10,36 @@ Installation on Windows
 If something is not working well, consider to download a [developer-version](https://github.com/FreeCAD/FreeCAD/releases/)  
 
 
+### PowerShell Start
+If you want to start FreeCAD from a specific folder, which is useful for [setting relative output directories](freecad-cfdof.md#set-output-directory) in CfdOF, 
+you have to edit the PowerShell Profile, for example with VS Code:  
+
+    code $profile
+
+There you have to place following function and adapt the path (`$exe`) to your FreeCAD installation:
+```powershell
+function freecad {
+    # Opens FreeCAD in Powershell from any folder. 
+    #   freecad [PATH_TO_CADFILE.FCStd]
+
+    param(
+        [string]$FilePath
+    )
+    $exe = "P:\portableApps\FreeCADPortable\FreeCADPortable.exe"
+
+    if ($FilePath) {
+        & $exe $FilePath
+    } else {
+        & $exe
+    }
+}
+```
+
+After a restart of the PowerShell terminal, you can start FreeCAD at a specific place from PowerShell with: 
+
+    freecad FREECAD_FILE.FCStd
+
+
 
 Installation on Linux
 ---------------------------------------------------------------------

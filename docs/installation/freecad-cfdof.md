@@ -61,10 +61,11 @@ then you have to enter the used installation path like `C:\...`.
 It is important to know where CfdOF will write your files. 
 
 If this is a constant folder like `/tmp` you will always copy the files from here to your project. 
-Its better so start FreeCAD from the terminal at a certain place and export relative from there.  
+Its better so start FreeCAD from the terminal at a certain place and export relative from there (`.`). 
 
     .
 
+At Windows you have to create a special function for starting FreeCAD (see [FreeCAD setup](freecad.md#powershell-start)).  
 When you don't start FreeCAD at a certain place you must consider to write a script to import the exported data automatically in your project. 
 
 
