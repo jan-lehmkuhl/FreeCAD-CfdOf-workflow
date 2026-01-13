@@ -155,7 +155,7 @@ Simulation Study 1
 Reality Description
 ---------------------------------------------------------------------
 
-### Geometry
+### Real Geometry
 <!-- 
 * description of the geometry features and their size
 * use real world pictures not simplified CAD data
@@ -163,7 +163,7 @@ Reality Description
 
 
 
-### Physics
+### Real Physics
 <!-- 
 * which physical effects occur
 * make sketches to describe special effects (you need less words)
@@ -188,6 +188,14 @@ Reality Description
 * How is the steady-state developing if present
  -->
 
+
+
+### Literature References & expected Results
+<!-- 
+* Are experiments available
+* Have other people already run similar simulations
+* What is known so far
+ -->
 
 
 Model & Numerics
