@@ -70,14 +70,15 @@ Constraints
 
 
 
-Major Work Packages
+Major Work Packages & Project Structure
 ---------------------------------------------------------------------
 <!-- 
 * maximum 700 characters
     * detailed explanations later
 * which simulations are/will be used to achieve your goals
+* how are the work packages/simulations linked together and which results are used from each other? 
 * which special information should each study (group of similar simulations) deliver to reach the project goals
-* which numbers are calculated in the postprocessing
+* which important numbers are calculated in the postprocessing
  -->
 
 
@@ -247,7 +248,7 @@ Model & Numerics
 
 
 
-### Physical Modeling
+### Physical Modelling
 <!-- 
 * which solver is chosen
 * which special physical models are applied
@@ -265,6 +266,10 @@ Model & Numerics
 
 ### Boundaries & Temporal Sequence
 <!-- 
+* is this steady-state or transient
+* what is the initialisation in a transient case
+* are the boundary conditions changing at a specific time
+
 | Domain    | Setting               | Value             | checked       |
 | --------- | --------------------- | ----------------- | ------------- |
 | Inlet1    | Mass Flow / Vel       | XXX [m/s]         |               |
@@ -302,7 +307,7 @@ Model & Numerics
 
 ### Postprocessing
 <!-- 
-* explain the pictures and values you use to explain the flow behavior
+* explain the pictures and values you use to explain later the flow behavior
 * do not explain the flow. This should be done in the next chapter
  -->
 
