@@ -31,6 +31,7 @@ Background
  -->
 
 
+
 Goal
 ---------------------------------------------------------------------
 <!-- 
@@ -48,6 +49,27 @@ Goal
  -->
 
 
+
+Constraints
+---------------------------------------------------------------------
+
+### Deadlines
+<!-- 
+* deadlines
+* dependent projects
+* necessary completed projects
+ -->
+
+
+
+### Human/Monetary Resources
+<!-- 
+* full time project? 
+* estimated hours per week
+ -->
+
+
+
 Major Work Packages
 ---------------------------------------------------------------------
 <!-- 
@@ -59,12 +81,14 @@ Major Work Packages
  -->
 
 
+
 Issues which jeopardize the project 
 ---------------------------------------------------------------------
 <!-- 
 * where are not yet solved issues or problems which can threaten the project outcome
 * e.g. numerics in study 1 are bad, you don't know yet to apply special model features, ...
  -->
+
 
 
 Result Statements
@@ -75,6 +99,7 @@ Result Statements
  -->
 
 
+
 Project-Forecast
 ---------------------------------------------------------------------
 <!-- 
@@ -83,61 +108,6 @@ Project-Forecast
 * tell me what are you doing next and when
  -->
 
-
-
-Available Resources
-===============================================================================
-
-Timeframe
----------------------------------------------------------------------
-<!-- 
-* deadlines
-* dependent projects
-* necessary completed projects
- -->
-
-
-Human Resources
----------------------------------------------------------------------
-<!-- 
-* full time project? 
-* estimated hours per week
- -->
-
-
-Calculation Enviroment
----------------------------------------------------------------------
-<!-- 
-* Short description of the hard- and software used to create the analysis. 
-* The objective of this section is: 
-  * to ensure reproducible results for the case of later reruns 
-  * to be aware of the possible simulations delivered in a specified time 
- -->
-
-### Hardware
-<!-- 
-|          |                                                                                        |
-| -------- | ------------------------------------------------------------------ |
-| Machine  | 
-| System   | Host: <br> Kernel: <br> Distro:  <br> Desktop: 
-| CPU      | COUNT x Name <br> Cache:  <br> Max. clock speed: XXXX MHz 
-| Memory   | Manufacturer: <br> Type: <br>  Speed: XXXX MHz <br> Size: XX x XX GB 
-| Graphics | Card: <br> Display Server: <br> Driver: 
- -->
-
-
-### Software
-<!-- 
-| Task              | Programm                                          |
-| ----------------- | ------------------------------------------------- |
-| CAD               | 
-| stl               | 
-| background mesh   | OpenFoam X.x
-| mesh              | OpenFoam X.x
-| solver            | OpenFoam X.x
-| paraview          | paraview X.X.X 
-| R version         | X.X.X (20xx-xx-xx)
- -->
 
 
 
@@ -198,10 +168,41 @@ Reality Description
  -->
 
 
+
 Model & Numerics
 ---------------------------------------------------------------------
 
-### Geometry
+### Calculation Enviroment
+<!-- 
+* Short description of the hard- and software used to create the analysis. 
+* The objective of this section is: 
+  * to ensure reproducible results for the case of later reruns 
+  * to be aware of the possible simulations delivered in a specified time 
+ -->
+
+#### Hardware
+<!-- 
+|          |                                                                                        |
+| -------- | ------------------------------------------------------------------ |
+| Machine  | 
+| System   | Host: <br> Kernel: <br> Distro:  <br> Desktop: 
+| CPU      | COUNT x Name <br> Cache:  <br> Max. clock speed: XXXX MHz 
+| Memory   | Manufacturer: <br> Type: <br>  Speed: XXXX MHz <br> Size: XX x XX GB 
+| Graphics | Card: <br> Display Server: <br> Driver: 
+ -->
+
+#### Software
+<!-- 
+* Which software tools (inklusive exact version) are used
+  * CAD-Tool
+  * Meshing-Tool
+  * OpenFOAM Package & exact solver
+  * Paraview
+ -->
+
+
+
+### Modelled Geometry
 <!-- 
 * simplifications of the 3D model
 * show pictures of the CAD model
@@ -248,6 +249,7 @@ Model & Numerics
 
 ### Physical Modeling
 <!-- 
+* which solver is chosen
 * which special physical models are applied
 * e.g. bouyancy, energy transport, material models, ...
 * do you have a transient or steady state simulation
