@@ -31,6 +31,7 @@ Background
  -->
 
 
+
 Goal
 ---------------------------------------------------------------------
 <!-- 
@@ -48,15 +49,38 @@ Goal
  -->
 
 
-Major Work Packages
+
+Constraints
+---------------------------------------------------------------------
+
+### Deadlines
+<!-- 
+* deadlines
+* dependent projects
+* necessary completed projects
+ -->
+
+
+
+### Human/Monetary Resources
+<!-- 
+* full time project? 
+* estimated hours per week
+ -->
+
+
+
+Major Work Packages & Project Structure
 ---------------------------------------------------------------------
 <!-- 
 * maximum 700 characters
     * detailed explanations later
 * which simulations are/will be used to achieve your goals
+* how are the work packages/simulations linked together and which results are used from each other? 
 * which special information should each study (group of similar simulations) deliver to reach the project goals
-* which numbers are calculated in the postprocessing
+* which important numbers are calculated in the postprocessing
  -->
+
 
 
 Issues which jeopardize the project 
@@ -67,12 +91,14 @@ Issues which jeopardize the project
  -->
 
 
+
 Result Statements
 ---------------------------------------------------------------------
 <!-- 
 * which goals or partial goals are reached at this moment
 * can be devided in parts for every study
  -->
+
 
 
 Project-Forecast
@@ -83,61 +109,6 @@ Project-Forecast
 * tell me what are you doing next and when
  -->
 
-
-
-Available Resources
-===============================================================================
-
-Timeframe
----------------------------------------------------------------------
-<!-- 
-* deadlines
-* dependent projects
-* necessary completed projects
- -->
-
-
-Human Resources
----------------------------------------------------------------------
-<!-- 
-* full time project? 
-* estimated hours per week
- -->
-
-
-Calculation Enviroment
----------------------------------------------------------------------
-<!-- 
-* Short description of the hard- and software used to create the analysis. 
-* The objective of this section is: 
-  * to ensure reproducible results for the case of later reruns 
-  * to be aware of the possible simulations delivered in a specified time 
- -->
-
-### Hardware
-<!-- 
-|          |                                                                                        |
-| -------- | ------------------------------------------------------------------ |
-| Machine  | 
-| System   | Host: <br> Kernel: <br> Distro:  <br> Desktop: 
-| CPU      | COUNT x Name <br> Cache:  <br> Max. clock speed: XXXX MHz 
-| Memory   | Manufacturer: <br> Type: <br>  Speed: XXXX MHz <br> Size: XX x XX GB 
-| Graphics | Card: <br> Display Server: <br> Driver: 
- -->
-
-
-### Software
-<!-- 
-| Task              | Programm                                          |
-| ----------------- | ------------------------------------------------- |
-| CAD               | 
-| stl               | 
-| background mesh   | OpenFoam X.x
-| mesh              | OpenFoam X.x
-| solver            | OpenFoam X.x
-| paraview          | paraview X.X.X 
-| R version         | X.X.X (20xx-xx-xx)
- -->
 
 
 
@@ -155,7 +126,7 @@ Simulation Study 1
 Reality Description
 ---------------------------------------------------------------------
 
-### Geometry
+### Real Geometry
 <!-- 
 * description of the geometry features and their size
 * use real world pictures not simplified CAD data
@@ -163,7 +134,7 @@ Reality Description
 
 
 
-### Physics
+### Real Physics
 <!-- 
 * which physical effects occur
 * make sketches to describe special effects (you need less words)
@@ -190,10 +161,49 @@ Reality Description
 
 
 
+### Literature References & expected Results
+<!-- 
+* Are experiments available
+* Have other people already run similar simulations
+* What is known so far
+ -->
+
+
+
 Model & Numerics
 ---------------------------------------------------------------------
 
-### Geometry
+### Calculation Enviroment
+<!-- 
+* Short description of the hard- and software used to create the analysis. 
+* The objective of this section is: 
+  * to ensure reproducible results for the case of later reruns 
+  * to be aware of the possible simulations delivered in a specified time 
+ -->
+
+#### Hardware
+<!-- 
+|          |                                                                                        |
+| -------- | ------------------------------------------------------------------ |
+| Machine  | 
+| System   | Host: <br> Kernel: <br> Distro:  <br> Desktop: 
+| CPU      | COUNT x Name <br> Cache:  <br> Max. clock speed: XXXX MHz 
+| Memory   | Manufacturer: <br> Type: <br>  Speed: XXXX MHz <br> Size: XX x XX GB 
+| Graphics | Card: <br> Display Server: <br> Driver: 
+ -->
+
+#### Software
+<!-- 
+* Which software tools (inklusive exact version) are used
+  * CAD-Tool
+  * Meshing-Tool
+  * OpenFOAM Package & exact solver
+  * Paraview
+ -->
+
+
+
+### Modelled Geometry
 <!-- 
 * simplifications of the 3D model
 * show pictures of the CAD model
@@ -238,8 +248,9 @@ Model & Numerics
 
 
 
-### Physical Modeling
+### Physical Modelling
 <!-- 
+* which solver is chosen
 * which special physical models are applied
 * e.g. bouyancy, energy transport, material models, ...
 * do you have a transient or steady state simulation
@@ -255,6 +266,10 @@ Model & Numerics
 
 ### Boundaries & Temporal Sequence
 <!-- 
+* is this steady-state or transient
+* what is the initialisation in a transient case
+* are the boundary conditions changing at a specific time
+
 | Domain    | Setting               | Value             | checked       |
 | --------- | --------------------- | ----------------- | ------------- |
 | Inlet1    | Mass Flow / Vel       | XXX [m/s]         |               |
@@ -292,7 +307,7 @@ Model & Numerics
 
 ### Postprocessing
 <!-- 
-* explain the pictures and values you use to explain the flow behavior
+* explain the pictures and values you use to explain later the flow behavior
 * do not explain the flow. This should be done in the next chapter
  -->
 
