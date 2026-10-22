@@ -26,7 +26,8 @@ A clean linux operating system can be applied on an USB-Stick, without major per
 Further resources:  
 [OpenFOAM Linux Guide](https://cfd.direct/openfoam/linux-guide/)  
 [OpenFOAM Downloads](https://cfd.direct/openfoam/download/)  
-[OpenFOAM.org source files](https://github.com/OpenFOAM/OpenFOAM-11)  
+[OpenFOAM.org - download v13](https://openfoam.org/download/13-ubuntu/)  
+[OpenFOAM.org source files](https://github.com/OpenFOAM/OpenFOAM-13)  
 
 
 
@@ -35,13 +36,18 @@ Package installation
 First you have to add a online-repository and tell Ubuntu where he find additional software
 
     sudo sh -c "wget -O - https://dl.openfoam.org/gpg.key > /etc/apt/trusted.gpg.d/openfoam.asc"
-    sudo add-apt-repository http://dl.openfoam.org/ubuntu
-    sudo apt-get update
+    sudo add-apt-repository "http://dl.openfoam.org/ubuntu main dev"
+
+On Ubuntu 26.04 and later do: 
+
+    sudo sed -i "s/^\(deb\).*\(http\)/\1 [arch=amd64] \2/" /etc/apt/sources.list.d/*dl_openfoam_org*list
+
 
 then you can install with following command. 
 Linux will download the needed files from the previous defined repository. 
 
-    sudo apt-get -y install openfoam11
+    sudo apt-get update
+    sudo apt-get -y install openfoam13
     sudo apt-get -y install build-essential
 
 
@@ -101,8 +107,8 @@ options:
   -doc              display application documentation in browser
   -help             print the usage
 
-Using: OpenFOAM-11 (see https://openfoam.org)
-Build: 11-e1fc8c682ae6
+Using: OpenFOAM-13 (see https://openfoam.org)
+Build: 13-e1fc8c682ae6
 ~~~
 
 

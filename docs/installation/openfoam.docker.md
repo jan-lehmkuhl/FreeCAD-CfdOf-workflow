@@ -22,13 +22,13 @@ The OpenFOAM Foundation provides OpenFOAM installations provided in containers t
 You can start the container inside the example-workflow root folder with: 
 
     cd example-cfdof-workflow
-    docker run --user $(id -u):$(id -g) --volume $(pwd):/host --workdir /host -it openfoam/openfoam11-paraview510
+    docker run --user $(id -u):$(id -g) --volume $(pwd):/host --workdir /host -it openfoam/openfoam13-paraview510
 
 
 When you do not want to enter the whole command every time you can add an alias to your profile. 
 Change your `.zprofile` on MacOS or your `.bashrc` on Linux and enter following command: 
 
-    alias docker-openfoam='docker run --user $(id -u):$(id -g) --volume $(pwd):/host --workdir /host -it openfoam/openfoam11-paraview510'
+    alias docker-openfoam='docker run --user $(id -u):$(id -g) --volume $(pwd):/host --workdir /host -it openfoam/openfoam13-paraview510'
 
 After restarting the terminal you can start the container with `docker-openfoam`. 
 

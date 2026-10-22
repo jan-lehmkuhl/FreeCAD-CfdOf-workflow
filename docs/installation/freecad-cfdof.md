@@ -50,7 +50,7 @@ FreeCAD -> File -> Edit -> Preferences -> CFDOF
 ### install directory
 On **Linux** set OpenFOAM directory to something like: 
 ~~~
-/opt/openfoam11
+/opt/openfoam13
 ~~~
 
 On **Windows** this first remains empty but you have to install later more [dependencies](#openfoam-only-on-windows) and
